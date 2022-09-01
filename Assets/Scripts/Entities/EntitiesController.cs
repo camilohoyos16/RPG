@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EntitiesController : MonoBehaviour
 {
-
+    private List<IEntity> m_entities;
 
     // Start is called before the first frame update
     void Start()
