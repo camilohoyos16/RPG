@@ -17,7 +17,7 @@ public class TESTINPUT : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             JumpAction jump = new JumpAction("j");
-            player.AddActionToPlayer(jump);
+            player.AddActionToCharacter(jump);
         }
     }
 }

@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IEntity
 {
+    public MathUtils.Vector3 EntityPosition { get; set; }
+
     public void UpdateEntity();
 }
