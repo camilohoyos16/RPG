@@ -6,6 +6,8 @@ public abstract class InputAction : IAction
 {
     private string m_buttonAction;
 
+    public string ActionId { get; set; }
+
     public InputAction(string input) {
         m_buttonAction = input;
     }
