@@ -10,6 +10,9 @@ public class EntitiesController : MonoBehaviour
     private List<IInteractable> m_interactablesEntities; // This will hold filteres entities in range to take just the interactable ones
     private List<ICharacter> m_characters;
 
+    private void Awake() {
+        EventManager.Instance.Register(this);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +36,21 @@ public class EntitiesController : MonoBehaviour
                 }
             }
         }
+    }
+
+    #region Events
+    [EventListener]
+    public void OnResgisterEntity(OnRegisterEntityEvent e) {
+        m_entities.Add(e.Entity);
+    }
+    #endregion
+}
+
+public class OnRegisterEntityEvent : GlobalEvent
+{
+    public IEntity Entity;
+
+    public OnRegisterEntityEvent(IEntity entity) {
+        Entity = entity;
     }
 }

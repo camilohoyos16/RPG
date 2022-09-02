@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IControllerCharacter
     public MathUtils.Vector3 EntityPosition { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     private void Start() {
-        
+        EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    
     }
 
     public void AddActionToCharacter(InputAction action){
