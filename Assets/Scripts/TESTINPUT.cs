@@ -11,6 +11,10 @@ public class TESTINPUT : MonoBehaviour
     {
         
     }
+    
+    public void TEST() {
+
+    }
 
     // Update is called once per frame
     void Update()
