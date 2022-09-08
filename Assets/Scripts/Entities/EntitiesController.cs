@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class EntitiesController : MonoBehaviour
 {
-    private List<IEntity> m_entities;
-    private List<IEntity> m_entitiesInRange; //This will hold filtered entities by quadtree
-    private List<IInteractable> m_interactablesEntities; // This will hold filteres entities in range to take just the interactable ones
-    private List<ICharacter> m_characters;
+    private List<IEntity> m_entities = new();
+    private List<IEntity> m_entitiesInRange = new(); //This will hold filtered entities by quadtree
+    private List<IInteractable> m_interactablesEntities = new(); // This will hold filteres entities in range to take just the interactable ones
+    private List<ICharacter> m_characters = new();
 
     private void Awake() {
-        EventManager.Instance.Register(this);
+        EventManager.Instance.Register<OnRegisterEntityEvent>(gameObject, OnRegisterEntity);
     }
 
     // Start is called before the first frame update
@@ -40,17 +40,8 @@ public class EntitiesController : MonoBehaviour
 
     #region Events
     [EventListener]
-    public void OnResgisterEntity(OnRegisterEntityEvent e) {
+    public void OnRegisterEntity(OnRegisterEntityEvent e) {
         m_entities.Add(e.Entity);
     }
     #endregion
-}
-
-public class OnRegisterEntityEvent : GlobalEvent
-{
-    public IEntity Entity;
-
-    public OnRegisterEntityEvent(IEntity entity) {
-        Entity = entity;
-    }
 }
