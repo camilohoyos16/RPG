@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IInteractable : IEntity
 {
-    public float InteractRadius { get; set; }
+    public abstract float InteractRadius { get; set; }
 
-    public void Interact(ICharacter character);
+    public abstract void Interact(ICharacter character);
 }

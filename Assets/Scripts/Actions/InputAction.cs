@@ -29,7 +29,7 @@ public abstract class InputAction : IAction
     }
 
     protected bool CanExecuteAction(string input) {
-        return m_buttonAction.Equals(input);
+        return InputManager.WasInputUsed(m_buttonAction, input);
     }
 
     #region IAction Implementation

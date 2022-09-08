@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IControllerCharacter
     private List<InputAction> m_actions = new List<InputAction>();
     public Rigidbody Rigidbody; //Need to check this and actions definitions
 
-    public MathUtils.Vector3 EntityPosition { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Start() {
         EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    

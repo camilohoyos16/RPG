@@ -13,6 +13,24 @@ public static class MathUtils
         public float y;
         public float z;
 
+        public static implicit operator Vector3(UnityEngine.Vector3 vector) {
+            Vector3 newVector = new Vector3 {
+                x = vector.x,
+                y = vector.y,
+                z = vector.z
+            };
+            return newVector;
+        }
+
+        public static implicit operator UnityEngine.Vector3(Vector3 vector) {
+            Vector3 newVector = new Vector3 {
+                x = vector.x,
+                y = vector.y,
+                z = vector.z
+            };
+            return newVector;
+        }
+
         public static Vector3 operator +(Vector3 a, Vector3 b) {
             Vector3 finalVector = new Vector3();
             finalVector.x = a.x + b.x;

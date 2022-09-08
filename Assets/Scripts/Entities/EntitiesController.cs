@@ -31,7 +31,7 @@ public class EntitiesController : MonoBehaviour
             foreach (ICharacter character in m_characters) {
                 if (MathUtils.PointsDistance(entity.EntityPosition, character.EntityPosition) < entity.InteractRadius) {
                     // Podria tener un input manager done tenga toda la configuracion de la accionacion de los botones con el id de cada action
-                    InteractAction newAction = new InteractAction("", entity);
+                    InteractAction newAction = new InteractAction(InputManager.InteractInput, entity);
                     character.AddActionToCharacter(newAction);
                 }
             }
@@ -42,6 +42,14 @@ public class EntitiesController : MonoBehaviour
     [EventListener]
     public void OnRegisterEntity(OnRegisterEntityEvent e) {
         m_entities.Add(e.Entity);
+
+        if(e.Entity is IInteractable) {
+            m_interactablesEntities.Add((IInteractable)e.Entity);
+        }
+
+        if(e.Entity is ICharacter) {
+            m_characters.Add((ICharacter)e.Entity);
+        }
     }
     #endregion
 }
