@@ -1,6 +1,7 @@
-﻿public class ShopItemData : ItemData
+﻿public class ShopItemData
 {
-    public float Price;
-    public float Discount;
-    public float MoreSuppliesIn; // Maybe this should be inside the shopkeeper
+    public ItemData BaseItemData;
+    public Stat Price;
+    public Stat Discount;
+    // public Time MoreSuppliesIn ()In game time -> This should be inside an entire supplies data on shopkeeper
 }
