@@ -5,6 +5,7 @@
     public InteractAction(string input, IInteractable interactObject) : base(input) 
     {
         m_interactObject = interactObject;
+        ActionId = ActionsDictionary.PLAYER_INTERACT_ACTION_ID;
     }
 
     #region InputAction Implementation
