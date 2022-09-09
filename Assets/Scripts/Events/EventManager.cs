@@ -22,7 +22,6 @@ public class EventManager : MonoBehaviour
         }
     }
 
-
     private Dictionary<string, Dictionary<int, Action<GlobalEvent>>>  m_eventsRegister = new();
 
     private void Awake() {

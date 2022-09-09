@@ -13,18 +13,6 @@ public class Player : MonoBehaviour, IControllerCharacter
         EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    
     }
 
-    public void AddActionToCharacter(InputAction action){
-        m_actions.Add(action);
-    }
-
-    private void Update() {
-        foreach (InputAction action in m_actions) {
-            bool foundAction = action.ExecuteActionWithInput(this, Input.inputString.ToLower());
-            if (foundAction) {
-                break;
-            }
-        }
-    }
 
     void IEntity.UpdateEntity() {
         foreach (InputAction action in m_actions) {
@@ -49,6 +37,32 @@ public class Player : MonoBehaviour, IControllerCharacter
 
     public void Move() {
         throw new System.NotImplementedException();
+    }
+
+    public void AddActionToCharacter(InputAction action) {
+        m_actions.Add(action);
+    }
+
+    public bool HasAction(string actionId) {
+        foreach (InputAction action in m_actions) {
+            if (action.ActionId.Equals(actionId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void RemoveAction(string actionId) {
+        int actionIndex = -1;
+        int actionsCount = m_actions.Count;
+        for (int i = 0; i < actionsCount; i++) {
+            if (m_actions[i].ActionId.Equals(actionId)) {
+                actionIndex = i;
+            }
+        }
+        if(actionIndex != -1) {
+            m_actions.RemoveAt(actionIndex);
+        }
     }
 
     #endregion

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ActionsDictionary
 {
     public const string PLAYER_JUMP_ACTION_ID = "player_jump";
