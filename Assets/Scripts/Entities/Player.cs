@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IControllerCharacter
 
 
     void IEntity.UpdateEntity() {
+        Debug.Log(m_actions.Count);
         foreach (InputAction action in m_actions) {
             bool foundAction = action.ExecuteActionWithInput(this, Input.inputString.ToLower());
             if (foundAction) {

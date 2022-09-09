@@ -23,8 +23,16 @@ public class EntitiesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateEntities();
         CheckCharactersInteractions();
     }
+
+    private void UpdateEntities() {
+        foreach (IEntity entity in m_entities) {
+            entity.UpdateEntity();
+        }
+    }
+
 
     private void CheckCharactersInteractions() {
         foreach (IInteractable entity in m_interactablesEntities) {

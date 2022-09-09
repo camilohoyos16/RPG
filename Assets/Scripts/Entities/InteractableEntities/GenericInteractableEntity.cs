@@ -14,7 +14,6 @@ public abstract class GenericInteractableEntity : MonoBehaviour, IInteractable
     public abstract void Interact(ICharacter character);
 
     public void UpdateEntity() {
-        throw new System.NotImplementedException();
     }
 
     // Update is called once per frame
