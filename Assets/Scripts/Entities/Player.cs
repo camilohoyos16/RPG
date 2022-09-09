@@ -15,7 +15,6 @@ public class Player : MonoBehaviour, IControllerCharacter
 
 
     void IEntity.UpdateEntity() {
-        Debug.Log(m_actions.Count);
         foreach (InputAction action in m_actions) {
             bool foundAction = action.ExecuteActionWithInput(this, Input.inputString.ToLower());
             if (foundAction) {
@@ -59,6 +58,7 @@ public class Player : MonoBehaviour, IControllerCharacter
         for (int i = 0; i < actionsCount; i++) {
             if (m_actions[i].ActionId.Equals(actionId)) {
                 actionIndex = i;
+                break;
             }
         }
         if(actionIndex != -1) {
