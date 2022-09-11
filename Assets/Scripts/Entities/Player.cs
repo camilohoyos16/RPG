@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IControllerCharacter
 {
+    public PlayerInventory Inventory;
     private List<InputAction> m_actions = new List<InputAction>();
     public Rigidbody Rigidbody; //Need to check this and actions definitions
 

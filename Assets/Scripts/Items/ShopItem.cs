@@ -7,14 +7,18 @@ public class ShopItem : MonoBehaviour, IItem
     /// </summary>
     public ItemData ItemData { get; set; }
 
+    public void BuyItem() {
+        UseItem();
+    }
+
     #region IItem implementation
 
     public void UseItem() {
         
     }
 
-    public void BuyItem() {
-        UseItem();
+    public void UseItem(ICharacter character) {
+        throw new System.NotImplementedException();
     }
 
     #endregion

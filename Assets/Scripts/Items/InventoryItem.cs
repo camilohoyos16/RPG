@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
-public class InventoryItem : MonoBehaviour, IItem
+public class InventoryItem : IItem
 {
     /// <summary>
     /// From <see cref="IItem"/>
     /// </summary>
     public ItemData ItemData { get; set; }
+
+    public InventoryItem (IItem item) {
+        ItemData = (ItemData)item.ItemData.Clone();
+    }
 
     #region IItem implementation
 

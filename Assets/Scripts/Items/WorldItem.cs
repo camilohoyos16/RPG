@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WorldItem : MonoBehaviour, IItem, IEntity
+public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
 {
     /// <summary>
     /// From <see cref="IEntity"/>
@@ -11,6 +11,17 @@ public class WorldItem : MonoBehaviour, IItem, IEntity
     /// From <see cref="IItem"/>
     /// </summary>
     public ItemData ItemData { get; set; }
+
+    public float InteractRadius { get => InteractableEntitiesDatabase.SIMPLE_INTERACTABLE_ENTITY_INTERACT_RADIUS; set { } }
+
+    #region GenericInteractableEntity implementation
+
+    #endregion
+    public void Interact(ICharacter character) {
+        if(character is Player player) {
+            player.Inventory.AddItem(this);
+        }
+    }
 
     #region IEntity implementation
 
@@ -24,6 +35,9 @@ public class WorldItem : MonoBehaviour, IItem, IEntity
 
     public void UseItem() {
         throw new System.NotImplementedException();
+    }
+
+    public void UseItem(ICharacter character) {
     }
 
     #endregion
