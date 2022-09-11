@@ -10,6 +10,10 @@ public class Player : MonoBehaviour, IControllerCharacter
 
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
+    private void Awake() {
+        Inventory = new PlayerInventory();
+    }
+
     private void Start() {
         EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    
     }
@@ -44,6 +48,15 @@ public class Player : MonoBehaviour, IControllerCharacter
         m_actions.Add(action);
     }
 
+    public InputAction GetAction(string actionId) {
+        foreach (InputAction action in m_actions) {
+            if (action.ActionId.Equals(actionId)) {
+                return action;
+            }
+        }
+        return null;
+    }
+
     public bool HasAction(string actionId) {
         foreach (InputAction action in m_actions) {
             if (action.ActionId.Equals(actionId)) {
@@ -67,5 +80,6 @@ public class Player : MonoBehaviour, IControllerCharacter
         }
     }
 
+    
     #endregion
 }

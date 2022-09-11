@@ -2,6 +2,10 @@
 {
     private IInteractable m_interactObject;
 
+    public IInteractable GetInteracObject() {
+        return m_interactObject;
+    }
+
     public InteractAction(string input, IInteractable interactObject) : base(input) 
     {
         m_interactObject = interactObject;

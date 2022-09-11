@@ -4,6 +4,12 @@
     public Stat MaxStack;
     public Stat Quantity;
 
+    public ItemData(ItemConfig itemConfig) {
+        IsStackable = itemConfig.IsStackable;
+        MaxStack = new Stat(itemConfig.MaxStack);
+        Quantity = new Stat(itemConfig.Quantity);
+    }
+
     private ItemData(ItemData itemData) {
         IsStackable = itemData.IsStackable;
         MaxStack = itemData.MaxStack;

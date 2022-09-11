@@ -1,7 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+
+[Serializable]
+public class ItemConfig
+{
+    public bool IsStackable;
+    public float MaxStack;
+    public float Quantity;
+}
 
 public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
 {
+    public ItemConfig ItemConfig;
+
     /// <summary>
     /// From <see cref="IEntity"/>
     /// </summary>
@@ -13,6 +24,14 @@ public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
     public ItemData ItemData { get; set; }
 
     public float InteractRadius { get => InteractableEntitiesDatabase.SIMPLE_INTERACTABLE_ENTITY_INTERACT_RADIUS; set { } }
+
+    private void Awake() {
+        ItemData = new ItemData(ItemConfig);
+    }
+
+    private void Start() {
+        EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    
+    }
 
     #region GenericInteractableEntity implementation
 
@@ -26,7 +45,6 @@ public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
     #region IEntity implementation
 
     public void UpdateEntity() {
-        throw new System.NotImplementedException();
     }
 
     #endregion

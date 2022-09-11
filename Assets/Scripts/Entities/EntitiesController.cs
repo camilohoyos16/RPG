@@ -45,7 +45,10 @@ public class EntitiesController : MonoBehaviour
                     }
                 } else {
                     if (character.HasAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID)) {
-                        character.RemoveAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID);
+                        InteractAction action = (InteractAction)character.GetAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID);
+                        if (action.GetInteracObject() == entity) {
+                            character.RemoveAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID);
+                        }
                     }
                 }
             }

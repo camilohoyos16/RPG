@@ -15,13 +15,5 @@ public class CharacterInventory : IInventory
     public void RemoveItem(IItem item) {
         throw new System.NotImplementedException();
     }
-
-    void IInventory.AddItem(IItem item) {
-        throw new System.NotImplementedException();
-    }
-
-    void IInventory.RemoveItem(IItem item) {
-        throw new System.NotImplementedException();
-    }
     #endregion
 }

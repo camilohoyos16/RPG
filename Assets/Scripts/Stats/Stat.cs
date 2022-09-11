@@ -12,6 +12,11 @@ public class Stat
 
     private List<StatModifier> m_modifiers;
 
+    public Stat(float value) {
+        m_baseValue = value;
+        m_modifiers = new List<StatModifier>();
+    }
+
     public float Value {
         get {
             ApplyModifiers();

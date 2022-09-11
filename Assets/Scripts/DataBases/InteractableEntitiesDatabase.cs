@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class InteractableEntitiesDatabase
 {
-    public const float SIMPLE_INTERACTABLE_ENTITY_INTERACT_RADIUS = 2;
+    public const float SIMPLE_INTERACTABLE_ENTITY_INTERACT_RADIUS = 3;
 }
