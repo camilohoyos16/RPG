@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061ddc43dcf610e41bce4f4879101fc8, type: 3}
+  m_Name: DynamicStatsDatabase
+  m_EditorClassIdentifier: 
+  AimStatName: {fileID: 11400000, guid: a2c060258d8a12342aaf24ed5e24b077, type: 2}
+  DamageStatName: {fileID: 11400000, guid: c61bc1552a7dac44f9b8423b3de0642c, type: 2}
+  ExperienceStatName: {fileID: 11400000, guid: 0afea92155fda4a4aaf5026975798646, type: 2}
+  HealthStatName: {fileID: 11400000, guid: 78a0c7ed2dc5e204aae923f42837480b, type: 2}
+  ManaStatName: {fileID: 11400000, guid: 3615daff4f0ee8544ba579254aaa8fe9, type: 2}
+  MoralityStatName: {fileID: 11400000, guid: 67fc167eecca65e40bdad1e66121f324, type: 2}
+  ReputationStatName: {fileID: 11400000, guid: 45c73f8b9abb6e843907c48e6cf64b18, type: 2}
+  StrengthStatName: {fileID: 11400000, guid: 0f18c2b87161fc840889c6bce4460be7, type: 2}

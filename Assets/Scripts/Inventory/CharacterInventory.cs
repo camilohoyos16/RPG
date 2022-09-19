@@ -5,7 +5,7 @@ public class CharacterInventory : IInventory
     /// <summary>
     /// From <see cref="IInventory"/>
     /// </summary>
-    public List<IItem> Items { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public List<IItem> Items { get; private set; }
 
     #region IInventory implementation
     public void AddItem(IItem item) {

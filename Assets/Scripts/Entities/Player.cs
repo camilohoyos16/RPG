@@ -28,21 +28,7 @@ public class Player : MonoBehaviour, IControllerCharacter
         }
     }
 
-    #region IControllerCharacter Implementation 
-    /// <summary>
-    /// This could be anojther calss to implement just the definitions of the actions. In that way I can give to player a chicken jump
-    /// </summary>
-    public void Attack() {
-        throw new System.NotImplementedException();
-    }
-
-    public void Jump() {
-        Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
-    }
-
-    public void Move() {
-        throw new System.NotImplementedException();
-    }
+    #region ICharacter implementation
 
     public void AddActionToCharacter(InputAction action) {
         m_actions.Add(action);
@@ -75,11 +61,26 @@ public class Player : MonoBehaviour, IControllerCharacter
                 break;
             }
         }
-        if(actionIndex != -1) {
+        if (actionIndex != -1) {
             m_actions.RemoveAt(actionIndex);
         }
     }
+    #endregion
 
-    
+    #region IControllerCharacter Implementation 
+    /// <summary>
+    /// This could be anojther calss to implement just the definitions of the actions. In that way I can give to player a chicken jump
+    /// </summary>
+    public void Attack() {
+        throw new System.NotImplementedException();
+    }
+
+    public void Jump() {
+        Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+    }
+
+    public void Move() {
+        throw new System.NotImplementedException();
+    }
     #endregion
 }

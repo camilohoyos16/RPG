@@ -38,7 +38,6 @@ public class EntitiesController : MonoBehaviour
         foreach (IInteractable entity in m_interactablesEntities) {
             foreach (ICharacter character in m_characters) {
                 if (MathUtils.PointsDistance(entity.EntityPosition, character.EntityPosition) < entity.InteractRadius) {
-                    // Podria tener un input manager done tenga toda la configuracion de la accionacion de los botones con el id de cada action
                     if (!character.HasAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID)) {
                         InteractAction newAction = new InteractAction(InputManager.InteractInput, entity);
                         character.AddActionToCharacter(newAction);

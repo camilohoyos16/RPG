@@ -5,7 +5,7 @@ public class PlayerInventory : IInventory
     /// <summary>
     /// From <see cref="IInventory"/>
     /// </summary>
-    public List<IItem> Items { get; set; }
+    public List<IItem> Items { get; private set; }
 
     public PlayerInventory() {
         Items = new List<IItem>();

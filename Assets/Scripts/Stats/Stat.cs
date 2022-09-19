@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IDynamicStats
+{
+    public void AddStats(params Stat[] stats);
+    public void RemoveStats(params string[] stats);
+    public bool HasStat(string statId);
+    public Stat GetStat(string statId);
+}
+
 public class Stat
 {
     public Action<Stat> OnUpdate;
