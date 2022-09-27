@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class DynamicStatDefinition
 {
-    public string Name;
+    [HideInInspector]
+    public string TitleOnInspector;
+
+    public StatNameScriptableObject Name;
     public float StatValue;
 }

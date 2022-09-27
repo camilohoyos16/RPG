@@ -22,4 +22,12 @@ public class StatsComponent : MonoBehaviour
     public bool HasDynamicStat(string statName) {
         return false;
     }
+
+    #region Editor
+    public void OnValidate() {
+        foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
+            statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.StatName, " - Value: ", statDefinition.StatValue);
+        }
+    }
+    #endregion
 }

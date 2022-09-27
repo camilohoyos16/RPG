@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(StatsComponent))]
 public class Player : MonoBehaviour, IControllerCharacter
 {
     public PlayerInventory Inventory;
     private List<InputAction> m_actions = new List<InputAction>();
     public Rigidbody Rigidbody; //Need to check this and actions definitions
+    private StatsComponent m_statsComponent;
 
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Awake() {
         Inventory = new PlayerInventory();
+        m_statsComponent = GetComponent<StatsComponent>();
     }
 
     private void Start() {
