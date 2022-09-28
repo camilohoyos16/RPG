@@ -38,15 +38,15 @@ public class EntitiesController : MonoBehaviour
         foreach (IInteractable entity in m_interactablesEntities) {
             foreach (ICharacter character in m_characters) {
                 if (MathUtils.PointsDistance(entity.EntityPosition, character.EntityPosition) < entity.InteractRadius) {
-                    if (!character.HasAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID)) {
-                        InteractAction newAction = new InteractAction(InputManager.InteractInput, entity);
+                    if (!character.HasAction(ActionsDictionary.INTERACT_ACTION_ID)) {
+                        InteractAction newAction = new InteractAction(entity);
                         character.AddActionToCharacter(newAction);
                     }
                 } else {
-                    if (character.HasAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID)) {
-                        InteractAction action = (InteractAction)character.GetAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID);
+                    if (character.HasAction(ActionsDictionary.INTERACT_ACTION_ID)) {
+                        InteractAction action = (InteractAction)character.GetAction(ActionsDictionary.INTERACT_ACTION_ID);
                         if (action.GetInteracObject() == entity) {
-                            character.RemoveAction(ActionsDictionary.PLAYER_INTERACT_ACTION_ID);
+                            character.RemoveAction(ActionsDictionary.INTERACT_ACTION_ID);
                         }
                     }
                 }

@@ -1,11 +1,9 @@
-﻿public sealed class WieldDistanceWeaponAction : InputAction
+﻿public sealed class WieldDistanceWeaponAction : Action
 {
-    public WieldDistanceWeaponAction(string input) : base(input) {
-        ActionId = ActionsDictionary.PLAYER_WIELD_DISTANCE_WEAPON_ACTION_ID;
-    }
+    public WieldDistanceWeaponAction() : base(ActionsDictionary.WIELD_DISTANCE_WEAPON_ACTION_ID) { }
 
     #region InputAction Implementation
-    public override void ExecuteAction(IControllerCharacter character) {
+    public override void ExecuteAction(ICharacter character) {
         //charcter.Move()
     }
     #endregion

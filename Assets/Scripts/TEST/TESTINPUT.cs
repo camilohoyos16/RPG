@@ -20,7 +20,7 @@ public class TESTINPUT : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            JumpAction jump = new JumpAction(InputManager.JumpInput);
+            JumpAction jump = new JumpAction();
             player.AddActionToCharacter(jump);
         }
     }

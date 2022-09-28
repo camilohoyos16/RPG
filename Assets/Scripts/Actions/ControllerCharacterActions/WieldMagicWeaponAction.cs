@@ -1,12 +1,10 @@
 ﻿
-public sealed class WieldMagicWeaponAction : InputAction
+public sealed class WieldMagicWeaponAction : Action
 {
-    public WieldMagicWeaponAction(string input) : base(input) {
-        ActionId = ActionsDictionary.PLAYER_WIELD_MAGIC_WEAPON_ACTION_ID;
-    }
+    public WieldMagicWeaponAction() : base(ActionsDictionary.WIELD_MAGIC_WEAPON_ACTION_ID) { }
 
     #region InputAction Implementation
-    public override void ExecuteAction(IControllerCharacter character) {
+    public override void ExecuteAction(ICharacter character) {
         //charcter.Move()
     }
     #endregion

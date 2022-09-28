@@ -1,11 +1,9 @@
-﻿public sealed class WieldMeeleWeaponAction : InputAction
+﻿public sealed class WieldMeeleWeaponAction : Action
 {
-    public WieldMeeleWeaponAction(string input) : base(input) { 
-        ActionId = ActionsDictionary.PLAYER_WIELD_MEELE_WEAPON_ACTION_ID;
-    }
+    public WieldMeeleWeaponAction() : base(ActionsDictionary.WIELD_MEELE_WEAPON_ACTION_ID) { }
 
     #region InputAction Implementation
-    public override void ExecuteAction(IControllerCharacter character) {
+    public override void ExecuteAction(ICharacter character) {
         //charcter.Move()
     }
     #endregion

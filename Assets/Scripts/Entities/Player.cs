@@ -23,8 +23,8 @@ public class Player : MonoBehaviour, IControllerCharacter
 
 
     void IEntity.UpdateEntity() {
-        foreach (InputAction action in m_actions) {
-            bool foundAction = action.ExecuteActionWithInput(this, Input.inputString.ToLower());
+        foreach (InputAction inputAction in m_actions) {
+            bool foundAction = inputAction.ExecuteActionWithInput(this, Input.inputString.ToLower());
             if (foundAction) {
                 break;
             }
@@ -33,22 +33,23 @@ public class Player : MonoBehaviour, IControllerCharacter
 
     #region ICharacter implementation
 
-    public void AddActionToCharacter(InputAction action) {
-        m_actions.Add(action);
+    public void AddActionToCharacter(Action action) {
+        InputAction newInputAction = new InputAction(action, InputManager.GetInputByAction(action.ActionId));
+        m_actions.Add(newInputAction);
     }
 
-    public InputAction GetAction(string actionId) {
-        foreach (InputAction action in m_actions) {
-            if (action.ActionId.Equals(actionId)) {
-                return action;
+    public Action GetAction(string actionId) {
+        foreach (InputAction inputAction in m_actions) {
+            if (inputAction.Action.ActionId.Equals(actionId)) {
+                return inputAction.Action;
             }
         }
         return null;
     }
 
     public bool HasAction(string actionId) {
-        foreach (InputAction action in m_actions) {
-            if (action.ActionId.Equals(actionId)) {
+        foreach (InputAction inputAction in m_actions) {
+            if (inputAction.Action.ActionId.Equals(actionId)) {
                 return true;
             }
         }
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour, IControllerCharacter
         int actionIndex = -1;
         int actionsCount = m_actions.Count;
         for (int i = 0; i < actionsCount; i++) {
-            if (m_actions[i].ActionId.Equals(actionId)) {
+            if (m_actions[i].Action.ActionId.Equals(actionId)) {
                 actionIndex = i;
                 break;
             }
@@ -71,19 +72,6 @@ public class Player : MonoBehaviour, IControllerCharacter
     #endregion
 
     #region IControllerCharacter Implementation 
-    /// <summary>
-    /// This could be anojther calss to implement just the definitions of the actions. In that way I can give to player a chicken jump
-    /// </summary>
-    public void Attack() {
-        throw new System.NotImplementedException();
-    }
-
-    public void Jump() {
-        Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
-    }
-
-    public void Move() {
-        throw new System.NotImplementedException();
-    }
+    
     #endregion
 }

@@ -1,18 +1,16 @@
 using System;
-
-[Serializable]
-public abstract class InputAction : IAction
+public class InputAction
 {
-    private string m_buttonAction;
+    public Action Action;
+    public string Input { get; }
 
-    public string ActionId { get; set; }
-
-    public InputAction(string input) {
-        m_buttonAction = input;
+    public InputAction(Action action, string input) {
+        Action = action;
+        Input = input;
     }
 
     /// <summary>
-    /// Call same <see cref="IAction.ExecuteAction(IControllerCharacter)"/> but putting an input in between 
+    /// Call same <see cref="Action.ExecuteAction(IControllerCharacter)"/> but putting an input in between 
     /// of the calling of the method and trigger action
     /// </summary>
     /// <param name="character"></param>
@@ -23,17 +21,11 @@ public abstract class InputAction : IAction
             return false;
         }
 
-        ExecuteAction(character);
+        Action.ExecuteAction(character);
         return true;
     }
 
     protected bool CanExecuteAction(string input) {
-        return InputManager.WasInputUsed(m_buttonAction, input);
+        return InputManager.WasInputUsed(Input, input);
     }
-
-    #region IAction Implementation
-
-    public abstract void ExecuteAction(IControllerCharacter character);
-
-    #endregion
 }

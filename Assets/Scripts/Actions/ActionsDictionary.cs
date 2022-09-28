@@ -1,10 +1,11 @@
 public class ActionsDictionary
 {
-    public const string PLAYER_JUMP_ACTION_ID = "player_jump";
-    public const string PLAYER_ATTACK_ACTION_ID = "player_attack";
-    public const string PLAYER_WIELD_MEELE_WEAPON_ACTION_ID = "player_wield_meele_weapon";
-    public const string PLAYER_WIELD_DISTANCE_WEAPON_ACTION_ID = "player_wield_distance_weapon";
-    public const string PLAYER_WIELD_MAGIC_WEAPON_ACTION_ID = "player_wield_magic_weapon";
-    public const string PLAYER_INTERACT_ACTION_ID = "player_interact";
+    public const string JUMP_ACTION_ID = "jump_action";
+    public const string MOVE_ACTION_ID = "move_action";
+    public const string ATTACK_ACTION_ID = "attack_action";
+    public const string WIELD_MEELE_WEAPON_ACTION_ID = "wield_meele_weapon_action";
+    public const string WIELD_DISTANCE_WEAPON_ACTION_ID = "wield_distance_weapon_action";
+    public const string WIELD_MAGIC_WEAPON_ACTION_ID = "wield_magic_weapon_action";
+    public const string INTERACT_ACTION_ID = "interact_action";
     
 }

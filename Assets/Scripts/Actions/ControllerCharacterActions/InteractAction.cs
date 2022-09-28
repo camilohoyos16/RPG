@@ -1,4 +1,4 @@
-﻿public sealed class InteractAction : InputAction
+﻿public sealed class InteractAction : Action
 {
     private IInteractable m_interactObject;
 
@@ -6,14 +6,13 @@
         return m_interactObject;
     }
 
-    public InteractAction(string input, IInteractable interactObject) : base(input) 
+    public InteractAction(IInteractable interactObject) : base(ActionsDictionary.INTERACT_ACTION_ID) 
     {
         m_interactObject = interactObject;
-        ActionId = ActionsDictionary.PLAYER_INTERACT_ACTION_ID;
     }
 
     #region InputAction Implementation
-    public override void ExecuteAction(IControllerCharacter character) {
+    public override void ExecuteAction(ICharacter character) {
         m_interactObject.Interact(character);
         //charcter.Interact()
     }

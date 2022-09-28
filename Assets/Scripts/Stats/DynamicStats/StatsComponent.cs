@@ -26,7 +26,11 @@ public class StatsComponent : MonoBehaviour
     #region Editor
     public void OnValidate() {
         foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
-            statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.StatName, " - Value: ", statDefinition.StatValue);
+            if(statDefinition.Name != null) {
+                statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.StatName, " - Value: ", statDefinition.StatValue);
+            } else {
+                statDefinition.TitleOnInspector = "----------------------------";
+            }
         }
     }
     #endregion
