@@ -16,5 +16,8 @@
         m_interactObject.Interact(character);
         //charcter.Interact()
     }
+
+    protected override void ResolveComponents() {
+    }
     #endregion
 }

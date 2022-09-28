@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StatsComponent))]
+[RequireComponent(typeof(StatsComponent), typeof(PhysicsComponent))]
 public class Player : MonoBehaviour, IControllerCharacter
 {
     public PlayerInventory Inventory;
     private List<InputAction> m_actions = new List<InputAction>();
-    public Rigidbody Rigidbody; //Need to check this and actions definitions
     private StatsComponent m_statsComponent;
+    private PhysicsComponent m_physicsComponent;
 
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Awake() {
         Inventory = new PlayerInventory();
         m_statsComponent = GetComponent<StatsComponent>();
+        m_physicsComponent = GetComponent<PhysicsComponent>();
     }
 
     private void Start() {
@@ -34,6 +35,9 @@ public class Player : MonoBehaviour, IControllerCharacter
     #region ICharacter implementation
 
     public void AddActionToCharacter(Action action) {
+        if(action.ActionId == ActionsDictionary.JUMP_ACTION_ID) {
+            action.AddGameComponents(m_statsComponent, m_physicsComponent);
+        }
         InputAction newInputAction = new InputAction(action, InputManager.GetInputByAction(action.ActionId));
         m_actions.Add(newInputAction);
     }

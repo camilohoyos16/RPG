@@ -5,8 +5,16 @@ using UnityEngine;
 public abstract class Action
 {
     public virtual string ActionId { get; protected set; }
+    protected IGameComponent[] m_gameComponents;
 
     public abstract void ExecuteAction(ICharacter character);
+
+    public void AddGameComponents(params IGameComponent[] gameComponents) {
+        m_gameComponents = gameComponents;
+        ResolveComponents();
+    }
+
+    protected abstract void ResolveComponents();
 
     public Action(string actionId) {
         ActionId = actionId;

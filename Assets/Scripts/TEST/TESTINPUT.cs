@@ -19,7 +19,7 @@ public class TESTINPUT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.T)) {
             JumpAction jump = new JumpAction();
             player.AddActionToCharacter(jump);
         }

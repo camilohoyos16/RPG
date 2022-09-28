@@ -9,6 +9,7 @@ public class DynamicStatsDatabase : ScriptableObject
     public StatNameScriptableObject DamageStatName;
     public StatNameScriptableObject ExperienceStatName;
     public StatNameScriptableObject HealthStatName;
+    public StatNameScriptableObject JumpForceStatName;
     public StatNameScriptableObject ManaStatName;
     public StatNameScriptableObject MoralityStatName;
     public StatNameScriptableObject ReputationStatName;

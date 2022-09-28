@@ -6,5 +6,8 @@
     public override void ExecuteAction(ICharacter character) {
         //charcter.Move()
     }
+
+    protected override void ResolveComponents() {
+    }
     #endregion
 }

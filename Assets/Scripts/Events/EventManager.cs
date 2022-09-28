@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEventArgs
-{
-
-}
-
 public class EventManager : MonoBehaviour
 {
     private static EventManager instance;
