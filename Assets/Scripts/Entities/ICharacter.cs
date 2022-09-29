@@ -8,4 +8,5 @@ public interface ICharacter : IEntity
     public bool HasAction(string actionId);
     public Action GetAction(string actionId);
     public void RemoveAction(string actionId);
+    public IGameComponent GetGameComponent(string componentId);
 }

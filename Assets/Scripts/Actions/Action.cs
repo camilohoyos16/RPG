@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Action
 {
     public virtual string ActionId { get; protected set; }
+    public abstract List<string> RequiredGameComponentsIds { get;}
     protected IGameComponent[] m_gameComponents;
 
     public abstract void ExecuteAction(ICharacter character);

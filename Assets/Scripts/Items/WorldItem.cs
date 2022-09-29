@@ -38,7 +38,8 @@ public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
     #endregion
     public void Interact(ICharacter character) {
         if(character is Player player) {
-            player.Inventory.AddItem(this);
+            InventoryComponent inventory = (InventoryComponent)player.GetGameComponent(GameComponentDictionary.INVENTORY_COMPONENT_ID);
+            inventory.AddItem(this);
         }
     }
 

@@ -1,5 +1,10 @@
-﻿public sealed class InteractAction : Action
+﻿using System.Collections.Generic;
+
+public sealed class InteractAction : Action
 {
+    public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
+
+
     private IInteractable m_interactObject;
 
     public IInteractable GetInteracObject() {

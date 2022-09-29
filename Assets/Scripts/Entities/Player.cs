@@ -2,26 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StatsComponent), typeof(PhysicsComponent))]
+[RequireComponent(typeof(StatsComponent), typeof(PhysicsComponent), typeof(InventoryComponent))]
 public class Player : MonoBehaviour, IControllerCharacter
 {
-    public PlayerInventory Inventory;
     private List<InputAction> m_actions = new List<InputAction>();
-    private StatsComponent m_statsComponent;
-    private PhysicsComponent m_physicsComponent;
+    private List<IGameComponent> m_components;
 
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Awake() {
-        Inventory = new PlayerInventory();
-        m_statsComponent = GetComponent<StatsComponent>();
-        m_physicsComponent = GetComponent<PhysicsComponent>();
+        ResolveComponents();
     }
 
     private void Start() {
         EventManager.Instance.TriggerGlobal(new OnRegisterEntityEvent(this));    
     }
 
+    private void ResolveComponents() {
+        m_components = new();
+        m_components.Add(GetComponent<InventoryComponent>());
+        m_components.Add(GetComponent<StatsComponent>());
+        m_components.Add(GetComponent<PhysicsComponent>());
+    }
 
     void IEntity.UpdateEntity() {
         foreach (InputAction inputAction in m_actions) {
@@ -35,9 +37,14 @@ public class Player : MonoBehaviour, IControllerCharacter
     #region ICharacter implementation
 
     public void AddActionToCharacter(Action action) {
-        if(action.ActionId == ActionsDictionary.JUMP_ACTION_ID) {
-            action.AddGameComponents(m_statsComponent, m_physicsComponent);
+        foreach (string gameComponentId in action.RequiredGameComponentsIds) {
+            IGameComponent gameComponent = GetGameComponent(gameComponentId);
+            if(gameComponent == default(IGameComponent)) {
+                continue;
+            }
+            action.AddGameComponents(gameComponent);
         }
+
         InputAction newInputAction = new InputAction(action, InputManager.GetInputByAction(action.ActionId));
         m_actions.Add(newInputAction);
     }
@@ -73,9 +80,13 @@ public class Player : MonoBehaviour, IControllerCharacter
             m_actions.RemoveAt(actionIndex);
         }
     }
+
+    public IGameComponent GetGameComponent(string componentId) {
+        return m_components.Find(component => component.GameComponentId.Equals(componentId));
+    }
     #endregion
 
     #region IControllerCharacter Implementation 
-    
+
     #endregion
 }
