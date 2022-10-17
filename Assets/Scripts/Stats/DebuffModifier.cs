@@ -1,6 +1,6 @@
 ﻿public class DebuffModifier : StatModifier
 {
-    public DebuffModifier(float value, StatModifierType modifierType) : base(value, modifierType) {
+    public DebuffModifier(float value, MathType modifierType) : base(value, modifierType) {
     }
 
     #region StatModifier implementation

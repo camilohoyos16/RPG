@@ -22,7 +22,7 @@ public class InputManager
 
     public static string GetInputByAction(string actionId) {
         switch (actionId) {
-            case ActionsDictionary.ATTACK_ACTION_ID:
+            case ActionsDictionary.ATTACK_MELEE_ACTION_ID:
                 return AttackInput;
             case ActionsDictionary.INTERACT_ACTION_ID:
                 return InteractInput;

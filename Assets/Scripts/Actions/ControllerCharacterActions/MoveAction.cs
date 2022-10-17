@@ -7,8 +7,10 @@ public sealed class MoveAction : Action
     public MoveAction() : base(ActionsDictionary.MOVE_ACTION_ID) { }
 
     #region InputAction Implementation
-    public override void ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character) {
         //charcter.Move()
+        ActionResult result = new ActionResult(false, "");
+        return result;
     }
 
     protected override void ResolveComponents() {

@@ -8,7 +8,7 @@ public abstract class Action
     public abstract List<string> RequiredGameComponentsIds { get;}
     protected IGameComponent[] m_gameComponents;
 
-    public abstract void ExecuteAction(ICharacter character);
+    public abstract ActionResult ExecuteAction(ICharacter character);
 
     public void AddGameComponents(params IGameComponent[] gameComponents) {
         m_gameComponents = gameComponents;

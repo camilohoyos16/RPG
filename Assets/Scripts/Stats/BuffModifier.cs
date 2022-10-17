@@ -1,5 +1,5 @@
 ﻿public class BuffModifier : StatModifier
 {
-    public BuffModifier(float value, StatModifierType modifierType) : base(value, modifierType) {
+    public BuffModifier(float value, MathType modifierType) : base(value, modifierType) {
     }
 }

@@ -12,11 +12,14 @@ public sealed class JumpAction : Action
     private PhysicsComponent m_physicsComponent;
 
     #region InputAction Implementation
-    public override void ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character) {
         float jumpForce = m_statsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.JumpForceStatName.StatName).Value;
         Rigidbody rigidbody = m_physicsComponent.Rigidbody;
 
         rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        ActionResult result = new ActionResult(true, "Jumped Succesfully");
+        return result;
     }
 
     protected override void ResolveComponents() {

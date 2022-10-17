@@ -17,9 +17,11 @@ public sealed class InteractAction : Action
     }
 
     #region InputAction Implementation
-    public override void ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character) {
         m_interactObject.Interact(character);
-        //charcter.Interact()
+
+        ActionResult result = new ActionResult(true, "Interacted with object");
+        return result;
     }
 
     protected override void ResolveComponents() {

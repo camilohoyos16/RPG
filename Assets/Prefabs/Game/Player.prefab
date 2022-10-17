@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3308233360153906497}
   - component: {fileID: 1688412171761365877}
   - component: {fileID: 2182486830649597110}
+  - component: {fileID: 151381358647357077}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -141,9 +142,6 @@ MonoBehaviour:
   - TitleOnInspector: 'Name: aim - Value: 10'
     Name: {fileID: 11400000, guid: a2c060258d8a12342aaf24ed5e24b077, type: 2}
     StatValue: 10
-  - TitleOnInspector: 'Name: damage - Value: 10'
-    Name: {fileID: 11400000, guid: c61bc1552a7dac44f9b8423b3de0642c, type: 2}
-    StatValue: 10
   - TitleOnInspector: 'Name: strength - Value: 10'
     Name: {fileID: 11400000, guid: 0f18c2b87161fc840889c6bce4460be7, type: 2}
     StatValue: 10
@@ -167,6 +165,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 3308233360153906498}
   Collider: {fileID: 3308233360205350155}
+--- !u!114 &151381358647357077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308233360153906496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c33b9109fba28d4d8ff7def9f973501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3308233360205350153
 GameObject:
   m_ObjectHideFlags: 0

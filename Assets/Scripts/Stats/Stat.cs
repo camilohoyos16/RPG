@@ -36,7 +36,7 @@ public class Stat
         float newValue = m_baseValue;
 
         foreach (StatModifier modifier in m_modifiers) {
-            if(modifier.ModifierType == StatModifierType.Add) {
+            if(modifier.ModifierType == MathType.Additive) {
                 newValue = Math.Max(0, newValue + modifier.GetValue());
             } else {
                 newValue += newValue * modifier.GetValue();
@@ -47,7 +47,7 @@ public class Stat
     }
 
     public void AddModifier(StatModifier modifier) {
-        if(modifier.ModifierType == StatModifierType.Add) {
+        if(modifier.ModifierType == MathType.Additive) {
             m_modifiers.Insert(0, modifier);
         } else {
             m_modifiers.Add(modifier);

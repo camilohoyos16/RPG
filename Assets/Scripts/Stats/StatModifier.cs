@@ -1,12 +1,6 @@
-﻿public enum StatModifierType
+﻿public class StatModifier
 {
-    Add,
-    Multiplier
-}
-
-public class StatModifier
-{
-    public StatModifierType ModifierType {
+    public MathType ModifierType {
         get; private set;
     }
     public int InstanceId {
@@ -16,7 +10,7 @@ public class StatModifier
 
     protected float m_value;
 
-    public StatModifier(float value, StatModifierType modifierType) {
+    public StatModifier(float value, MathType modifierType) {
         InstanceId = RandomIdGenerator.GetNewRandomId(); 
         m_value = value;
         ModifierType = modifierType;
