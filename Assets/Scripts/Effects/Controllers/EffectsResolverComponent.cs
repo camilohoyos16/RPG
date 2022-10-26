@@ -10,9 +10,9 @@ public enum MathType
 }
 
 
-public class EffectsComponent : MonoBehaviour, IGameComponent
+public class EffectsResolverComponent : MonoBehaviour, IGameComponent
 {
-    public string GameComponentId => GameComponentDictionary.EFFECTS_COMPONENT_ID;
+    public string GameComponentId => GameComponentDictionary.EFFECTS_RESOLVER_COMPONENT_ID;
 
     private PassiveEffectsController m_passiveEffectsController;
     private ActiveEffectsController m_activeEffectsController;
@@ -32,16 +32,17 @@ public class EffectsComponent : MonoBehaviour, IGameComponent
     public void AddActiveEffect(ActiveEffect activeEffect) {
         activeEffect.CallbackToController = TriggerActiveEffect;
         m_activeEffectsController.AddEffect(activeEffect);
+        activeEffect.StartEffect();
     }
 
     public void TriggerActiveEffect(ActiveEffect activeEffect) {
         float valueToApply = activeEffect.ValueToApply.Value;
-        List<PassiveEffect> passiveEffects = m_passiveEffectsController.GetEffectsByStatId(activeEffect.StatToAffect);
+        List<PassiveEffect> passiveEffects = m_passiveEffectsController.GetEffectsByStatId(activeEffect.StatToUse);
         foreach (PassiveEffect effect in passiveEffects) {
-            valueToApply = effect.ActivateEffect(valueToApply); 
+            valueToApply = effect.ApplyEffect(valueToApply); 
         }
 
-        activeEffect.ActivateEffect(valueToApply);
+        activeEffect.ApplyEffect();
     }
     #endregion
 }

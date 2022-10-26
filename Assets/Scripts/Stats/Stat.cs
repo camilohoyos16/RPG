@@ -32,6 +32,10 @@ public class Stat
         }
     }
 
+    public void ModifyBaseValue(float deltaValue) {
+        m_baseValue -= deltaValue;
+    }
+
     private void ApplyModifiers() {
         float newValue = m_baseValue;
 
