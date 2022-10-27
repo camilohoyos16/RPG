@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class EntitiesController : MonoBehaviour
 {
+    public static EntitiesController Instance;
+
     private List<IEntity> m_entities = new();
     private List<IEntity> m_entitiesInRange = new(); //This will hold filtered entities by quadtree
     private List<IInteractable> m_interactablesEntities = new(); // This will hold filteres entities in range to take just the interactable ones
     private List<ICharacter> m_characters = new();
 
     private void Awake() {
+        if(Instance != null) {
+            Destroy(gameObject);
+            return;
+        } else {
+            Instance = this;
+        }
+
         EventManager.Instance.Register<OnRegisterEntityEvent>(gameObject, OnRegisterEntity);
     }
 
@@ -33,6 +42,17 @@ public class EntitiesController : MonoBehaviour
         }
     }
 
+    public List<ICharacter> GetCharactersInRange(MathUtils.Vector3 position, float radius) {
+        List<ICharacter> characterInRange = new();
+
+        foreach (ICharacter character in m_characters) {
+            if (MathUtils.PointsDistance(position, character.EntityPosition) < radius) {
+                characterInRange.Add(character);
+            }
+        }
+
+        return characterInRange;
+    }
 
     private void CheckCharactersInteractions() {
         foreach (IInteractable entity in m_interactablesEntities) {

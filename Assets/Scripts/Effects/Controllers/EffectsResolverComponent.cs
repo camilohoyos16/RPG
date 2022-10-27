@@ -17,6 +17,12 @@ public class EffectsResolverComponent : MonoBehaviour, IGameComponent
     private PassiveEffectsController m_passiveEffectsController;
     private ActiveEffectsController m_activeEffectsController;
 
+    private void Start() {
+        m_passiveEffectsController = new PassiveEffectsController();
+        m_passiveEffectsController.Initialize();
+        m_activeEffectsController = new ActiveEffectsController();
+    }
+
     private void Update() {
         m_activeEffectsController.TickEffects(Time.time, Time.deltaTime);
     }
@@ -32,17 +38,16 @@ public class EffectsResolverComponent : MonoBehaviour, IGameComponent
     public void AddActiveEffect(ActiveEffect activeEffect) {
         activeEffect.CallbackToController = TriggerActiveEffect;
         m_activeEffectsController.AddEffect(activeEffect);
-        activeEffect.StartEffect();
     }
 
     public void TriggerActiveEffect(ActiveEffect activeEffect) {
-        float valueToApply = activeEffect.ValueToApply.Value;
-        List<PassiveEffect> passiveEffects = m_passiveEffectsController.GetEffectsByStatId(activeEffect.StatToUse);
+        float valueToApply = activeEffect.GetValueToAppy();
+        List<PassiveEffect> passiveEffects = m_passiveEffectsController.GetEffectsByStatId(activeEffect.GetStatToAffectName());
         foreach (PassiveEffect effect in passiveEffects) {
             valueToApply = effect.ApplyEffect(valueToApply); 
         }
 
-        activeEffect.ApplyEffect();
+        activeEffect.ApplyEffect(valueToApply);
     }
     #endregion
 }

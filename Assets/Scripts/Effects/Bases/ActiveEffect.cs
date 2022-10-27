@@ -3,14 +3,13 @@
 public abstract class ActiveEffect : Effect
 {
     public Action<ActiveEffect> CallbackToController;
-    public Stat ValueToApply;
 
     protected ActiveEffect() {
 
     }
 
-    public ActiveEffect(float valueToApply) {
-        ValueToApply = new Stat(valueToApply);
+    public string GetStatToAffectName() {
+        return NameStatToAffect;
     }
 
     /// <summary>
@@ -21,5 +20,5 @@ public abstract class ActiveEffect : Effect
     /// <param name="deltaTime"></param>
     public abstract void TickEffect(float gameTime, float deltaTime);
 
-    public abstract void ApplyEffect();
+    public abstract void ApplyEffect(float value);
 }

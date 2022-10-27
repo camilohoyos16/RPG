@@ -6,7 +6,7 @@ public class StatsComponent : MonoBehaviour, IGameComponent
 {
     [SerializeField]
     private List<DynamicStatDefinition> DynamicStatsDefinitions;
-    private List<DynamicStat> DynamicStats;
+    public List<DynamicStat> DynamicStats;
 
     private void Awake() {
         ResolveDynamicStatsDefinition();

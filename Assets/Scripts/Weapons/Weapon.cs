@@ -1,17 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public StatsComponent Stats;
+    protected StatsComponent Stats;
+    protected StatsComponent OwnerStats;
+    protected EffectsApplierComponent EffectApplier;
 
-    public abstract void Attack();
+    private void Awake() {
+        Stats = GetComponent<StatsComponent>();
+        EffectApplier = GetComponent<EffectsApplierComponent>();
+    }
+
+    public abstract void Attack(MathUtils.Vector3 position, StatsComponent ownerStats);
 }
 
-public class Sword : Weapon
+public abstract class MeleeWeapon : Weapon
 {
-    public override void Attack() {
-        
-    }
+
 }

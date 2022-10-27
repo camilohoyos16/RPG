@@ -23,5 +23,10 @@ public class TESTINPUT : MonoBehaviour
             JumpAction jump = new JumpAction();
             player.AddActionToCharacter(jump);
         }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            AttackMeleeAction meleeAction = new AttackMeleeAction();
+            player.AddActionToCharacter(meleeAction);
+        }
     }
 }

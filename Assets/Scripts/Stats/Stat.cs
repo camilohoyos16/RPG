@@ -11,11 +11,14 @@ public interface IDynamicStats
     public Stat GetStat(string statId);
 }
 
+[Serializable]
 public class Stat
 {
     public Action<Stat> OnUpdate;
 
+    [SerializeField]
     private float m_baseValue;
+    [SerializeField]
     private float m_value;
 
     private List<StatModifier> m_modifiers;
@@ -32,8 +35,8 @@ public class Stat
         }
     }
 
-    public void ModifyBaseValue(float deltaValue) {
-        m_baseValue -= deltaValue;
+    public void ModifyBaseValue(float newValue) {
+        m_baseValue = newValue;
     }
 
     private void ApplyModifiers() {

@@ -2,6 +2,10 @@
 {
     public MathType MathType { get; private set; }
 
+    public string GetStatName() {
+        return NameStatToAffect;
+    }
+
     private PassiveEffect() { }
 
     public PassiveEffect(MathType mathType) {

@@ -21,3 +21,4 @@ MonoBehaviour:
   MoralityStatName: {fileID: 11400000, guid: 67fc167eecca65e40bdad1e66121f324, type: 2}
   ReputationStatName: {fileID: 11400000, guid: 45c73f8b9abb6e843907c48e6cf64b18, type: 2}
   StrengthStatName: {fileID: 11400000, guid: 0f18c2b87161fc840889c6bce4460be7, type: 2}
+  RangeStatName: {fileID: 11400000, guid: eee92345564931640aae3f2ec432699c, type: 2}

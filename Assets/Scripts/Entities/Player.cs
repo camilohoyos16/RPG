@@ -8,6 +8,11 @@ public class Player : MonoBehaviour, IControllerCharacter
     private List<InputAction> m_actions = new List<InputAction>();
     private List<IGameComponent> m_components;
 
+    /// <summary>
+    /// TEST !!!!!!!!!!!!!  
+    /// </summary>
+    public MeleeWeapon Sword;
+
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Awake() {
@@ -20,9 +25,7 @@ public class Player : MonoBehaviour, IControllerCharacter
 
     private void ResolveComponents() {
         m_components = new();
-        m_components.Add(GetComponent<InventoryComponent>());
-        m_components.Add(GetComponent<StatsComponent>());
-        m_components.Add(GetComponent<PhysicsComponent>());
+        m_components.AddRange(GetComponents<IGameComponent>());
     }
 
     void IEntity.UpdateEntity() {
@@ -41,6 +44,10 @@ public class Player : MonoBehaviour, IControllerCharacter
             IGameComponent gameComponent = GetGameComponent(gameComponentId);
             if(gameComponent == default(IGameComponent)) {
                 continue;
+            }
+            /// TEST!!!!!!
+            if(action is AttackMeleeAction meleeAction) {
+                meleeAction.MeleeWeapon = Sword;
             }
             action.AddGameComponents(gameComponent);
         }

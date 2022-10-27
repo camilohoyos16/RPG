@@ -1,23 +1,25 @@
 ﻿using System;
-using UnityEngine;
 
+#nullable enable
 public abstract class Effect
 {
-    public abstract string StatToUse { get; }
+    protected abstract string NameStatToAffect { get; }
 
     protected StatsComponent AttackerStats;
     protected StatsComponent TargetStats;
+    protected StatsComponent? WeaponStats;
 
-    public abstract void StartEffect();
+    protected Effect() {
+
+    }
+
+    public abstract float GetValueToAppy();
+
+    public abstract void StartEffect(StatsComponent attackerStats, StatsComponent targetStats, StatsComponent? weaponStats = null);
 }
 
 [Serializable]
 public class EffectConfig
 {
     public StatNameScriptableObject StatToUseName;
-}
-
-public class EffectApplierComponents : MonoBehaviour
-{
-
 }
