@@ -2,7 +2,7 @@
 {
     public MathType MathType { get; private set; }
 
-    public string GetStatName() {
+    public string GetStatNameToAffect() {
         return NameStatToAffect;
     }
 

@@ -14,10 +14,10 @@ public class PassiveEffectsController
     }
 
     public void AddEfect(PassiveEffect effect) {
-        if (!m_effects.ContainsKey(effect.GetStatName())) {
-            m_effects.Add(effect.GetStatName(), new List<PassiveEffect>());
+        if (!m_effects.ContainsKey(effect.GetStatNameToAffect())) {
+            m_effects.Add(effect.GetStatNameToAffect(), new List<PassiveEffect>());
         } 
-        m_effects[effect.GetStatName()].Add(effect);
+        m_effects[effect.GetStatNameToAffect()].Add(effect);
     }
 
     public List<PassiveEffect> GetEffectsByStatId(string statId) {
