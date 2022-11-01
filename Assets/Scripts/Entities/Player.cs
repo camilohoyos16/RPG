@@ -45,7 +45,7 @@ public class Player : MonoBehaviour, IControllerCharacter
             if(gameComponent == default(IGameComponent)) {
                 continue;
             }
-            /// TEST!!!!!!
+            /// TEST!!!!!! ----------------------------------------------
             if(action is AttackMeleeAction meleeAction) {
                 meleeAction.MeleeWeapon = Sword;
             }

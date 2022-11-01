@@ -1,21 +1,15 @@
 ﻿using UnityEngine;
 
-public class InventoryItem : IItem
+public abstract class InventoryItem
 {
     /// <summary>
     /// From <see cref="IItem"/>
     /// </summary>
     public ItemData ItemData { get; set; }
 
-    public InventoryItem (IItem item) {
-        ItemData = (ItemData)item.ItemData.Clone();
-    }
+    private int m_maxStack;
+    private int m_quantity;
+    private string m_description;
 
-    #region IItem implementation
-
-    public void UseItem() {
-        throw new System.NotImplementedException();
-    }
-
-    #endregion
+    public abstract void UseItem(ICharacter character);
 }

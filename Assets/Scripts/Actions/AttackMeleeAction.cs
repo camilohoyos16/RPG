@@ -7,15 +7,26 @@ public sealed class AttackMeleeAction : Action
     public AttackMeleeAction() : base(ActionsDictionary.ATTACK_MELEE_ACTION_ID) { }
     public MeleeWeapon MeleeWeapon;
 
-    #region InputAction Implementation
+    private StatsComponent m_ownerStatsComponent;
+
+    #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character) {
         //charcter.Attack()
-        MeleeWeapon.Attack(character.EntityPosition, (StatsComponent)character.GetGameComponent(GameComponentDictionary.STATS_COMPONENT_ID));
+        MeleeWeapon.Attack(character.EntityPosition, m_ownerStatsComponent);
         ActionResult result = new ActionResult(true, "Attacking!");
         return result;
     }
 
     protected override void ResolveComponents() {
+        foreach (IGameComponent gameComponent in m_gameComponents) {
+            switch (gameComponent.GameComponentId) {
+                case GameComponentDictionary.STATS_COMPONENT_ID:
+                    m_ownerStatsComponent = (StatsComponent)gameComponent;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     #endregion
 }

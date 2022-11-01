@@ -9,7 +9,7 @@ public class ItemConfig
     public float Quantity;
 }
 
-public class WorldItem : MonoBehaviour, IItem, IEntity, IInteractable
+public class WorldItem : MonoBehaviour, IEntity, IInteractable
 {
     public ItemConfig ItemConfig;
 
