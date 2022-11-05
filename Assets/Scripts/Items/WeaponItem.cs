@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class WeaponItem : AttachmentItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float m_damage;
+    private float m_weight;
+    //private List<augmenter> Augmenters; WIP
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public WeaponItem(ItemWeaponDefinition itemDefinition) 
+        : base(itemDefinition) {
+        m_damage = itemDefinition.Damage;
+        m_weight = itemDefinition.Weight;
     }
+                      
+    #region Properties
+    public float Damage { get => m_damage; }
+    public float Weight { get => m_weight; }
+    #endregion
 }

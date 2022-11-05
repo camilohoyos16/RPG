@@ -7,6 +7,12 @@ public class ConsumableItem : InventoryItem
     private List<ActiveEffect> m_activeEffects;
     private List<PassiveEffect> m_passiveEffects;
 
+    public ConsumableItem(ItemConsumableDefinition itemDefinition)
+       : base(itemDefinition) {
+        m_activeEffects = itemDefinition.ActiveEffects;
+        m_passiveEffects = itemDefinition.PassiveEffects;
+    }
+
     #region IventoryItem Implementation
     public override void UseItem(ICharacter character) {
         EffectsResolverComponent resolverComponent = (EffectsResolverComponent)character.GetGameComponent(GameComponentDictionary.EFFECTS_RESOLVER_COMPONENT_ID);

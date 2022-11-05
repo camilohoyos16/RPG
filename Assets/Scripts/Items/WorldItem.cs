@@ -1,32 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class ItemConfig
-{
-    public bool IsStackable;
-    public float MaxStack;
-    public float Quantity;
-}
-
 public class WorldItem : MonoBehaviour, IEntity, IInteractable
 {
-    public ItemConfig ItemConfig;
+    public ItemIdScriptableObject WorldItemId;
+    public ItemCategory ItemCategory;
 
     /// <summary>
     /// From <see cref="IEntity"/>
     /// </summary>
     public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
-    /// <summary>
-    /// From <see cref="IItem"/>
-    /// </summary>
-    public ItemData ItemData { get; set; }
-
     public float InteractRadius { get => InteractableEntitiesDatabase.SIMPLE_INTERACTABLE_ENTITY_INTERACT_RADIUS; set { } }
 
     private void Awake() {
-        ItemData = new ItemData(ItemConfig);
     }
 
     private void Start() {
@@ -34,14 +21,13 @@ public class WorldItem : MonoBehaviour, IEntity, IInteractable
     }
 
     #region GenericInteractableEntity implementation
-
-    #endregion
     public void Interact(ICharacter character) {
         if(character is Player player) {
             InventoryComponent inventory = (InventoryComponent)player.GetGameComponent(GameComponentDictionary.INVENTORY_COMPONENT_ID);
             inventory.AddItem(this);
         }
     }
+    #endregion
 
     #region IEntity implementation
 

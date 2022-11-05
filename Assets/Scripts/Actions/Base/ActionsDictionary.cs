@@ -1,4 +1,4 @@
-public class ActionsDictionary
+public static class ActionsDictionary
 {
     public const string JUMP_ACTION_ID = "jump_action";
     public const string MOVE_ACTION_ID = "move_action";
