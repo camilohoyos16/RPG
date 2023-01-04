@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0c4d32f3a8c494b9c96dd051ca990b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sword: {fileID: 0}
 --- !u!114 &1688412171761365877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +152,10 @@ MonoBehaviour:
   - TitleOnInspector: 'Name: jump_force - Value: 5'
     Name: {fileID: 11400000, guid: 589e096def2462b4a918c0760a663c20, type: 2}
     StatValue: 5
+  - TitleOnInspector: 'Name: speed - Value: 10'
+    Name: {fileID: 11400000, guid: ee2f3691440699642862de2e5bf91fae, type: 2}
+    StatValue: 10
+  DynamicStats: []
 --- !u!114 &2182486830649597110
 MonoBehaviour:
   m_ObjectHideFlags: 0

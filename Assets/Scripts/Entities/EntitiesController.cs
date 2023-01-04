@@ -79,12 +79,18 @@ public class EntitiesController : MonoBehaviour
     public void OnRegisterEntity(OnRegisterEntityEvent e) {
         m_entities.Add(e.Entity);
 
-        if(e.Entity is IInteractable) {
-            m_interactablesEntities.Add((IInteractable)e.Entity);
+        if(e.Entity is IInteractable iIteractable) {
+            m_interactablesEntities.Add(iIteractable);
         }
 
-        if(e.Entity is ICharacter) {
-            m_characters.Add((ICharacter)e.Entity);
+        if(e.Entity is ICharacter iCharacter) {
+            m_characters.Add(iCharacter);
+            if(iCharacter is IControllerCharacter controllerCharacter) {
+                controllerCharacter.AddActionToCharacter(new MoveForwardAction());
+                controllerCharacter.AddActionToCharacter(new MoveBackAction());
+                controllerCharacter.AddActionToCharacter(new MoveLeftAction());
+                controllerCharacter.AddActionToCharacter(new MoveRightAction());
+            }
         }
     }
     #endregion

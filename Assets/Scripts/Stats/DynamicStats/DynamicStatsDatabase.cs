@@ -15,5 +15,6 @@ public class DynamicStatsDatabase : ScriptableObject
     public StatNameScriptableObject RangeStatName;
     public StatNameScriptableObject ReputationStatName;
     public StatNameScriptableObject StrengthStatName;
+    public StatNameScriptableObject SpeedStatName;
     public StatNameScriptableObject WeightStatName;
 }

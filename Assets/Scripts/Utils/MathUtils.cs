@@ -23,12 +23,12 @@ public static class MathUtils
         }
 
         public static implicit operator UnityEngine.Vector3(Vector3 vector) {
-            Vector3 newVector = new Vector3 {
+            UnityEngine.Vector3 newVector = new UnityEngine.Vector3 {
                 x = vector.x,
                 y = vector.y,
                 z = vector.z
             };
-            return newVector;
+            return newVector; 
         }
 
         public static Vector3 operator +(Vector3 a, Vector3 b) {

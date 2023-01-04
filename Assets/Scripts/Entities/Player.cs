@@ -29,12 +29,21 @@ public class Player : MonoBehaviour, IControllerCharacter
     }
 
     void IEntity.UpdateEntity() {
-        foreach (InputAction inputAction in m_actions) {
-            bool foundAction = inputAction.ExecuteActionWithInput(this, Input.inputString.ToLower());
-            if (foundAction) {
-                break;
-            }
-        }
+
+        /// Some tried approaches to handle inputs. Finally I decided to use unity input system and make mty own when the game is finish
+        //if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        //    Debug.Log("");
+        //}
+
+        //if (!string.IsNullOrEmpty(Input.inputString)) {
+        //    Debug.LogError(Input.inputString.ToLower());
+
+        //    foreach (InputAction inputAction in m_actions) {
+        //        if (Input.GetKey(inputAction.Input)){
+        //            inputAction.Action.ExecuteAction(this);
+        //        }
+        //    }
+        //}
     }
 
     #region ICharacter implementation

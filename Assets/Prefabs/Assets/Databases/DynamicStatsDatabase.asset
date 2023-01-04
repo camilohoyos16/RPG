@@ -22,4 +22,5 @@ MonoBehaviour:
   RangeStatName: {fileID: 11400000, guid: eee92345564931640aae3f2ec432699c, type: 2}
   ReputationStatName: {fileID: 11400000, guid: 45c73f8b9abb6e843907c48e6cf64b18, type: 2}
   StrengthStatName: {fileID: 11400000, guid: 0f18c2b87161fc840889c6bce4460be7, type: 2}
+  SpeedStatName: {fileID: 11400000, guid: ee2f3691440699642862de2e5bf91fae, type: 2}
   WeightStatName: {fileID: 11400000, guid: 41dafdfc5cb362f4ba538a6e36064188, type: 2}
