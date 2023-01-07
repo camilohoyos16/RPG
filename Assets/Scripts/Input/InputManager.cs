@@ -1,4 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 //public interface IInputController
@@ -6,27 +9,14 @@ using UnityEngine.InputSystem;
 //    public IInputMap inputMap
 //}
 
-public interface IInputDevice
+public class InputDevice
 {
     public string DeviceId { get; }
+    public TextAsset InputConfig;
 }
 
-public class XboxInputDevice : IInputDevice
-{
-    public string DeviceId => "";
-}
 
-public class PcInputDevice : IInputDevice
-{
-    public string DeviceId => throw new System.NotImplementedException();
-}
-
-public class PlayStationInputDevice : IInputDevice
-{
-    public string DeviceId => throw new System.NotImplementedException();
-}
-
-public class InputDictionary
+public class InputDictionary: IEnumerator<InputDictionary>
 {
     public const string AttackInputId = "attack_input";
     public const string InteractInputId = "interact_input";
@@ -35,6 +25,22 @@ public class InputDictionary
     public const string MoveBackInputId = "move_back_input";
     public const string MoveRightInputId = "move_right_input";
     public const string MoveLeftInputId = "move_left_input";
+
+    public InputDictionary Current => throw new System.NotImplementedException();
+
+    object IEnumerator.Current => throw new System.NotImplementedException();
+
+    public void Dispose() {
+        throw new System.NotImplementedException();
+    }
+
+    public bool MoveNext() {
+        throw new System.NotImplementedException();
+    }
+
+    public void Reset() {
+        throw new System.NotImplementedException();
+    }
 }
 
 public class InputManager
@@ -43,7 +49,11 @@ public class InputManager
     public const string PLAY_STATION_INPUT_DEVICE_ID = "ps";
     public const string XBOX_INPUT_DEVICE_ID = "xbox";
 
-    private static IInputDevice m_currentDevice;
+    private static InputDevice m_pcDevice;
+    private static InputDevice m_xboxDevice;
+    private static InputDevice m_playStationDevice;
+
+    private static InputDevice? m_currentDevice;
     public static Dictionary<string, string> InputMap;
 
     public static bool WasInputUsed(string assignedInput, string usedInput) {
@@ -64,14 +74,51 @@ public class InputManager
     //    Keyboard.current.b
     //}
 
-    public static void ChangeDevice(IInputDevice device) {
+    private static InputDevice? GetInputDeviceById(string id) => id switch {
+        PC_INPUT_DEVICE_ID => m_pcDevice,
+        XBOX_INPUT_DEVICE_ID => m_xboxDevice,
+        PLAY_STATION_INPUT_DEVICE_ID => m_playStationDevice,
+        _ => null,
+    };
+
+    private static void InitializeDevice() {
+        m_currentDevice = GetInputDeviceById(PC_INPUT_DEVICE_ID);
+        InitializeInputs();
+    }
+
+    private static void InitializeInputs() {
+        TextAsset file = new TextAsset();
+
+        Dictionary<string, string> pcInputs = new();
+        pcInputs = JsonUtility.FromJson<Dictionary<string, string>>(file.text);
+        InputMap = new (){
+            { InputDictionary.AttackInputId, pcInputs[InputDictionary.AttackInputId] },
+            { InputDictionary.InteractInputId, pcInputs[InputDictionary.InteractInputId] },
+            { InputDictionary.JumpInputId, pcInputs[InputDictionary.JumpInputId] },
+            { InputDictionary.MoveForwardInputId, pcInputs[InputDictionary.MoveForwardInputId] },
+            { InputDictionary.MoveBackInputId, pcInputs[InputDictionary.MoveBackInputId] },
+            { InputDictionary.MoveRightInputId, pcInputs[InputDictionary.MoveRightInputId] },
+            { InputDictionary.MoveLeftInputId, pcInputs[InputDictionary.MoveLeftInputId] },
+        };
+    }
+
+    public static void ChangeDevice(InputDevice device) {
         m_currentDevice = device;
 
         UpdateInputMap();
     }
 
     private static void UpdateInputMap() {
-        // Ned to create a json with a default config of input and override it when user change input inside game
+        TextAsset file = m_currentDevice.InputConfig;
+
+        Dictionary<string, string> newInputs = new();
+        newInputs = JsonUtility.FromJson<Dictionary<string, string>>(file.text);
+
+        foreach (KeyValuePair<string, string> input in newInputs) {
+            if (InputMap.ContainsKey(input.Key)) {
+                InputMap[input.Key] = input.Value;
+            }
+        }
     }
 
     public static string GetInputByAction(string actionId) {

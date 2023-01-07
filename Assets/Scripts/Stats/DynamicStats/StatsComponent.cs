@@ -50,6 +50,10 @@ public class StatsComponent : MonoBehaviour, IGameComponent
     #region Editor
     public void OnValidate() {
         foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
+            if(statDefinition is null) {
+                continue;
+            }
+
             if(statDefinition.Name != null) {
                 statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.StatName, " - Value: ", statDefinition.StatValue);
             } else {
