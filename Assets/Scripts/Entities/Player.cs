@@ -61,7 +61,7 @@ public class Player : MonoBehaviour, IControllerCharacter
             action.AddGameComponents(gameComponent);
         }
 
-        InputAction newInputAction = new InputAction(action, InputManager.GetInputByAction(action.ActionId));
+        InputAction newInputAction = new InputAction(action, InputUtilities.GetInputByAction(action.ActionId));
         m_actions.Add(newInputAction);
     }
 

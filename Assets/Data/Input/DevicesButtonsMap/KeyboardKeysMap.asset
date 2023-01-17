@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8201f862815b74ea7bcc37de3767c8, type: 3}
+  m_Name: KeyboardKeysMap
+  m_EditorClassIdentifier: 
+  KeysConfig:
+  - TitleOnInspector: Q Key-Q
+    Name: Q Key
+    InputSystemCode: Q
+  - TitleOnInspector: W Key-W
+    Name: W Key
+    InputSystemCode: W
+  - TitleOnInspector: E Key-E
+    Name: E Key
+    InputSystemCode: E
+  - TitleOnInspector: R Key-R
+    Name: R Key
+    InputSystemCode: R
+  - TitleOnInspector: T Key-T
+    Name: T Key
+    InputSystemCode: T
+  - TitleOnInspector: Y Key-Y
+    Name: Y Key
+    InputSystemCode: Y
+  - TitleOnInspector: U Key-U
+    Name: U Key
+    InputSystemCode: U
+  - TitleOnInspector: I Key-I
+    Name: I Key
+    InputSystemCode: I
+  - TitleOnInspector: O Key-O
+    Name: O Key
+    InputSystemCode: O
+  - TitleOnInspector: P Key-P
+    Name: P Key
+    InputSystemCode: P
+  - TitleOnInspector: A Key-A
+    Name: A Key
+    InputSystemCode: A
+  - TitleOnInspector: S Key-S
+    Name: S Key
+    InputSystemCode: S
+  - TitleOnInspector: D Key-D
+    Name: D Key
+    InputSystemCode: D
+  - TitleOnInspector: F Key-F
+    Name: F Key
+    InputSystemCode: F
+  - TitleOnInspector: G Key-G
+    Name: G Key
+    InputSystemCode: G
+  - TitleOnInspector: H Key-H
+    Name: H Key
+    InputSystemCode: H
+  - TitleOnInspector: J Key-J
+    Name: J Key
+    InputSystemCode: J
+  - TitleOnInspector: K Key-K
+    Name: K Key
+    InputSystemCode: K
+  - TitleOnInspector: L Key-L
+    Name: L Key
+    InputSystemCode: L
+  - TitleOnInspector: "\xD1 Key-\xD1"
+    Name: "\xD1 Key"
+    InputSystemCode: "\xD1"
+  - TitleOnInspector: Z Key-
+    Name: Z Key
+    InputSystemCode: 
+  - TitleOnInspector: X Key-X
+    Name: X Key
+    InputSystemCode: X
+  - TitleOnInspector: C Key-C
+    Name: C Key
+    InputSystemCode: C
+  - TitleOnInspector: V Key-V
+    Name: V Key
+    InputSystemCode: V
+  - TitleOnInspector: B Key-B
+    Name: B Key
+    InputSystemCode: B
+  - TitleOnInspector: N Key-N
+    Name: N Key
+    InputSystemCode: N
+  - TitleOnInspector: M Key-M
+    Name: M Key
+    InputSystemCode: M
+  - TitleOnInspector: 1 Key-1
+    Name: 1 Key
+    InputSystemCode: 1
+  - TitleOnInspector: 2 Key-2
+    Name: 2 Key
+    InputSystemCode: 2
+  - TitleOnInspector: 3 Key-3
+    Name: 3 Key
+    InputSystemCode: 3
+  - TitleOnInspector: 4 Key-4
+    Name: 4 Key
+    InputSystemCode: 4
+  - TitleOnInspector: 5 Key-5
+    Name: 5 Key
+    InputSystemCode: 5
+  - TitleOnInspector: 6 Key-6
+    Name: 6 Key
+    InputSystemCode: 6
+  - TitleOnInspector: 7 Key-7
+    Name: 7 Key
+    InputSystemCode: 7
+  - TitleOnInspector: 8 Key-8
+    Name: 8 Key
+    InputSystemCode: 8
+  - TitleOnInspector: 9 Key-9
+    Name: 9 Key
+    InputSystemCode: 9
+  - TitleOnInspector: 0 Key-0
+    Name: 0 Key
+    InputSystemCode: 0
+  - TitleOnInspector: Tab Key-Tab
+    Name: Tab Key
+    InputSystemCode: Tab
+  - TitleOnInspector: Mayus Key-CapsLock
+    Name: Mayus Key
+    InputSystemCode: CapsLock
+  - TitleOnInspector: Left Shift Key-LeftShift
+    Name: Left Shift Key
+    InputSystemCode: LeftShift
+  - TitleOnInspector: Left Ctrl Key-LeftCtrl
+    Name: Left Ctrl Key
+    InputSystemCode: LeftCtrl
+  - TitleOnInspector: Left Alt Key-LeftAlt
+    Name: Left Alt Key
+    InputSystemCode: LeftAlt
+  - TitleOnInspector: Right Shift Key-RightShift
+    Name: Right Shift Key
+    InputSystemCode: RightShift
+  - TitleOnInspector: Right Ctrl Key-RightCtrl
+    Name: Right Ctrl Key
+    InputSystemCode: RightCtrl
+  - TitleOnInspector: Right Alt (Gr) Key-RightAlt
+    Name: Right Alt (Gr) Key
+    InputSystemCode: RightAlt
+  - TitleOnInspector: Comma Key-Comma
+    Name: Comma Key
+    InputSystemCode: Comma
+  - TitleOnInspector: Dot Key-Period
+    Name: Dot Key
+    InputSystemCode: Period
+  - TitleOnInspector: Dash Key-
+    Name: Dash Key
+    InputSystemCode: 
+  - TitleOnInspector: Enter Key-Enter
+    Name: Enter Key
+    InputSystemCode: Enter
+  - TitleOnInspector: Delete  Key-Delete
+    Name: Delete  Key
+    InputSystemCode: Delete
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 
+  - TitleOnInspector: '-'
+    Name: 
+    InputSystemCode: 

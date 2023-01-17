@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TESTINPUT : MonoBehaviour
 {
@@ -9,7 +11,6 @@ public class TESTINPUT : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     
     public void TEST() {
@@ -19,14 +20,11 @@ public class TESTINPUT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) {
-            JumpAction jump = new JumpAction();
-            player.AddActionToCharacter(jump);
-        }
 
-        if (Input.GetKeyDown(KeyCode.P)) {
-            AttackMeleeAction meleeAction = new AttackMeleeAction();
-            player.AddActionToCharacter(meleeAction);
-        }
+    }
+
+    private void OnAnyButtonPressed()
+    {
+
     }
 }

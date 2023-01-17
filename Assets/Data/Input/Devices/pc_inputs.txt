@@ -1,0 +1,9 @@
+{
+"attack_input":"A",
+"interact_input":"S",
+"jump_input":"F",
+"move_forward_input":"Space",
+"move_back_input":"E",
+"move_right_input":"J",
+"move_left_input":"I"
+}

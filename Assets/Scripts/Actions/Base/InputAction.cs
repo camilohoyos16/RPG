@@ -2,11 +2,11 @@ using System;
 public class InputAction
 {
     public Action Action;
-    public string Input { get; }
+    public string InputId { get; }
 
-    public InputAction(Action action, string input) {
+    public InputAction(Action action, string inputId) {
         Action = action;
-        Input = input;
+        InputId = inputId;
     }
 
     /// <summary>
@@ -26,6 +26,6 @@ public class InputAction
     }
 
     protected bool CanExecuteAction(string input) {
-        return InputManager.WasInputUsed(Input, input);
+        return InputUtilities.WasActionInputTriggered(InputId, input);
     }
 }
