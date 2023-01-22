@@ -2,16 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new_InptDevice", menuName = "Input/New Device", order = 1)]
+[CreateAssetMenu(fileName = "new_InputDatabase", menuName = "Input/Database", order = 1)]
 
 public class InputDevicesDatabase : ScriptableObject
 {
     [SerializeField]
-    private GameInputDeviceConfig DevicesConfigList;
+    private List<GameInputDeviceConfig> DevicesConfigList;
 
-    private Dictionary<string, GameInputDeviceConfig> DevicesConfig;
+    private Dictionary<string, GameInputDevice> DevicesConfig;
 
-    public GameInputDeviceConfig? GetGameInputDeviceConfigById(string id)
+    public void Init()
+    {
+        DevicesConfig = new();
+
+        foreach (GameInputDeviceConfig deviceConfig in DevicesConfigList)
+        {
+            if (!DevicesConfig.ContainsKey(deviceConfig.DeviceId))
+            {
+                DevicesConfig.Add(deviceConfig.DeviceId, new GameInputDevice(deviceConfig));
+            }
+        }
+    }
+
+    public GameInputDevice? GetGameInputDeviceConfigById(string id)
     {
         if (DevicesConfig.ContainsKey(id))
         {
@@ -20,7 +33,7 @@ public class InputDevicesDatabase : ScriptableObject
         return null;
     }
 
-    public Dictionary<string, GameInputDeviceConfig> GetDevices()
+    public Dictionary<string, GameInputDevice> GetDevices()
     {
         return DevicesConfig;
     }

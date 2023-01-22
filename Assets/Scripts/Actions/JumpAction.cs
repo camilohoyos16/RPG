@@ -3,15 +3,13 @@ using UnityEngine;
 
 public sealed class JumpAction : Action
 {
-    public JumpAction() : base(ActionsDictionary.JUMP_ACTION_ID) { }
-
-    public override string ActionId { get; protected set; }
+    public override string ActionId { get => ActionsDictionary.JUMP_ACTION_ID;  }
     public override List<string> RequiredGameComponentsIds { get => new (){ GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
 
     private StatsComponent m_statsComponent;
     private PhysicsComponent m_physicsComponent;
 
-    #region InputAction Implementation
+    #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character) {
         float jumpForce = m_statsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.JumpForceStatName.StatName).Value;
         Rigidbody rigidbody = m_physicsComponent.Rigidbody;

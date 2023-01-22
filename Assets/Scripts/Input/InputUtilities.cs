@@ -5,27 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Newtonsoft.Json;
 
-//public interface IInputController
-//{
-//    public IInputMap inputMap
-//}
-
-public class InputContext
-{
-    public List<string> InputsUsedId;
-}
-
-public static class InputActionsIdDictionary
-{
-    public const string AttackInputId = "attack_input";
-    public const string InteractInputId = "interact_input";
-    public const string JumpInputId = "jump_input";
-    public const string MoveForwardInputId = "move_forward_input";
-    public const string MoveBackInputId = "move_back_input";
-    public const string MoveRightInputId = "move_right_input";
-    public const string MoveLeftInputId = "move_left_input";
-}
-
 public class InputUtilities
 {
     /// <summary>
@@ -47,25 +26,6 @@ public class InputUtilities
     private static GameInputDevice m_xboxDevice;
     private static GameInputDevice m_playStationDevice;
 
-    public static GameInputDevice? m_currentDevice;
-    public static Dictionary<string, string> InputMap = new Dictionary<string, string>();
-
-    public static bool WasActionInputTriggered(string actionInput, string usedInput)
-    {
-        // gURADAR EL INPUT EN lower case para evitar hacer el split y tener que gaurdar mas de un input con la separacion
-        // Lo de arriba se implementara a la mitad, si se guardara en lower case, pero se dejara el split
-        // para facilitar el cambio de control: xbox, play, teclado, etc. En ese caso el contenido quedara algo asi: "shift|x|square"
-        /// NOTE: no se tomara un desicion hasta no empezar a conectar y mirar como son los inputs
-        string[] staticInputs = actionInput.Split('|');
-        foreach (string input in staticInputs)
-        {
-            if (input.Equals(usedInput))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private static GameInputDevice? GetInputDeviceById(string id) => id switch
     {
@@ -75,52 +35,11 @@ public class InputUtilities
         _ => null,
     };
 
-    public static void ChangeDevice(GameInputDevice device)
-    {
-        m_currentDevice = device;
-
-        UpdateInputMap();
-    }
-
-    private static void UpdateInputMap()
-    {
-        foreach (KeyValuePair<string, string> input in m_currentDevice.InputConfig)
-        {
-            if (InputMap.ContainsKey(input.Key))
-            {
-                InputMap[input.Key] = input.Value;
-            }
-        }
-    }
-
     public static Dictionary<string, string> ParseDeviceConfigFromFile(TextAsset file)
     {
         Dictionary<string, string> newInputs = new();
-        newInputs = JsonUtility.FromJson<Dictionary<string, string>>(file.text);
+        newInputs = JsonConvert.DeserializeObject<Dictionary<string, string>>(file.text, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
         return newInputs;
-    }
-
-    public static string GetInputByAction(string actionId)
-    {
-        switch (actionId)
-        {
-            case ActionsDictionary.ATTACK_MELEE_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.AttackInputId];
-            case ActionsDictionary.INTERACT_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.InteractInputId];
-            case ActionsDictionary.JUMP_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.JumpInputId];
-            case ActionsDictionary.MOVE_FORWARD_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.MoveForwardInputId];
-            case ActionsDictionary.MOVE_BACK_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.MoveBackInputId];
-            case ActionsDictionary.MOVE_LEFT_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.MoveLeftInputId];
-            case ActionsDictionary.MOVE_RIGHT_ACTION_ID:
-                return InputMap[InputActionsIdDictionary.MoveRightInputId];
-            default:
-                return "";
-        }
     }
 
     public static string GetDeviceIdFromUnityInputSystemId(int id) => id switch

@@ -17,7 +17,8 @@ public abstract class Action
 
     protected abstract void ResolveComponents();
 
-    public Action(string actionId) {
-        ActionId = actionId;
+    public Action()
+    {
+
     }
 }

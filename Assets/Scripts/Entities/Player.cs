@@ -29,21 +29,11 @@ public class Player : MonoBehaviour, IControllerCharacter
     }
 
     void IEntity.UpdateEntity() {
-
-        /// Some tried approaches to handle inputs. Finally I decided to use unity input system and make mty own when the game is finish
-        //if (Input.GetKeyDown(KeyCode.LeftShift)) {
-        //    Debug.Log("");
-        //}
-
-        //if (!string.IsNullOrEmpty(Input.inputString)) {
-        //    Debug.LogError(Input.inputString.ToLower());
-
-        //    foreach (InputAction inputAction in m_actions) {
-        //        if (Input.GetKey(inputAction.Input)){
-        //            inputAction.Action.ExecuteAction(this);
-        //        }
-        //    }
-        //}
+        foreach (InputAction inputAction in m_actions)
+        {
+            ActionResult actionResult = inputAction.ExecuteActionWithInput(this);
+            //Debug.Log(string.Concat(inputAction.Action.ActionId, ": ", actionResult.WasSuccessful));
+        }
     }
 
     #region ICharacter implementation
@@ -61,7 +51,7 @@ public class Player : MonoBehaviour, IControllerCharacter
             action.AddGameComponents(gameComponent);
         }
 
-        InputAction newInputAction = new InputAction(action, InputUtilities.GetInputByAction(action.ActionId));
+        InputAction newInputAction = new InputAction(action, InputController.GetActionInputByActionId(action.ActionId));
         m_actions.Add(newInputAction);
     }
 

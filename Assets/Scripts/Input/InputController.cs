@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
@@ -8,6 +9,19 @@ public class InputController : MonoBehaviour
     public InputDevicesDatabase InputDevicesDatabase;
 
     public List<GameInputDevice> Devices;
+    public static InputContext currentInputContext;
+    private static InputUpdater currentInputUpdater;
+
+    public static GameInputDevice m_currentDevice;
+
+    /// <summary>
+    /// This hold input map with key: actionId - value: inputName
+    /// </summary>
+    public static Dictionary<string, string> InputMap = new Dictionary<string, string>();
+    /// <summary>
+    /// This hold input map with key: inputName - value: actionId
+    /// </summary>
+    public static Dictionary<string, string> InputMapInverse = new Dictionary<string, string>();
 
     private void Awake()
     {
@@ -22,14 +36,65 @@ public class InputController : MonoBehaviour
         }
 
         CreateDevicesConfigs();
+        ChangeDevice(InputDevicesDatabase.GetGameInputDeviceConfigById(InputUtilities.PC_INPUT_DEVICE_ID));
     }
 
     private void CreateDevicesConfigs()
     {
-        foreach (KeyValuePair<string, GameInputDeviceConfig> deviceConfig in InputDevicesDatabase.GetDevices())
+        InputDevicesDatabase.Init();
+    }
+
+    public static void UpdateInputs()
+    {
+        currentInputContext.UpdateActionsUsed(currentInputUpdater.UpdateInputs().Values.ToList());
+    }
+
+    public static void ChangeDevice(GameInputDevice device)
+    {
+        m_currentDevice = device;
+
+        switch (device.DeviceId)
         {
-            Devices.Add(new GameInputDevice(deviceConfig.Value));
+            case InputUtilities.PC_INPUT_DEVICE_ID:
+                currentInputContext = new PcInputContext();
+                currentInputUpdater = new PcInputUpdater();
+                break;
+            default:
+                break;
+        }
+
+        UpdateInputMap();
+    }
+
+    private static void UpdateInputMap()
+    {
+        foreach (KeyValuePair<string, string> input in m_currentDevice.InputConfig)
+        {
+            if (!InputMap.ContainsKey(input.Key))
+            {
+                InputMap[input.Key] = input.Value;
+                InputMapInverse[input.Value] = input.Key;
+            }
         }
     }
 
+    public static string GetActionInputByActionId(string actionId)
+    {
+        if (InputMap.ContainsKey(actionId))
+        {
+            return InputMap[actionId];
+        }
+
+        return string.Empty;
+    }
+
+    public static string GetActionByInput(string inputName)
+    {
+        if (InputMapInverse.ContainsKey(inputName))
+        {
+            return InputMapInverse[inputName];
+        }
+
+        return string.Empty;
+    }
 }

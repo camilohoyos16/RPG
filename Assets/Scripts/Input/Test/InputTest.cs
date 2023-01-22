@@ -31,35 +31,49 @@ public class InputTest : MonoBehaviour
                     break;
             }
         };
+        var myAction = new UnityEngine.InputSystem.InputAction(type: InputActionType.Button, binding: "/<Mouse>/leftButton");
+        myAction.performed += CheckMouse;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //var myAction = new UnityEngine.InputSystem.InputAction (binding: "<Mouse>/<button>");
+        //myAction.performed += CheckMouse;
+
         if (Input.GetKey(KeyCode.Space))
         {
-            CheckDevices();
+            Debug.Log(Mouse.current.leftButton.path);
         }
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    CheckDevices();
+        //}
 
-        if (Input.GetKey(KeyCode.J))
-        {
-            ToJson();
-        }
+        //if (Input.GetKey(KeyCode.J))
+        //{
+        //    ToJson();
+        //}
 
 
+    }
+
+    private void CheckMouse(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Debug.Log(context.control.name);
     }
 
     private void ToJson()
     {
         Dictionary<string, string> inputs = new()
         {
-            { InputActionsIdDictionary.AttackInputId, "a" },
-            { InputActionsIdDictionary.InteractInputId, "s" },
-            { InputActionsIdDictionary.JumpInputId, "f" },
-            { InputActionsIdDictionary.MoveForwardInputId, " " },
-            { InputActionsIdDictionary.MoveBackInputId, "e" },
-            { InputActionsIdDictionary.MoveRightInputId, "j" },
-            { InputActionsIdDictionary.MoveLeftInputId, "i" },
+            { ActionsDictionary.ATTACK_ACTION_ID, "a" },
+            { ActionsDictionary.INTERACT_ACTION_ID, "E" },
+            { ActionsDictionary.JUMP_ACTION_ID, "SPACE" },
+            { ActionsDictionary.MOVE_FORWARD_ACTION_ID, "W" },
+            { ActionsDictionary.MOVE_BACK_ACTION_ID, "S" },
+            { ActionsDictionary.MOVE_RIGHT_ACTION_ID, "D" },
+            { ActionsDictionary.MOVE_LEFT_ACTION_ID, "A" },
         };
 
         string json = string.Empty;
@@ -67,13 +81,17 @@ public class InputTest : MonoBehaviour
         {
             StringEscapeHandling = StringEscapeHandling.EscapeHtml,
             TypeNameHandling = TypeNameHandling.Auto
-        }) ;
+        });
         Debug.LogError(json);
     }
 
     private void CheckDevices()
     {
         ReadOnlyArray<InputDevice> devices = InputSystem.devices;
+        if (Mouse.current.wasUpdatedThisFrame)
+        {
+            Debug.Log(Mouse.current.press.name);
+        }
         ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
 
     }

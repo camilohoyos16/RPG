@@ -3,6 +3,7 @@
 public sealed class InteractAction : Action
 {
     public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
+    public override string ActionId { get => ActionsDictionary.INTERACT_ACTION_ID; }
 
 
     private IInteractable m_interactObject;
@@ -11,12 +12,12 @@ public sealed class InteractAction : Action
         return m_interactObject;
     }
 
-    public InteractAction(IInteractable interactObject) : base(ActionsDictionary.INTERACT_ACTION_ID) 
+    public InteractAction(IInteractable interactObject)
     {
         m_interactObject = interactObject;
     }
 
-    #region InputAction Implementation
+    #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character) {
         m_interactObject.Interact(character);
 

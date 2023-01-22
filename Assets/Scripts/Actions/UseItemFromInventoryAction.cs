@@ -8,8 +8,7 @@ public class UseItemFromInventoryAction : Action
 {
     public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.INVENTORY_COMPONENT_ID}; }
 
-    public UseItemFromInventoryAction() : base(ActionsDictionary.USE_ITEM_FROM_INVENTORY_ACTION_ID) { }
-
+    public override string ActionId { get => ActionsDictionary.USE_ITEM_FROM_INVENTORY_ACTION_ID; }
 
     private InventoryComponent m_inventoryComponent;
 

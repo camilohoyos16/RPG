@@ -15,6 +15,13 @@ public class WorldManager : MonoBehaviour
         ItemsDatabase.Initialize();
     }
 
+    private void Update()
+    {
+        InputController.UpdateInputs();
+        EntitiesController.Instance.UpdateEntities();
+    }
+
     public DynamicStatsDatabase DynamicStatsDatabaseInstance;
     public ItemsDatabase ItemsDatabase;
+    public EntitiesController EntitiesController;
 }

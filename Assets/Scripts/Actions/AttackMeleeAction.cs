@@ -4,7 +4,8 @@ public sealed class AttackMeleeAction : Action
 {
     public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
 
-    public AttackMeleeAction() : base(ActionsDictionary.ATTACK_MELEE_ACTION_ID) { }
+    public override string ActionId { get => ActionsDictionary.ATTACK_MELEE_ACTION_ID; }
+
     public MeleeWeapon MeleeWeapon;
 
     private StatsComponent m_ownerStatsComponent;

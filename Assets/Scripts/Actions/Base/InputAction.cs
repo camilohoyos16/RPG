@@ -1,12 +1,14 @@
 using System;
 public class InputAction
 {
+    /// TODO: PUT THE ACTION ID HERE TOO AND A PROXY TO THE ACTION VARIABLE
+
     public Action Action;
-    public string InputId { get; }
+    public string Input { get; }
 
     public InputAction(Action action, string inputId) {
         Action = action;
-        InputId = inputId;
+        Input = inputId;
     }
 
     /// <summary>
@@ -16,16 +18,20 @@ public class InputAction
     /// <param name="character"></param>
     /// <param name="input"></param>
     /// <returns>Whether action was triggered. true: triggered / false: not triggered</returns>
-    public bool ExecuteActionWithInput(IControllerCharacter character, string input) {
-        if (!CanExecuteAction(input)) {
-            return false;
+    public ActionResult ExecuteActionWithInput(IControllerCharacter character) {
+        InputInfo inputInfo = InputController.currentInputContext.GetInfoByActionId(Action.ActionId);
+
+        if (inputInfo.ActionId != Action.ActionId)
+        {
+            return new ActionResult(false, "Input info passed by Input Controller -> Input Context -> GetInfoByActionId");
         }
 
-        Action.ExecuteAction(character);
-        return true;
-    }
+        if(inputInfo.Value == 0)
+        {
+            return new ActionResult(false, "This is temporary while I figure out how to pass the inptut value and continue updateing the action to," +
+                "for example stop to walk smoothly");
+        }
 
-    protected bool CanExecuteAction(string input) {
-        return InputUtilities.WasActionInputTriggered(InputId, input);
+        return Action.ExecuteAction(character);
     }
 }

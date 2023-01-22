@@ -163,9 +163,9 @@ MonoBehaviour:
   - TitleOnInspector: Delete  Key-Delete
     Name: Delete  Key
     InputSystemCode: Delete
-  - TitleOnInspector: '-'
-    Name: 
-    InputSystemCode: 
+  - TitleOnInspector: Space-Space
+    Name: Space
+    InputSystemCode: Space
   - TitleOnInspector: '-'
     Name: 
     InputSystemCode: 

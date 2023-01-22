@@ -32,14 +32,13 @@ public class EntitiesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateEntities();
-        CheckCharactersInteractions();
     }
 
-    private void UpdateEntities() {
+    public void UpdateEntities() {
         foreach (IEntity entity in m_entities) {
             entity.UpdateEntity();
         }
+        CheckCharactersInteractions();
     }
 
     public List<ICharacter> GetCharactersInRange(MathUtils.Vector3 position, float radius) {

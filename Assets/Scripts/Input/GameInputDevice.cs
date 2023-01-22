@@ -6,6 +6,7 @@ public class GameInputDevice
 
     public GameInputDevice(GameInputDeviceConfig config)
     {
+        DeviceId = config.DeviceId;
         InputConfig = InputUtilities.ParseDeviceConfigFromFile(config.InputConfig);
     }
 }
