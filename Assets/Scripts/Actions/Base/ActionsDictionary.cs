@@ -14,5 +14,4 @@ public static class ActionsDictionary
     public const string WIELD_MAGIC_WEAPON_ACTION_ID = "wield_magic_weapon_action";
     public const string INTERACT_ACTION_ID = "interact_action";
     public const string USE_ITEM_FROM_INVENTORY_ACTION_ID = "use_item_from_inventory_action";
-    
 }

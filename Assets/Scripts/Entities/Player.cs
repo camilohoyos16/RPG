@@ -45,19 +45,24 @@ public class Player : MonoBehaviour, IControllerCharacter
                 continue;
             }
             /// TEST!!!!!! ----------------------------------------------
+            /// This can be set inside interact action when take the sword. 
+            /// Check if the interacted object is a weapon and assign the weapon there
             if(action is AttackMeleeAction meleeAction) {
                 meleeAction.MeleeWeapon = Sword;
             }
             action.AddGameComponents(gameComponent);
         }
 
-        InputAction newInputAction = new InputAction(action, InputController.GetActionInputByActionId(action.ActionId));
+        InputAction newInputAction = new InputAction(
+            action, 
+            InputController.GetActionInputByActionId(action.ActionId),
+            InputController.GetInputResolverByActionId(action.ActionId));
         m_actions.Add(newInputAction);
     }
 
     public Action GetAction(string actionId) {
         foreach (InputAction inputAction in m_actions) {
-            if (inputAction.Action.ActionId.Equals(actionId)) {
+            if (inputAction.ActionId.Equals(actionId)) {
                 return inputAction.Action;
             }
         }
@@ -66,7 +71,7 @@ public class Player : MonoBehaviour, IControllerCharacter
 
     public bool HasAction(string actionId) {
         foreach (InputAction inputAction in m_actions) {
-            if (inputAction.Action.ActionId.Equals(actionId)) {
+            if (inputAction.ActionId.Equals(actionId)) {
                 return true;
             }
         }

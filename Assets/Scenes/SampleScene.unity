@@ -564,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DynamicStatsDatabaseInstance: {fileID: 11400000, guid: 3b09beb679aa3ae4fad3d3d9f64e77d8, type: 2}
   ItemsDatabase: {fileID: 11400000, guid: d2028f5902bd0464285227d048490325, type: 2}
+  EntitiesController: {fileID: 1055738218}
 --- !u!114 &1934847949 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3308233360153906497, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
@@ -575,6 +576,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0c4d32f3a8c494b9c96dd051ca990b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1946169958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946169960}
+  - component: {fileID: 1946169959}
+  m_Layer: 0
+  m_Name: InputController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946169959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946169958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b85d8c0bb261c418ffe1f4f4930f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputDevicesDatabase: {fileID: 11400000, guid: 43b17cab550a73845a4185f0fa10c004, type: 2}
+--- !u!4 &1946169960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946169958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.581818, y: -0.9178667, z: 0.32319832}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1948539362588873958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,11 +687,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1688412171761365877, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: DynamicStatsDefinitions.Array.data[7].StatValue
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1688412171761365877, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: DynamicStatsDefinitions.Array.data[7].TitleOnInspector
-      value: 'Name: speed - Value: 0,5'
+      value: 'Name: speed - Value: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906496, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_Name

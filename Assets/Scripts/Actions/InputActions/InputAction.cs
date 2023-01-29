@@ -1,14 +1,25 @@
 using System;
+
+public abstract class InputActionResolver
+{
+    public abstract void ResolveInputBeforeTriggerAction(IControllerCharacter character, InputContext context, string actionId);
+}
+
 public class InputAction
 {
     /// TODO: PUT THE ACTION ID HERE TOO AND A PROXY TO THE ACTION VARIABLE
 
-    public Action Action;
+    public Action Action { get; }
+    public string ActionId { get; }
     public string Input { get; }
 
-    public InputAction(Action action, string inputId) {
+    private InputActionResolver m_inputResolver;
+
+    public InputAction(Action action, string inputId, InputActionResolver inputResolver) {
         Action = action;
+        ActionId = action.ActionId;
         Input = inputId;
+        m_inputResolver = inputResolver;
     }
 
     /// <summary>
@@ -31,6 +42,8 @@ public class InputAction
             return new ActionResult(false, "This is temporary while I figure out how to pass the inptut value and continue updateing the action to," +
                 "for example stop to walk smoothly");
         }
+
+        m_inputResolver.ResolveInputBeforeTriggerAction(character, InputController.currentInputContext, ActionId);
 
         return Action.ExecuteAction(character);
     }

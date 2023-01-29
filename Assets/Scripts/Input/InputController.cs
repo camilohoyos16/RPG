@@ -97,4 +97,28 @@ public class InputController : MonoBehaviour
 
         return string.Empty;
     }
+
+    public static InputActionResolver GetInputResolverByActionId(string actionId)
+    {
+        switch (actionId)
+        {
+            case ActionsDictionary.ATTACK_ACTION_ID:
+            {
+                return new GenericInputResolver();
+            }
+            case ActionsDictionary.INTERACT_ACTION_ID:
+            {
+                return new GenericInputResolver();
+            }
+            case ActionsDictionary.MOVE_FORWARD_ACTION_ID:
+            case ActionsDictionary.MOVE_BACK_ACTION_ID:
+            case ActionsDictionary.MOVE_LEFT_ACTION_ID:
+            case ActionsDictionary.MOVE_RIGHT_ACTION_ID:
+            {
+                return new MoveForwardInputResolver();
+            }
+            default:
+                return new GenericInputResolver();
+        }
+    }
 }

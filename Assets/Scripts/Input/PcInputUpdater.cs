@@ -56,15 +56,10 @@ public class PcInputUpdater : InputUpdater
 
         ///// Mouse Inputs
         //#region Mouse inputs
-        //CheckInputExistAndHasBeenUsed(Mouse.current.leftButton);
-        //CheckInputExistAndHasBeenUsed(Mouse.current.rightButton);
-        //CheckInputExistAndHasBeenUsed(Mouse.current.middleButton);
+        CheckInputExistAndHasBeenUsed(Mouse.current.leftButton);
+        CheckInputExistAndHasBeenUsed(Mouse.current.rightButton);
+        CheckInputExistAndHasBeenUsed(Mouse.current.middleButton);
         //#endregion
-
-        foreach (string actionId in m_actionsPressedIdCache.Keys)
-        {
-            Debug.Log(actionId);
-        }
 
         return m_actionsPressedIdCache;
     }
