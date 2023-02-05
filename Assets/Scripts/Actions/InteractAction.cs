@@ -25,6 +25,10 @@ public sealed class InteractAction : Action
         return result;
     }
 
+    public override void UpdateAction()
+    {
+    }
+
     protected override void ResolveComponents() {
     }
     #endregion

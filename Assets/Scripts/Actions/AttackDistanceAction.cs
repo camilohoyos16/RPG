@@ -13,6 +13,10 @@ public sealed class AttackDistanceAction : Action
         return result;
     }
 
+    public override void UpdateAction()
+    {
+    }
+
     protected override void ResolveComponents() {
     }
     #endregion

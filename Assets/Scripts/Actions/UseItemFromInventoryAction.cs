@@ -12,6 +12,15 @@ public class UseItemFromInventoryAction : Action
 
     private InventoryComponent m_inventoryComponent;
 
+    private void UseAttachmentItem(AttachmentItem item) {
+        /// TODO.
+    }
+
+    private void UseConsumableItem(ConsumableItem item, ICharacter character) {
+        item.UseItem(character);
+    }
+
+    #region Action Implementatio
     public override ActionResult ExecuteAction(ICharacter character) {
         InventoryItem currentitem = m_inventoryComponent.GetCurrentSelectedItem();
         switch (currentitem) {
@@ -28,12 +37,8 @@ public class UseItemFromInventoryAction : Action
         return new ActionResult(true, "");
     }
 
-    private void UseAttachmentItem(AttachmentItem item) {
-        /// TODO.
-    }
-
-    private void UseConsumableItem(ConsumableItem item, ICharacter character) {
-        item.UseItem(character);
+    public override void UpdateAction()
+    {
     }
 
     protected override void ResolveComponents() {
@@ -47,5 +52,5 @@ public class UseItemFromInventoryAction : Action
             }
         }
     }
-
+    #endregion
 }

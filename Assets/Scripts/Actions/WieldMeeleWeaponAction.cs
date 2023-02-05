@@ -15,6 +15,10 @@ public sealed class WieldMeeleWeaponAction : Action
         return result;
     }
 
+    public override void UpdateAction()
+    {
+    }
+
     protected override void ResolveComponents() {
     }
     #endregion

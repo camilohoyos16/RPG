@@ -18,6 +18,10 @@ public sealed class MoveRightAction : Action
         return result;
     }
 
+    public override void UpdateAction()
+    {
+    }
+
     protected override void ResolveComponents() {
         foreach (IGameComponent gameComponent in m_gameComponents) {
             switch (gameComponent.GameComponentId) {

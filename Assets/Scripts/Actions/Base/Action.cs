@@ -7,6 +7,8 @@ public abstract class Action
     public virtual string ActionId { get; protected set; }
     public abstract List<string> RequiredGameComponentsIds { get;}
     protected IGameComponent[] m_gameComponents;
+    protected bool m_isOnExecution;
+    public bool IsOnExecution => m_isOnExecution;
 
     /// <summary>
     /// This is specifically when the an action is trigger or start to use.
