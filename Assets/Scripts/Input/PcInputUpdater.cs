@@ -11,6 +11,8 @@ public class PcInputContext: InputContext
 
 public class PcInputUpdater : InputUpdater
 {
+    Vector2 mousePosition = new Vector2();
+
     public override Dictionary<string, InputInfo> UpdateInputs()
     {
         /// Keyboard Inputs
@@ -54,12 +56,21 @@ public class PcInputUpdater : InputUpdater
         CheckInputExistAndHasBeenUsed(Keyboard.current.spaceKey);
         #endregion
 
-        ///// Mouse Inputs
-        //#region Mouse inputs
+        /// Mouse Inputs
+        #region Mouse inputs
         CheckInputExistAndHasBeenUsed(Mouse.current.leftButton);
         CheckInputExistAndHasBeenUsed(Mouse.current.rightButton);
         CheckInputExistAndHasBeenUsed(Mouse.current.middleButton);
-        //#endregion
+        //MouseChangeFromZero = new Vector2(
+        //    mousePosition.x - Mouse.current.position.x.ReadValue(),
+        //    mousePosition.y - Mouse.current.position.y.ReadValue());
+        MouseChangeFromZero = new Vector2(
+            Mouse.current.delta.x.ReadValue(),
+            Mouse.current.delta.y.ReadValue());
+        #endregion
+
+        mousePosition.x = Mouse.current.position.x.ReadValue();
+        mousePosition.y = Mouse.current.position.y.ReadValue();
 
         return m_actionsPressedIdCache;
     }

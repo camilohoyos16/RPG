@@ -5,6 +5,7 @@ public abstract class InputContext
 {
     public abstract string DeviceId { get; }
     protected Dictionary<string, InputInfo> m_actionsPressedId = new ();
+    public Vector2 CameraPointerChange;
 
     public void UpdateActionsUsed(List<InputInfo> actions)
     {

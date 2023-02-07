@@ -20,7 +20,7 @@ public class TESTINPUT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Vector2 mousePosition = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.radius.y.ReadValue());
     }
 
     private void OnAnyButtonPressed()

@@ -51,21 +51,24 @@ public class Stat
         }
 
         m_value = newValue;
+
     }
 
-    public void AddModifier(StatModifier modifier) {
+    public string AddModifier(StatModifier modifier) {
         if(modifier.ModifierType == MathType.Additive) {
             m_modifiers.Insert(0, modifier);
         } else {
             m_modifiers.Add(modifier);
         }
+
+        return modifier.InstanceId;
     }
 
-    public void RemoveModifier(int instanceId) {
+    public void RemoveModifier(string modifierId) {
         int modifierIndex = -1;
         int modifiersCount = m_modifiers.Count;
         for (int i = 0; i < modifiersCount; i++) {
-            if(m_modifiers[i].InstanceId == instanceId) {
+            if(m_modifiers[i].InstanceId == modifierId) {
                 modifierIndex = i;
                 break;
             }
@@ -73,6 +76,18 @@ public class Stat
         if(modifierIndex != -1) {
             m_modifiers.RemoveAt(modifierIndex);
         }
+    }
+
+    public bool HasModifier(string instanceId)
+    {
+        foreach (StatModifier modifier in m_modifiers)
+        {
+            if (modifier.InstanceId.Equals(instanceId))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

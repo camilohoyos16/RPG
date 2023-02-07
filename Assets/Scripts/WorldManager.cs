@@ -19,9 +19,11 @@ public class WorldManager : MonoBehaviour
     {
         InputController.UpdateInputs();
         EntitiesController.Instance.UpdateEntities();
+        CameraController.UpdateCamera(InputController.currentInputContext);
     }
 
     public DynamicStatsDatabase DynamicStatsDatabaseInstance;
     public ItemsDatabase ItemsDatabase;
     public EntitiesController EntitiesController;
+    public CameraController CameraController;
 }

@@ -47,6 +47,7 @@ public class InputController : MonoBehaviour
     public static void UpdateInputs()
     {
         currentInputContext.UpdateActionsUsed(currentInputUpdater.UpdateInputs().Values.ToList());
+        currentInputContext.CameraPointerChange = currentInputUpdater.MouseChangeFromZero;
     }
 
     public static void ChangeDevice(GameInputDevice device)
