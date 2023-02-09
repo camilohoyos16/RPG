@@ -11,7 +11,7 @@ public sealed class MoveForwardAction : Action
     private PhysicsComponent m_ownerPhysicsComponent;
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         MathUtils.Vector3 newPosition = m_ownerPhysicsComponent.Rigidbody.position;
         newPosition.z += m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value * Time.deltaTime;
         m_ownerPhysicsComponent.Rigidbody.position = newPosition;

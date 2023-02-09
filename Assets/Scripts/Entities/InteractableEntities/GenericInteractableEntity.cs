@@ -23,7 +23,7 @@ public abstract class GenericInteractableEntity : MonoBehaviour, IInteractable
     #endregion
 
     #region IEntity implementation
-    public void UpdateEntity() {
+    public void UpdateEntity(WorldState worldState) {
     }
     #endregion
 }

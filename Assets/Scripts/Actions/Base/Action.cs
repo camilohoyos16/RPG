@@ -15,7 +15,7 @@ public abstract class Action
     /// </summary>
     /// <param name="character"></param>
     /// <returns></returns>
-    public abstract ActionResult ExecuteAction(ICharacter character);
+    public abstract ActionResult ExecuteAction(ICharacter character, WorldState worldState);
 
     /// <summary>
     /// This help to make extra behaviors on the action when is laready triggered.

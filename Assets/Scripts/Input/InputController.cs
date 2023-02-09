@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public class InputController : MonoBehaviour, IController
 {
     public static InputController Instance;
     public InputDevicesDatabase InputDevicesDatabase;
 
     public List<GameInputDevice> Devices;
-    public static InputContext currentInputContext;
-    private static InputUpdater currentInputUpdater;
+    public InputContext currentInputContext;
+    private InputUpdater currentInputUpdater;
 
     public static GameInputDevice m_currentDevice;
 
@@ -44,13 +44,14 @@ public class InputController : MonoBehaviour
         InputDevicesDatabase.Init();
     }
 
-    public static void UpdateInputs()
+    public void UpdateController(WorldState worldState)
     {
         currentInputContext.UpdateActionsUsed(currentInputUpdater.UpdateInputs().Values.ToList());
         currentInputContext.CameraPointerChange = currentInputUpdater.MouseChangeFromZero;
     }
 
-    public static void ChangeDevice(GameInputDevice device)
+
+    public void ChangeDevice(GameInputDevice device)
     {
         m_currentDevice = device;
 

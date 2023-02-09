@@ -18,7 +18,7 @@ public sealed class InteractAction : Action
     }
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         m_interactObject.Interact(character);
 
         ActionResult result = new ActionResult(true, "Interacted with object");

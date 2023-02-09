@@ -7,7 +7,7 @@ public sealed class WieldMeeleWeaponAction : Action
     public override string ActionId { get => ActionsDictionary.WIELD_MEELE_WEAPON_ACTION_ID; }
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         character.AddActionToCharacter(new AttackMeleeAction());
         character.AddActionToCharacter(new WieldDistanceWeaponAction());
         character.RemoveAction(ActionId);

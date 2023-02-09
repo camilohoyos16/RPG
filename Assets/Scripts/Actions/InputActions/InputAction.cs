@@ -29,8 +29,8 @@ public class InputAction
     /// <param name="character"></param>
     /// <param name="input"></param>
     /// <returns>Whether action was triggered. true: triggered / false: not triggered</returns>
-    public ActionResult ExecuteActionWithInput(IControllerCharacter character) {
-        InputInfo inputInfo = InputController.currentInputContext.GetInfoByActionId(Action.ActionId);
+    public ActionResult ExecuteActionWithInput(IControllerCharacter character, WorldState worldState) {
+        InputInfo inputInfo = worldState.CurrentInputContext.GetInfoByActionId(Action.ActionId);
 
         if (inputInfo.ActionId != Action.ActionId)
         {
@@ -43,8 +43,8 @@ public class InputAction
                 "for example stop to walk smoothly");
         }
 
-        m_inputResolver.ResolveInputBeforeTriggerAction(character, InputController.currentInputContext, ActionId);
+        m_inputResolver.ResolveInputBeforeTriggerAction(character, worldState.CurrentInputContext, ActionId);
 
-        return Action.ExecuteAction(character);
+        return Action.ExecuteAction(character, worldState);
     }
 }

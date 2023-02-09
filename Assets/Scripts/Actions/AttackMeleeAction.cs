@@ -11,7 +11,7 @@ public sealed class AttackMeleeAction : Action
     private StatsComponent m_ownerStatsComponent;
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         //charcter.Attack()
         MeleeWeapon.Attack(character.EntityPosition, m_ownerStatsComponent);
         ActionResult result = new ActionResult(true, "Attacking!");

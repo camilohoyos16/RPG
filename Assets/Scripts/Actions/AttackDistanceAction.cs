@@ -7,7 +7,7 @@ public sealed class AttackDistanceAction : Action
     public override string ActionId { get => ActionsDictionary.ATTACK_DISTANCE_ACTION_ID; }
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         //charcter.Attack()
         ActionResult result = new ActionResult(false, "");
         return result;

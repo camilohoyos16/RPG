@@ -28,10 +28,10 @@ public class Player : MonoBehaviour, IControllerCharacter
         m_components.AddRange(GetComponents<IGameComponent>());
     }
 
-    void IEntity.UpdateEntity() {
+    void IEntity.UpdateEntity(WorldState worldState) {
         foreach (InputAction inputAction in m_actions)
         {
-            ActionResult actionResult = inputAction.ExecuteActionWithInput(this);
+            ActionResult actionResult = inputAction.ExecuteActionWithInput(this, worldState);
             //Debug.Log(string.Concat(inputAction.Action.ActionId, ": ", actionResult.WasSuccessful));
         }
     }

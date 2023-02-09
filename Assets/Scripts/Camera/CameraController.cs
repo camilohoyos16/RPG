@@ -44,12 +44,12 @@ public class CameraController : MonoBehaviour
         m_currentTetha = m_initialTetha;
     }
 
-    public void UpdateCamera(InputContext inputContext)
+    public void UpdateCamera(WorldState worldState)
     {
         /// Need to do it smoothly
         Vector3 playerPosition = player.transform.position;
         playerPosition.y += CameraLookAtPointHeight;
-        MovingOnDegrees(inputContext.CameraPointerChange);
+        MovingOnDegrees(worldState.CurrentInputContext.CameraPointerChange);
         Vector3 cameraPosition = playerPosition + SphericalToCartesian(DistanceFromPlayer, m_currentAzimuth, m_currentTetha);
         //Vector3 cameraPosition = playerPosition + CilindricalToCartesian(DistanceFromPlayer, m_currentAzimuth, CameraLookAtPointHeight);
         m_camera.transform.position = cameraPosition;

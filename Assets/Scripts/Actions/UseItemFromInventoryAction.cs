@@ -21,7 +21,7 @@ public class UseItemFromInventoryAction : Action
     }
 
     #region Action Implementatio
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         InventoryItem currentitem = m_inventoryComponent.GetCurrentSelectedItem();
         switch (currentitem) {
             case AttachmentItem:

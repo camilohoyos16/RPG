@@ -10,7 +10,7 @@ public sealed class JumpAction : Action
     private PhysicsComponent m_physicsComponent;
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         float jumpForce = m_statsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.JumpForceStatName.StatName).Value;
         Rigidbody rigidbody = m_physicsComponent.Rigidbody;
 

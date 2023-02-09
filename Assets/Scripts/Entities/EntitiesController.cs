@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntitiesController : MonoBehaviour
+public interface IController
+{
+    public void UpdateController(WorldState worldState);
+}
+
+public class EntitiesController : MonoBehaviour, IController
 {
     public static EntitiesController Instance;
 
@@ -23,20 +28,9 @@ public class EntitiesController : MonoBehaviour
         EventManager.Instance.Register<OnRegisterEntityEvent>(gameObject, OnRegisterEntity);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void UpdateEntities() {
+    public void UpdateController(WorldState worldState) {
         foreach (IEntity entity in m_entities) {
-            entity.UpdateEntity();
+            entity.UpdateEntity(worldState);
         }
         CheckCharactersInteractions();
     }
