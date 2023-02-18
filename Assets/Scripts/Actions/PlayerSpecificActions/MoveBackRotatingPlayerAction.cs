@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class MoveBackAction : Action
+public class MoveBackRotatingPlayerAction : Action
 {
     public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
 
@@ -11,14 +11,27 @@ public sealed class MoveBackAction : Action
     private PhysicsComponent m_ownerPhysicsComponent;
 
     #region Action Implementation
-    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
+    public override ActionResult ExecuteAction(ICharacter character, WorldState worldState)
+    {
+        //Vector3 playerPosition = m_ownerPhysicsComponent.Rigidbody.transform.position;
+        //Vector3 cameraPosition = worldState.CameraControllerState.CameraTransform.position;
+        //cameraPosition.y = playerPosition.y;
+
+        //Quaternion newRotation = m_ownerPhysicsComponent.Rigidbody.transform.rotation;
+        //Vector3 direction = playerPosition - cameraPosition;
+        //direction = direction.normalized;
+        //newRotation.eulerAngles = direction;
+        //m_ownerPhysicsComponent.Rigidbody.transform.rotation = newRotation;
+
+        MathUtils.LookAtToSameDirection(m_ownerPhysicsComponent.Rigidbody.transform, worldState.CameraControllerState.CameraTransform);
+
         MathUtils.SVector3 lastPosition = m_ownerPhysicsComponent.Rigidbody.position;
         MathUtils.SVector3 sumPosition =
             -m_ownerPhysicsComponent.Rigidbody.transform.forward *
             m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value *
             worldState.DeltaTime;
         m_ownerPhysicsComponent.Rigidbody.position = lastPosition + sumPosition;
-        ActionResult result = new ActionResult(true, "Moved to back");
+        ActionResult result = new ActionResult(true, "Moved to forward");
         return result;
     }
 
@@ -26,9 +39,12 @@ public sealed class MoveBackAction : Action
     {
     }
 
-    protected override void ResolveComponents() {
-        foreach (IGameComponent gameComponent in m_gameComponents) {
-            switch (gameComponent.GameComponentId) {
+    protected override void ResolveComponents()
+    {
+        foreach (IGameComponent gameComponent in m_gameComponents)
+        {
+            switch (gameComponent.GameComponentId)
+            {
                 case GameComponentDictionary.STATS_COMPONENT_ID:
                     m_ownerStatsComponent = (StatsComponent)gameComponent;
                     break;

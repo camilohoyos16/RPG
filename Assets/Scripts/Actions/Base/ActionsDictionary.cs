@@ -6,6 +6,7 @@ public static class ActionsDictionary
     public const string MOVE_BACK_ACTION_ID = "move_back_action";
     public const string MOVE_LEFT_ACTION_ID = "move_left_action";
     public const string MOVE_RIGHT_ACTION_ID = "move_right_action";
+    public const string ROTATE_PLAYER_BY_CAMERA_ACTION_ID = "rotate_player_by_camera_action";
     public const string ATTACK_ACTION_ID = "attack_action";
     public const string ATTACK_MELEE_ACTION_ID = "attack_melee_action";
     public const string ATTACK_DISTANCE_ACTION_ID = "attack_distance_action";

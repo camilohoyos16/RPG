@@ -12,9 +12,12 @@ public sealed class MoveForwardAction : Action
 
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
-        MathUtils.Vector3 newPosition = m_ownerPhysicsComponent.Rigidbody.position;
-        newPosition.z += m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value * Time.deltaTime;
-        m_ownerPhysicsComponent.Rigidbody.position = newPosition;
+        MathUtils.SVector3 lastPosition = m_ownerPhysicsComponent.Rigidbody.position;
+        MathUtils.SVector3 sumPosition = 
+            m_ownerPhysicsComponent.Rigidbody.transform.forward * 
+            m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value * 
+            worldState.DeltaTime;
+        m_ownerPhysicsComponent.Rigidbody.position = lastPosition + sumPosition;
         ActionResult result = new ActionResult(true, "Moved to forward");
         //Debug.Log(string.Concat(ActionId, " is being updated"));
         return result;

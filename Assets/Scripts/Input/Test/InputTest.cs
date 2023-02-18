@@ -41,10 +41,6 @@ public class InputTest : MonoBehaviour
         //var myAction = new UnityEngine.InputSystem.InputAction (binding: "<Mouse>/<button>");
         //myAction.performed += CheckMouse;
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log(Mouse.current.leftButton.path);
-        }
         //if (Input.GetKey(KeyCode.Space))
         //{
         //    CheckDevices();

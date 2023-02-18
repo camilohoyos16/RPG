@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour
         EffectApplier = GetComponent<EffectsApplierComponent>();
     }
 
-    public abstract void Attack(MathUtils.Vector3 position, StatsComponent ownerStats);
+    public abstract void Attack(MathUtils.SVector3 position, StatsComponent ownerStats);
 }
 
 public abstract class MeleeWeapon : Weapon

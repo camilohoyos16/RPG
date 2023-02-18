@@ -35,7 +35,7 @@ public class EntitiesController : MonoBehaviour, IController
         CheckCharactersInteractions();
     }
 
-    public List<ICharacter> GetCharactersInRange(MathUtils.Vector3 position, float radius) {
+    public List<ICharacter> GetCharactersInRange(MathUtils.SVector3 position, float radius) {
         List<ICharacter> characterInRange = new();
 
         foreach (ICharacter character in m_characters) {
@@ -79,10 +79,10 @@ public class EntitiesController : MonoBehaviour, IController
         if(e.Entity is ICharacter iCharacter) {
             m_characters.Add(iCharacter);
             if(iCharacter is IControllerCharacter controllerCharacter) {
-                controllerCharacter.AddActionToCharacter(new MoveForwardAction());
-                controllerCharacter.AddActionToCharacter(new MoveBackAction());
-                controllerCharacter.AddActionToCharacter(new MoveLeftAction());
-                controllerCharacter.AddActionToCharacter(new MoveRightAction());
+                controllerCharacter.AddActionToCharacter(new MoveForwardRotatingPlayerAction());
+                controllerCharacter.AddActionToCharacter(new MoveBackRotatingPlayerAction());
+                controllerCharacter.AddActionToCharacter(new MoveLeftRotatingPlayerAction());
+                controllerCharacter.AddActionToCharacter(new MoveRightRotatingPlayerAction());
             }
         }
     }

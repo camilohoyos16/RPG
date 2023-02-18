@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IControllerCharacter
     /// </summary>
     public MeleeWeapon Sword;
 
-    public MathUtils.Vector3 EntityPosition { get => transform.position; set => transform.position = value; }
+    public MathUtils.SVector3 EntityPosition { get => transform.position; set => transform.position = value; }
 
     private void Awake() {
         ResolveComponents();
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour, IControllerCharacter
             //Debug.Log(string.Concat(inputAction.Action.ActionId, ": ", actionResult.WasSuccessful));
         }
     }
+
 
     #region ICharacter implementation
 

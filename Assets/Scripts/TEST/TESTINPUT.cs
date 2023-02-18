@@ -11,16 +11,36 @@ public class TESTINPUT : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IndexModified();
+
     }
-    
+
     public void TEST() {
 
     }
 
+    int index;
+    int[] arrayIndex = new int[5];
+
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePosition = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.radius.y.ReadValue());
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AddIndex();
+        }
+    }
+
+    private void AddIndex()
+    {
+        index++;
+        IndexModified();
+    }
+
+    private void IndexModified()
+    {
+        int newIndex = index % (arrayIndex.Length);
+        Debug.Log(newIndex);
     }
 
     private void OnAnyButtonPressed()

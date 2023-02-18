@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MathUtils;
 
 /// <summary>
 /// Spherical coordinates definition and examples were checked on:
@@ -10,18 +11,34 @@ using UnityEngine;
 /// 4. https://www.neurochispas.com/wiki/coordenadas-cilindricas-a-cartesianas/
 /// </summary>
 
+public class CameraControllerState
+{
+    public Transform CameraTransform;
+
+    public void UpdateState(Camera camera)
+    {
+        CameraTransform = camera.transform;
+    }
+}
+
 public class CameraController : MonoBehaviour
 {
+    /// <summary>
+    /// TODO: This probably should be searched from entities controller later with a certain system of tags
+    /// </summary>
     public GameObject player;
-    public float DistanceFromPlayer;
-    //public float UpperMaxAngle;
-    //public float BottomMaxAngle;
+    public CameraControllerState CameraControllerState { get; private set; } = new CameraControllerState();
+
+    [SerializeField]
+    private float m_distanceFromPlayer;
 
     /// <summary>
     /// This z value might be sum to the player z position
     /// </summary>
-    public float CameraLookAtPointHeight;
-    public float cameraSpeed;
+    [SerializeField]
+    private float m_cameraLookAtPointHeight;
+    [SerializeField]
+    private float m_cameraSpeed;
 
     private float m_currentAzimuth;
     private float m_currentTetha;
@@ -29,12 +46,23 @@ public class CameraController : MonoBehaviour
     private float m_initialAzimuth = 0;
     private float m_initialTetha = 90;
 
+    /// <summary>
+    /// Azimuth calculates position from west to east, making an entire circle around. 
+    /// That is why goes from 0 to 360
+    /// </summary>
     private const float m_minAzimuth = 0;
     private const float m_maxAzimuth = 360;
+
+    /// <summary>
+    /// Tetha caculates position from north to south, finishing to cover all the possibles
+    /// point in conjuction with <see cref="m_currentAzimuth"/>.
+    /// That is why we just would need to cover from 0 to 180.
+    /// This angles are just handmade to avoid weird camera positions
+    /// </summary>
     private const float m_minTetha = 45;
     private float m_maxTetha = 120;
 
-    Camera m_camera;
+    private Camera m_camera;
 
     void Start()
     {
@@ -47,33 +75,34 @@ public class CameraController : MonoBehaviour
     public void UpdateCamera(WorldState worldState)
     {
         /// Need to do it smoothly
-        Vector3 playerPosition = player.transform.position;
-        playerPosition.y += CameraLookAtPointHeight;
+        SVector3 playerPosition = player.transform.position;
+        playerPosition.y += m_cameraLookAtPointHeight;
         MovingOnDegrees(worldState.CurrentInputContext.CameraPointerChange);
-        Vector3 cameraPosition = playerPosition + SphericalToCartesian(DistanceFromPlayer, m_currentAzimuth, m_currentTetha);
-        //Vector3 cameraPosition = playerPosition + CilindricalToCartesian(DistanceFromPlayer, m_currentAzimuth, CameraLookAtPointHeight);
+        Vector3 cameraPosition = playerPosition + MathUtils.SphericalToCartesian(m_distanceFromPlayer, m_currentAzimuth, m_currentTetha);
         m_camera.transform.position = cameraPosition;
         m_camera.transform.LookAt(player.transform);
+
+        CameraControllerState.UpdateState(m_camera);
     }
 
     public void MovingOnDegrees(Vector2 pointerMove)
     {
         if (pointerMove.x < 0)
         {
-            m_currentAzimuth -= cameraSpeed * Time.deltaTime;
+            m_currentAzimuth -= m_cameraSpeed * Time.deltaTime;
         }
         else if (pointerMove.x > 0)
         {
-            m_currentAzimuth += cameraSpeed * Time.deltaTime;
+            m_currentAzimuth += m_cameraSpeed * Time.deltaTime;
         }
 
         if (pointerMove.y < 0)
         {
-            m_currentTetha -= cameraSpeed * Time.deltaTime;
+            m_currentTetha -= m_cameraSpeed * Time.deltaTime;
         }
         else if (pointerMove.y > 0)
         {
-            m_currentTetha += cameraSpeed * Time.deltaTime;
+            m_currentTetha += m_cameraSpeed * Time.deltaTime;
         }
 
         m_currentAzimuth = Mathf.Clamp(m_currentAzimuth, m_minAzimuth, m_maxAzimuth);
@@ -87,41 +116,5 @@ public class CameraController : MonoBehaviour
         }
 
         m_currentTetha = Mathf.Clamp(m_currentTetha, m_minTetha, m_maxTetha);
-    }
-
-    private Vector3 CilindricalToCartesian(float r, float t, float h)
-    {
-        t *= Mathf.Deg2Rad;
-
-        Vector3 cartesian = new Vector3();
-        cartesian.x = r * Mathf.Cos(t);
-        cartesian.z = r * Mathf.Sin(t);
-        cartesian.y = h;
-
-        return cartesian;
-    }
-
-    private Vector3 SphericalToCartesian(float r, float t, float a)
-    {
-        t *= -1;
-        a *= Mathf.Deg2Rad;
-        t *= Mathf.Deg2Rad;
-
-        Vector3 cartesian = new Vector3();
-        cartesian.x = r * Mathf.Sin(a) * Mathf.Cos(t);
-        cartesian.z = r * Mathf.Sin(a) * Mathf.Sin(t);
-        cartesian.y = r * Mathf.Cos(a);
-
-        return cartesian;
-    }
-
-    private Vector3 CartesianToSpherical(float x, float y, float z)
-    {
-        Vector3 spherical = new Vector3();
-        spherical.x = Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2) + Mathf.Pow(z, 2));
-        spherical.y = Mathf.Acos(z / spherical.x);
-        spherical.z = Mathf.Asin(y/spherical.x*Mathf.Cos(spherical.y));
-
-        return spherical;
     }
 }

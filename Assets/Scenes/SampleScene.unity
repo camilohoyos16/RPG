@@ -264,9 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 213345990}
-  DistanceFromPlayer: 5
-  CameraLookAtPointHeight: 0
-  cameraSpeed: 100
+  m_distanceFromPlayer: 5
+  m_cameraLookAtPointHeight: 0
+  m_cameraSpeed: 1000
 --- !u!4 &600159207
 Transform:
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99691737
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -831,7 +831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.078459114
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -843,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3308233360153906525, guid: 0e92e0e504f085444b423d51f40f26f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

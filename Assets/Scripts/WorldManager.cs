@@ -12,7 +12,7 @@ public class WorldManager : MonoBehaviour
     private WorldState m_worldState;
 
     private const int FRAMES_PER_SECOND = 60;
-    private static float SecondToUpdateWorld => 1 / (float)FRAMES_PER_SECOND;
+    public static float SecondToUpdateWorld => 1 / (float)FRAMES_PER_SECOND;
 
     private void Awake() {
         Instance = this;
@@ -25,6 +25,7 @@ public class WorldManager : MonoBehaviour
         m_worldState.NextTickCounter += Time.deltaTime;
 
         InputController.UpdateController(m_worldState);
+        m_worldState.UpdateState(InputController, CameraController);
         if(m_worldState.NextTickCounter >= SecondToUpdateWorld)
         {
             m_worldState.DeltaTime = SecondToUpdateWorld;
@@ -33,11 +34,8 @@ public class WorldManager : MonoBehaviour
             m_worldState.NextTickCounter -= SecondToUpdateWorld;
             EntitiesController.Instance.UpdateController(m_worldState);
             CameraController.UpdateCamera(m_worldState);
-
-            Debug.Log(m_worldState.DeltaTime);
         }
 
-        m_worldState.UpdateState(InputController);
     }
 
     private void FixedUpdate()
@@ -60,10 +58,12 @@ public class WorldState
     public float TotalTicks;
 
     public InputContext CurrentInputContext;
+    public CameraControllerState CameraControllerState;
 
-    public void UpdateState(InputController inputController)
+    public void UpdateState(InputController inputController, CameraController cameraController)
     {
-        DeltaTime = Time.smoothDeltaTime;
+        DeltaTime = WorldManager.SecondToUpdateWorld;
         CurrentInputContext = inputController.currentInputContext;
+        CameraControllerState = cameraController.CameraControllerState;
     }
 }
