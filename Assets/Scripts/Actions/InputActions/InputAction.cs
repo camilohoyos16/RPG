@@ -2,7 +2,7 @@ using System;
 
 public abstract class InputActionResolver
 {
-    public abstract void ResolveInputBeforeTriggerAction(IControllerCharacter character, InputContext context, string actionId);
+    public abstract void ResolveInputBeforeTriggerAction(IControllerCharacter character, WorldState worldState, string actionId);
 }
 
 public class InputAction
@@ -43,7 +43,7 @@ public class InputAction
                 "for example stop to walk smoothly");
         }
 
-        m_inputResolver.ResolveInputBeforeTriggerAction(character, worldState.CurrentInputContext, ActionId);
+        m_inputResolver.ResolveInputBeforeTriggerAction(character, worldState, ActionId);
 
         return Action.ExecuteAction(character, worldState);
     }

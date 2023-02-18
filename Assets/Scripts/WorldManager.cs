@@ -18,6 +18,9 @@ public class WorldManager : MonoBehaviour
         Instance = this;
         ItemsDatabase.Initialize();
         m_worldState = new WorldState();
+        TagsDatabase.InitTags();
+        m_worldState.TagsDatabase = TagsDatabase;
+        m_worldState.DynamicStatsDatabase = DynamicStatsDatabaseInstance;
     }
 
     private void Update()
@@ -46,6 +49,7 @@ public class WorldManager : MonoBehaviour
     public ItemsDatabase ItemsDatabase;
     public EntitiesController EntitiesController;
     public CameraController CameraController;
+    public TagDatabase TagsDatabase;
 
     public InputController InputController;
 }
@@ -59,6 +63,8 @@ public class WorldState
 
     public InputContext CurrentInputContext;
     public CameraControllerState CameraControllerState;
+    public DynamicStatsDatabase DynamicStatsDatabase;
+    public TagDatabase TagsDatabase;
 
     public void UpdateState(InputController inputController, CameraController cameraController)
     {

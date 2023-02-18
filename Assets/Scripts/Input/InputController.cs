@@ -117,7 +117,7 @@ public class InputController : MonoBehaviour, IController
             case ActionsDictionary.MOVE_LEFT_ACTION_ID:
             case ActionsDictionary.MOVE_RIGHT_ACTION_ID:
             {
-                return new MoveForwardInputResolver();
+                return new MoveInputsResolver();
             }
             default:
                 return new GenericInputResolver();

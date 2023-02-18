@@ -12,7 +12,7 @@ public interface IDynamicStats
 }
 
 [Serializable]
-public class Stat
+public class Stat: ITag
 {
     public Action<Stat> OnUpdate;
 
@@ -21,6 +21,7 @@ public class Stat
     [SerializeField]
     private float m_value;
 
+    [SerializeField]
     private List<StatModifier> m_modifiers;
 
     public Stat(float value) {
@@ -46,12 +47,11 @@ public class Stat
             if(modifier.ModifierType == MathType.Additive) {
                 newValue = Math.Max(0, newValue + modifier.GetValue());
             } else {
-                newValue += newValue * modifier.GetValue();
+                newValue = newValue * modifier.GetValue();
             }
         }
 
         m_value = newValue;
-
     }
 
     public string AddModifier(StatModifier modifier) {
@@ -89,6 +89,44 @@ public class Stat
         }
         return false;
     }
+
+    public string GetModifierByTag(Tag tag)
+    {
+        foreach (StatModifier modifier in m_modifiers)
+        {
+            if (modifier.HasTag(tag))
+            {
+                return modifier.InstanceId;
+            }
+        }
+
+        return string.Empty;
+    }
+
+    #region ITag Implementation
+    public HashSet<Tag> Tags { get; } = new HashSet<Tag>();
+
+    public void AddTag(Tag newTag)
+    {
+        if (!HasTag(newTag))
+        {
+            Tags.Add(newTag);
+        }
+    }
+
+    public void RemoveTag(Tag removeTag)
+    {
+        if (HasTag(removeTag))
+        {
+            Tags.Remove(removeTag);
+        }
+    }
+
+    public bool HasTag(Tag tag)
+    {
+        return Tags.Contains(tag);
+    }
+    #endregion
 }
 
 
