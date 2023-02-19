@@ -13,16 +13,6 @@ public class MoveRightRotatingPlayerAction : Action
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState)
     {
-        //Vector3 playerPosition = m_ownerPhysicsComponent.Rigidbody.transform.position;
-        //Vector3 cameraPosition = worldState.CameraControllerState.CameraTransform.position;
-        //cameraPosition.y = playerPosition.y;
-
-        //Quaternion newRotation = m_ownerPhysicsComponent.Rigidbody.transform.rotation;
-        //Vector3 direction = playerPosition - cameraPosition;
-        //direction = direction.normalized;
-        //newRotation.eulerAngles = direction;
-        //m_ownerPhysicsComponent.Rigidbody.transform.rotation = newRotation;
-
         MathUtils.LookAtToSameDirection(m_ownerPhysicsComponent.Rigidbody.transform, worldState.CameraControllerState.CameraTransform);
 
         MathUtils.SVector3 lastPosition = m_ownerPhysicsComponent.Rigidbody.position;
