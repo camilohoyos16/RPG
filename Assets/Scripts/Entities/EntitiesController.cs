@@ -85,12 +85,19 @@ public class EntitiesController : MonoBehaviour, IController
                             interactAction.AddObjectToInteractWith(entity);
                         }
                     }
+                    else
+                    {
+                        if (wasObjectInRange)
+                        {
+                            interactAction.RemoveObjectToInteractWith(entity);
+                        }
+                    }
                 }
                 else
                 {
                     if (isObjectInRange)
                     {
-                        interactAction = new InteractAction();
+                        interactAction = new InteractAction(character);
                         interactAction.AddObjectToInteractWith(entity);
                         character.QueueActionToAdd(interactAction);
                     }

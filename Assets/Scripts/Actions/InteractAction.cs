@@ -8,15 +8,17 @@ public sealed class InteractAction : Action
     private float ConsecutiveExecutionsCounter;
 
     private List<IInteractable> m_interactObjects;
+    private ICharacter m_character;
 
     public List<IInteractable> GetInteracObjects() {
         return m_interactObjects;
     }
 
-    public InteractAction()
+    public InteractAction(ICharacter character)
     {
         m_interactObjects = new();
         ConsecutiveExecutionsCounter = 0;
+        m_character = character;
     }
 
     public void AddObjectToInteractWith(IInteractable interactObject)
@@ -24,6 +26,19 @@ public sealed class InteractAction : Action
         if (!m_interactObjects.Contains(interactObject))
         {
             m_interactObjects.Add(interactObject);
+        }
+    }
+
+    public void RemoveObjectToInteractWith(IInteractable interactObject)
+    {
+        if (m_interactObjects.Contains(interactObject))
+        {
+            m_interactObjects.Remove(interactObject);
+        }
+
+        if (m_interactObjects.Count == 0)
+        {
+            m_character.QueueActionToRemove(ActionId);
         }
     }
 
