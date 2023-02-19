@@ -40,7 +40,6 @@ public class TESTINPUT : MonoBehaviour
     private void IndexModified()
     {
         int newIndex = index % (arrayIndex.Length);
-        Debug.Log(newIndex);
     }
 
     private void OnAnyButtonPressed()

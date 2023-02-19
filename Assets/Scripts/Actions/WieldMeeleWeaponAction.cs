@@ -8,9 +8,9 @@ public sealed class WieldMeeleWeaponAction : Action
 
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
-        character.AddActionToCharacter(new AttackMeleeAction());
-        character.AddActionToCharacter(new WieldDistanceWeaponAction());
-        character.RemoveAction(ActionId);
+        character.QueueActionToAdd(new AttackMeleeAction());
+        character.QueueActionToAdd(new WieldDistanceWeaponAction());
+        character.QueueActionToRemove(ActionId);
         ActionResult result = new ActionResult(true, "Wielded Melee Weapon");
         return result;
     }

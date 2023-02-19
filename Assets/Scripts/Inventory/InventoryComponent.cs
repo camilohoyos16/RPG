@@ -13,7 +13,9 @@ public class InventoryComponent : MonoBehaviour, IGameComponent
     }
 
     public void AddItem(WorldItem worldItem) {
-        Items.Add(TransformWorldItemToInventoryItem(worldItem));
+        InventoryItem inventoryItem = ItemUtils.TransformWorldItemToInventoryItem(worldItem);
+        Items.Add(inventoryItem);
+        Debug.Log($"You took {inventoryItem.Name}");
     }
 
     public void AddItem(InventoryItem inventoryItem) {
@@ -30,24 +32,6 @@ public class InventoryComponent : MonoBehaviour, IGameComponent
     }
 
     #region Utils
-    private InventoryItem TransformWorldItemToInventoryItem(WorldItem worldItem) {
-        switch (worldItem.ItemCategory) {
-            case ItemCategory.None:
-                break;
-            case ItemCategory.Generic:
-                break;
-            case ItemCategory.Weapon:
-                return new WeaponItem(WorldManager.Instance.ItemsDatabase.GetWeaponDefinitionById(worldItem.WorldItemId.ItemId));
-            case ItemCategory.Clothe:
-                break;
-            case ItemCategory.Consumable:
-                break;
-            case ItemCategory.Collectable:
-                break;
-            default:
-                return null;
-        }
-        return null;
-    }
+   
     #endregion
 }

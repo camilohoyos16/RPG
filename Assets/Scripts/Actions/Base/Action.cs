@@ -9,6 +9,7 @@ public abstract class Action
     protected IGameComponent[] m_gameComponents;
     protected bool m_isOnExecution;
     public bool IsOnExecution => m_isOnExecution;
+    public virtual float ConsecutiveExecutionsTime { get=> ActionsDictionary.GENERIC_ACTION_CONSECUTIVE_EXECUTIONS_TIME; }
 
     /// <summary>
     /// This is specifically when the an action is trigger or start to use.
