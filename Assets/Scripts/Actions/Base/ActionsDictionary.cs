@@ -1,5 +1,6 @@
 public static class ActionsDictionary
 {
+    public static string affef = "";
     public const string NONE_ID = "none";
     public const string JUMP_ACTION_ID = "jump_action";
     public const string MOVE_FORWARD_ACTION_ID = "move_forward_action";

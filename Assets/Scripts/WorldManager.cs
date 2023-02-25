@@ -47,9 +47,10 @@ public class WorldManager : MonoBehaviour
 
     public DynamicStatsDatabase DynamicStatsDatabaseInstance;
     public ItemsDatabase ItemsDatabase;
+    public TagDatabase TagsDatabase;
+
     public EntitiesController EntitiesController;
     public CameraController CameraController;
-    public TagDatabase TagsDatabase;
 
     public InputController InputController;
 }

@@ -2,35 +2,38 @@
 
 public abstract class InventoryItem
 {
+    private string m_id;
     private string m_name;
-    private int m_maxStack;
+    private byte m_maxStack;
     private float m_basePrice;
     private float m_currentPrice;
     private string m_baseDescription;
-    private int m_quantity;
+
 
     #region Properties
-    public string Name { get => m_name; }
-    public int MaxStack { get => m_maxStack; }
-    public float BasePrice { get => m_basePrice; }
-    public float CurrentPrice { get => m_currentPrice; }
-    public string BaseDescription { get => m_baseDescription; }
-    //public int Quantity { get => m_quantity; }
+    public string Name => m_name;
+    public byte MaxStack => m_maxStack;
+    public float BasePrice => m_basePrice;
+    public float CurrentPrice => m_currentPrice;
+    public string BaseDescription => m_baseDescription;
     #endregion
 
-    public InventoryItem() {
+    public InventoryItem()
+    {
 
     }
 
-    public InventoryItem(ItemGenericDefinition itemDefinition) {
+    public InventoryItem(ItemGenericDefinition itemDefinition)
+    {
+        m_id = itemDefinition.ItemId.ItemId;
         m_name = itemDefinition.Name;
-        m_maxStack = itemDefinition.MaxStack;
+        m_maxStack = (byte)itemDefinition.MaxStack;
         m_basePrice = itemDefinition.BasePrice;
         m_currentPrice = itemDefinition.BasePrice;
         m_baseDescription = itemDefinition.Description;
     }
 
-    
+
 
     public abstract void UseItem(ICharacter character);
 }

@@ -11,5 +11,5 @@ public class ItemGenericDefinition : ScriptableObject
     public string Name;
     public string Description;
     public float BasePrice;
-    public int MaxStack;
+    public byte MaxStack;
 }
