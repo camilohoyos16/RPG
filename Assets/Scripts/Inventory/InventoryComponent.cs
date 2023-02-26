@@ -5,11 +5,27 @@ using UnityEngine;
 public class InventoryComponent : MonoBehaviour, IGameComponent
 {
     public string GameComponentId => GameComponentDictionary.INVENTORY_COMPONENT_ID;
+
+    [SerializeField] private List<ItemIdScriptableObject> m_initialItemsId;
+
     public List<InventoryItem> Items { get; } = new List<InventoryItem>();
     private InventoryItem m_currentSelectedItem;
 
     public InventoryItem GetCurrentSelectedItem() {
         return m_currentSelectedItem;
+    }
+
+    public void InitComponent()
+    {
+        foreach (ItemIdScriptableObject itemId in m_initialItemsId)
+        {
+            ItemGenericDefinition itemDefinition = ItemDictionary.GetItemDefinitionById(itemId.ItemId);
+            AddItem(ItemUtils.CreateNewInventoryItem(itemDefinition));
+        }
+    }
+
+    public void UpdateComponent(WorldState worldState)
+    {
     }
 
     public void AddItem(WorldItem worldItem) {
@@ -32,6 +48,6 @@ public class InventoryComponent : MonoBehaviour, IGameComponent
     }
 
     #region Utils
-   
+
     #endregion
 }

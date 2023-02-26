@@ -2,7 +2,7 @@ using System;
 
 public abstract class InputActionResolver
 {
-    public abstract void ResolveInputBeforeTriggerAction(IControllerCharacter character, WorldState worldState, string actionId);
+    public abstract void ResolveInputBeforeTriggerAction(ControllerCharacter character, WorldState worldState, string actionId);
 }
 
 public class InputAction
@@ -29,7 +29,7 @@ public class InputAction
     /// <param name="character"></param>
     /// <param name="input"></param>
     /// <returns>Whether action was triggered. true: triggered / false: not triggered</returns>
-    public ActionResult ExecuteActionWithInput(IControllerCharacter character, WorldState worldState) {
+    public ActionResult ExecuteActionWithInput(ControllerCharacter character, WorldState worldState) {
         InputInfo inputInfo = worldState.CurrentInputContext.GetInfoByActionId(Action.ActionId);
 
         if (inputInfo.ActionId != Action.ActionId)

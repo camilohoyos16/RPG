@@ -6,12 +6,12 @@ public class MoveInputsResolver : InputActionResolver
 {
     private string m_modifierId = string.Empty;
 
-    public override void ResolveInputBeforeTriggerAction(IControllerCharacter character, WorldState worldState, string actionId)
+    public override void ResolveInputBeforeTriggerAction(ControllerCharacter character, WorldState worldState, string actionId)
     {
         StatsComponent stats = character.GetGameComponent(GameComponentDictionary.STATS_COMPONENT_ID) as StatsComponent;
-        Stat speedStat = stats.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName);
+        Stat speedStat = stats.GetDynamicStat(StatsNameDictionary.SpeedStatName);
         InputInfo inputValue = worldState.CurrentInputContext.GetInfoByActionId(actionId);
-        string modifierToRemoveId = speedStat.GetModifierByTag(worldState.TagsDatabase.MoveInputSpeedModifier);
+        string modifierToRemoveId = speedStat.GetModifierByTag(TagsDictionary.MoveInputSpeedModifier);
         
         if (!string.IsNullOrEmpty(modifierToRemoveId))
         {
@@ -23,7 +23,7 @@ public class MoveInputsResolver : InputActionResolver
         }
 
         StatModifier modifier = new(inputValue.Value, MathType.Multiplicative);
-        modifier.AddTag(worldState.TagsDatabase.MoveInputSpeedModifier);
+        modifier.AddTag(TagsDictionary.MoveInputSpeedModifier);
         m_modifierId = speedStat.AddModifier(modifier);
     }
 }

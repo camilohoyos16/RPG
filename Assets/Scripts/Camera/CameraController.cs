@@ -21,7 +21,7 @@ public class CameraControllerState
     }
 }
 
-public class CameraController : MonoBehaviour
+public class CameraController : MonoBehaviour, IController
 {
     /// <summary>
     /// TODO: This probably should be searched from entities controller later with a certain system of tags
@@ -64,7 +64,8 @@ public class CameraController : MonoBehaviour
 
     private Camera m_camera;
 
-    void Start()
+
+    public void InitController()
     {
         m_camera = Camera.main;
 
@@ -72,7 +73,7 @@ public class CameraController : MonoBehaviour
         m_currentTetha = m_initialTetha;
     }
 
-    public void UpdateCamera(WorldState worldState)
+    public void UpdateController(WorldState worldState)
     {
         /// Need to do it smoothly
         SVector3 playerPosition = player.transform.position;

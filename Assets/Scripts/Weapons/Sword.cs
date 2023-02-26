@@ -2,8 +2,8 @@
 
 public class Sword : MeleeWeapon
 {
-    public override void Attack(MathUtils.SVector3 position, StatsComponent ownerStats) {
-        List<ICharacter> characters = EntitiesController.Instance.GetCharactersInRange(position, Stats.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.RangeStatName.StatName).Value);
+    public override void Attack(MathUtils.SVector3 position, StatsComponent ownerStats, WorldState worldState) {
+        List<ICharacter> characters = EntitiesController.Instance.GetCharactersInRange(position, Stats.GetDynamicStat(StatsNameDictionary.RangeStatName).Value);
         foreach (ICharacter character in characters) {
             EffectsResolverComponent effectsResolverComponent = (EffectsResolverComponent)character.GetGameComponent(GameComponentDictionary.EFFECTS_RESOLVER_COMPONENT_ID);
             if(effectsResolverComponent != null) {

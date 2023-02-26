@@ -15,7 +15,7 @@ public sealed class MoveForwardAction : Action
         MathUtils.SVector3 lastPosition = m_ownerPhysicsComponent.Rigidbody.position;
         MathUtils.SVector3 sumPosition = 
             m_ownerPhysicsComponent.Rigidbody.transform.forward * 
-            m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value * 
+            m_ownerStatsComponent.GetDynamicStat(StatsNameDictionary.SpeedStatName).Value * 
             worldState.DeltaTime;
         m_ownerPhysicsComponent.Rigidbody.position = lastPosition + sumPosition;
         ActionResult result = new ActionResult(true, "Moved to forward");

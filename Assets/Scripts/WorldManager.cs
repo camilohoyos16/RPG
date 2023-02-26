@@ -14,13 +14,22 @@ public class WorldManager : MonoBehaviour
     private const int FRAMES_PER_SECOND = 60;
     public static float SecondToUpdateWorld => 1 / (float)FRAMES_PER_SECOND;
 
+    [SerializeField] private List<ScriptableObject> m_initialDatabases;
+
     private void Awake() {
         Instance = this;
         ItemsDatabase.Initialize();
+        EntitiesController.InitController();
+        CameraController.InitController();
+        InputController.InitController();
         m_worldState = new WorldState();
-        TagsDatabase.InitTags();
-        m_worldState.TagsDatabase = TagsDatabase;
-        m_worldState.DynamicStatsDatabase = DynamicStatsDatabaseInstance;
+        foreach (Object databaseObject in m_initialDatabases)
+        {
+            if(databaseObject is IDatabase database)
+            {
+                database.Initialize();
+            }
+        }
     }
 
     private void Update()
@@ -35,8 +44,8 @@ public class WorldManager : MonoBehaviour
             m_worldState.LastTickTime = Time.time;
             m_worldState.TotalTicks++;
             m_worldState.NextTickCounter -= SecondToUpdateWorld;
-            EntitiesController.Instance.UpdateController(m_worldState);
-            CameraController.UpdateCamera(m_worldState);
+            EntitiesController.UpdateController(m_worldState);
+            CameraController.UpdateController(m_worldState);
         }
 
     }
@@ -47,7 +56,6 @@ public class WorldManager : MonoBehaviour
 
     public DynamicStatsDatabase DynamicStatsDatabaseInstance;
     public ItemsDatabase ItemsDatabase;
-    public TagDatabase TagsDatabase;
 
     public EntitiesController EntitiesController;
     public CameraController CameraController;
@@ -64,8 +72,6 @@ public class WorldState
 
     public InputContext CurrentInputContext;
     public CameraControllerState CameraControllerState;
-    public DynamicStatsDatabase DynamicStatsDatabase;
-    public TagDatabase TagsDatabase;
 
     public void UpdateState(InputController inputController, CameraController cameraController)
     {

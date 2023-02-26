@@ -30,6 +30,9 @@ public class WorldItem : MonoBehaviour, IEntity, IInteractable
     #endregion
 
     #region IEntity implementation
+    public void InitEntity()
+    {
+    }
 
     public void UpdateEntity(WorldState worldState) {
     }
@@ -44,6 +47,8 @@ public class WorldItem : MonoBehaviour, IEntity, IInteractable
 
     public void UseItem(ICharacter character) {
     }
+
+    
 
     #endregion
 }

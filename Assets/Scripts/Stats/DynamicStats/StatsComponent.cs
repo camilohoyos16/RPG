@@ -21,6 +21,14 @@ public class StatsComponent : MonoBehaviour, IGameComponent
 
     public string GameComponentId { get => GameComponentDictionary.STATS_COMPONENT_ID; }
 
+    public void InitComponent()
+    {
+    }
+
+    public void UpdateComponent(WorldState worldState)
+    {
+    }
+
     public void AddStat(params DynamicStatDefinition[] statDefinitions) {
 
     }

@@ -1,6 +1,6 @@
 ﻿public class SimpleInventoryItemUi : InventoryItemUi
-    #region InventoryItemUi implementation
 {
+    #region InventoryItemUi implementation
     public override void RenderItem()
     {
         m_itemIconImage.sprite = m_itemSprite;

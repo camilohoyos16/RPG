@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "TagsDatabase", menuName = "Tags/New TagDatabase", order = 1)]
-public class TagDatabase : ScriptableObject
+public class TagDatabase : ScriptableObject, IDatabase
 {
     // ScriptableObjects
     [SerializeField]
@@ -11,8 +11,16 @@ public class TagDatabase : ScriptableObject
     [HideInInspector]
     public Tag MoveInputSpeedModifier;
 
-    public void InitTags()
+    public string DatabaseId => DatabaseDictionary.TAGS_DATABASE_ID;
+
+    public void Initialize()
     {
-        MoveInputSpeedModifier = new Tag(MoveInputSpeedModifierTagConfig.Tag);
+        TagsDictionary.MoveInputSpeedModifier = new Tag(MoveInputSpeedModifierTagConfig.Tag);
     }
+}
+
+public static class TagsDictionary
+{
+    public static Tag MoveInputSpeedModifier;
+
 }

@@ -6,6 +6,16 @@ public class PhysicsComponent : MonoBehaviour, IGameComponent
 {
     public string GameComponentId { get => GameComponentDictionary.PHYSICS_COMPONENT_ID; }
 
-    public Rigidbody Rigidbody;
-    public Collider Collider;
+    [HideInInspector] public Rigidbody Rigidbody;
+    [HideInInspector] public Collider Collider;
+
+    public void InitComponent()
+    {
+        Rigidbody = GetComponentInChildren<Rigidbody>();
+        Collider = GetComponentInChildren<Collider>();
+    }
+
+    public void UpdateComponent(WorldState worldState)
+    {
+    }
 }

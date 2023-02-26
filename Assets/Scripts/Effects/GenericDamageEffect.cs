@@ -3,7 +3,10 @@
 #nullable enable
 public class GenericDamageEffect : ActiveEffect
 {
-    protected override string NameStatToAffect => WorldManager.Instance.DynamicStatsDatabaseInstance.HealthStatName.StatName;
+    protected override string NameStatToAffect => StatsNameDictionary.HealthStatName;
+
+    private string m_damageStatName = StatsNameDictionary.DamageStatName;
+    private string m_strengthStatName = StatsNameDictionary.StrengthStatName;
 
     public override void StartEffect(StatsComponent attackerStats, StatsComponent targetStats, StatsComponent? weaponStats = null) {
         AttackerStats = attackerStats;
@@ -27,9 +30,7 @@ public class GenericDamageEffect : ActiveEffect
     }
 
     public override float GetValueToAppy() {
-        string damageStatName = WorldManager.Instance.DynamicStatsDatabaseInstance.DamageStatName.StatName;
-        string strengthStatName = WorldManager.Instance.DynamicStatsDatabaseInstance.StrengthStatName.StatName;
-        float finalValue = WeaponStats.GetDynamicStat(damageStatName).Value + (AttackerStats.GetDynamicStat(strengthStatName).Value / 2);
+        float finalValue = WeaponStats.GetDynamicStat(m_damageStatName).Value + (AttackerStats.GetDynamicStat(m_strengthStatName).Value / 2);
         return finalValue;
     }
 }

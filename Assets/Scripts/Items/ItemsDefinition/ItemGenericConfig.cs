@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemGenericDefinition : ScriptableObject
+public class ItemGenericConfig : ScriptableObject
 {
     [HideInInspector]
     public string TitleOnInspector;
@@ -11,5 +11,7 @@ public class ItemGenericDefinition : ScriptableObject
     public string Name;
     public string Description;
     public float BasePrice;
-    public byte MaxStack;
+    public byte UiMaxStack;
+    public Sprite ItemSprite;
+    public GameObject ItemPrefab;
 }

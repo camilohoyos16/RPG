@@ -14,7 +14,7 @@ public class RotatePlayerByCameraAction : Action
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState)
     {
         MathUtils.SVector3 newPosition = m_ownerPhysicsComponent.Rigidbody.position;
-        newPosition.x += m_ownerStatsComponent.GetDynamicStat(WorldManager.Instance.DynamicStatsDatabaseInstance.SpeedStatName.StatName).Value * Time.deltaTime;
+        newPosition.x += m_ownerStatsComponent.GetDynamicStat(StatsNameDictionary.SpeedStatName).Value * Time.deltaTime;
         //m_ownerPhysicsComponent.Rigidbody. = newPosition;
         ActionResult result = new ActionResult(true, "Moved to the right");
         return result;

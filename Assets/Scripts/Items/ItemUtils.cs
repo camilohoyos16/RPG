@@ -13,7 +13,7 @@ public static class ItemUtils
             case ItemCategory.Generic:
                 break;
             case ItemCategory.Weapon:
-                return new WeaponItem(WorldManager.Instance.ItemsDatabase.GetWeaponDefinitionById(worldItem.WorldItemId.ItemId));
+                return new WeaponItem(ItemDictionary.GetWeaponDefinitionById(worldItem.WorldItemId.ItemId));
             case ItemCategory.Clothe:
                 break;
             case ItemCategory.Consumable:
@@ -24,5 +24,18 @@ public static class ItemUtils
                 return null;
         }
         return null;
+    }
+
+    public static InventoryItem CreateNewInventoryItem(ItemGenericDefinition itemGenericDefinition)
+    {
+        switch (itemGenericDefinition)
+        {
+            case ItemWeaponDefinition weapon:
+            {
+                return new WeaponItem(weapon);
+            }
+            default:
+                return new SimpleInventoryItem(itemGenericDefinition);
+        }
     }
 }

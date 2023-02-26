@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IController
 {
+    public void InitController();
     public void UpdateController(WorldState worldState);
 }
 
@@ -33,6 +34,11 @@ public class EntitiesController : MonoBehaviour, IController
 
         EventManager.Instance.Register<OnRegisterEntityEvent>(gameObject, OnRegisterEntity);
         EventManager.Instance.Register<OnDestroyEntityEvent>(gameObject, OnDestroyEntityEvent);
+    }
+
+    public void InitController()
+    {
+
     }
 
     public void UpdateController(WorldState worldState)
@@ -135,7 +141,7 @@ public class EntitiesController : MonoBehaviour, IController
         if (e.Entity is ICharacter iCharacter)
         {
             m_characters.Add(iCharacter);
-            if (iCharacter is IControllerCharacter controllerCharacter)
+            if (iCharacter is ControllerCharacter controllerCharacter)
             {
                 controllerCharacter.QueueActionToAdd(new MoveForwardRotatingPlayerAction());
                 controllerCharacter.QueueActionToAdd(new MoveBackRotatingPlayerAction());

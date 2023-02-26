@@ -14,6 +14,14 @@ public class EffectsApplierComponent : MonoBehaviour, IGameComponent
         GetEffects();
     }
 
+    public void InitComponent()
+    {
+    }
+
+    public void UpdateComponent(WorldState worldState)
+    {
+    }
+
     public List<PassiveEffect> GetPassiveEffects() {
         return m_passiveEffects;
     }

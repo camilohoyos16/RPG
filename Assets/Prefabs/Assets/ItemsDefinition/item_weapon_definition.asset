@@ -17,6 +17,8 @@ MonoBehaviour:
   Name: Mighty Sword
   Description: Lo mejor que puedes encontrar
   BasePrice: 10
-  MaxStack: 0
+  UiMaxStack: 1
+  ItemSprite: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  ItemPrefab: {fileID: 0}
   Damage: 10
   Weight: 2

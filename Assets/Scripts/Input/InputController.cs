@@ -23,7 +23,12 @@ public class InputController : MonoBehaviour, IController
     /// </summary>
     public static Dictionary<string, string> InputMapInverse = new Dictionary<string, string>();
 
-    private void Awake()
+    private void CreateDevicesConfigs()
+    {
+        InputDevicesDatabase.Init();
+    }
+
+    public void InitController()
     {
         if (Instance != null)
         {
@@ -37,11 +42,6 @@ public class InputController : MonoBehaviour, IController
 
         CreateDevicesConfigs();
         ChangeDevice(InputDevicesDatabase.GetGameInputDeviceConfigById(InputUtilities.PC_INPUT_DEVICE_ID));
-    }
-
-    private void CreateDevicesConfigs()
-    {
-        InputDevicesDatabase.Init();
     }
 
     public void UpdateController(WorldState worldState)

@@ -23,7 +23,12 @@ public class EffectsResolverComponent : MonoBehaviour, IGameComponent
         m_activeEffectsController = new ActiveEffectsController();
     }
 
-    private void Update() {
+    public void InitComponent()
+    {
+    }
+
+    public void UpdateComponent(WorldState worldState)
+    {
         m_activeEffectsController.TickEffects(Time.time, Time.deltaTime);
     }
 

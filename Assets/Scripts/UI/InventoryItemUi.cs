@@ -12,26 +12,29 @@ public abstract class InventoryItemUi : MonoBehaviour
     protected Sprite m_itemSprite;
 
     private InventoryItem m_itemData;
-    private byte m_quantity;
 
-    public byte Quantity => m_quantity;
-    public byte MaxStack => m_itemData.MaxStack;
+    public int Quantity { get; private set; }
+    public int MaxStack { get; private set; }
+    public string ItemDefinitionId => m_itemData.Id;
 
-    public virtual void InitializeItem(InventoryItem itemData, Sprite itemSprite, byte initialQuantity = 1)
+    public virtual void InitializeItem(InventoryItem itemData, Sprite itemSprite, int initialQuantity = 1)
     {
         m_itemData = itemData;
-        m_quantity = initialQuantity;
+        Quantity = initialQuantity;
         m_itemSprite = itemSprite;
+
+        ItemGenericDefinition definition = ItemDictionary.GetItemDefinitionById(itemData.Id);
+        MaxStack = definition.UiMaxStack;
     }
 
-    public void AddItems(byte quantityToAdd)
+    public void AddItems(int quantityToAdd)
     {
-        m_quantity += quantityToAdd;
+        Quantity += quantityToAdd;
     }
 
-    public void RemoveItems(byte quanityToRemove)
+    public void RemoveItems(int quanityToRemove)
     {
-        m_quantity -= quanityToRemove;
+        Quantity -= quanityToRemove;
     }
 
     public abstract void RenderItem();
