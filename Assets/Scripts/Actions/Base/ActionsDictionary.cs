@@ -1,6 +1,7 @@
 public static class ActionsDictionary
 {
     public const string PAUSE_GAME_ACTION_ID = "pause_game_action";
+    public const string HIDE_UI_ELEMENT_ACTION_ID = "hide_ui_element_action";
     public const string NONE_ID = "none";
     public const string JUMP_ACTION_ID = "jump_action";
     public const string MOVE_FORWARD_ACTION_ID = "move_forward_action";

@@ -158,7 +158,7 @@ public class EntitiesController : MonoBehaviour, IController
                 controllerCharacter.QueueActionToAdd(new MoveBackRotatingPlayerAction());
                 controllerCharacter.QueueActionToAdd(new MoveLeftRotatingPlayerAction());
                 controllerCharacter.QueueActionToAdd(new MoveRightRotatingPlayerAction());
-                controllerCharacter.QueueActionToAdd(new PauseGameAction());
+                controllerCharacter.QueueActionToAdd(new OpenPlayerInventoryAction());
             }
         }
     }
