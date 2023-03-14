@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7418f538216542942850d1d14ffb66cc, type: 3}
   m_Name: ReputationStatName
   m_EditorClassIdentifier: 
-  StatName: reputation
+  Value: reputation

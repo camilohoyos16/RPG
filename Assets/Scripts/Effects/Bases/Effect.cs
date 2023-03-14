@@ -21,5 +21,5 @@ public abstract class Effect
 [Serializable]
 public class EffectConfig
 {
-    public StatNameScriptableObject StatToUseName;
+    public NameScriptableObject StatToUseName;
 }

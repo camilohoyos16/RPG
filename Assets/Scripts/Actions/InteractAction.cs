@@ -64,10 +64,9 @@ public sealed class InteractAction : Action
             character.QueueActionToRemove(ActionId);
         }
 
+        ConsecutiveExecutionsCounter = worldState.LastTickTime + ConsecutiveExecutionsTime;
         ActionResult result = new ActionResult(true, "Interacted with object");
         return result;
-
-        ConsecutiveExecutionsCounter = worldState.LastTickTime + ConsecutiveExecutionsTime;
     }
 
     private IInteractable GetBestObjectToInteractWith()

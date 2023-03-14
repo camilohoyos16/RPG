@@ -15,7 +15,7 @@ public class StatsComponent : MonoBehaviour, IGameComponent
     private void ResolveDynamicStatsDefinition() {
         DynamicStats = new ();
         foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
-            DynamicStats.Add(new DynamicStat(statDefinition.Name.StatName, statDefinition.StatValue));
+            DynamicStats.Add(new DynamicStat(statDefinition.Name.Value, statDefinition.StatValue));
         }
     }
 
@@ -63,7 +63,7 @@ public class StatsComponent : MonoBehaviour, IGameComponent
             }
 
             if(statDefinition.Name != null) {
-                statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.StatName, " - Value: ", statDefinition.StatValue);
+                statDefinition.TitleOnInspector = string.Concat("Name: ", statDefinition.Name.Value, " - Value: ", statDefinition.StatValue);
             } else {
                 statDefinition.TitleOnInspector = "----------------------------";
             }

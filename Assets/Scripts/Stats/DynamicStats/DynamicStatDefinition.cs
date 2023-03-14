@@ -9,6 +9,6 @@ public class DynamicStatDefinition
     [HideInInspector]
     public string TitleOnInspector;
 
-    public StatNameScriptableObject Name;
+    public NameScriptableObject Name;
     public float StatValue;
 }

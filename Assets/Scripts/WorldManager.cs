@@ -22,7 +22,9 @@ public class WorldManager : MonoBehaviour
         EntitiesController.InitController();
         CameraController.InitController();
         InputController.InitController();
+        UiController.InitController();
         m_worldState = new WorldState();
+        m_worldState.UiController = UiController;
         foreach (Object databaseObject in m_initialDatabases)
         {
             if(databaseObject is IDatabase database)
@@ -46,6 +48,7 @@ public class WorldManager : MonoBehaviour
             m_worldState.NextTickCounter -= SecondToUpdateWorld;
             EntitiesController.UpdateController(m_worldState);
             CameraController.UpdateController(m_worldState);
+            UiController.UpdateController(m_worldState);
         }
 
     }
@@ -61,6 +64,7 @@ public class WorldManager : MonoBehaviour
     public CameraController CameraController;
 
     public InputController InputController;
+    public UiController UiController;
 }
 
 public class WorldState
@@ -72,6 +76,7 @@ public class WorldState
 
     public InputContext CurrentInputContext;
     public CameraControllerState CameraControllerState;
+    public UiController UiController;
 
     public void UpdateState(InputController inputController, CameraController cameraController)
     {

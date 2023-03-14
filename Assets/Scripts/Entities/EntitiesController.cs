@@ -38,7 +38,18 @@ public class EntitiesController : MonoBehaviour, IController
 
     public void InitController()
     {
+        ControllerCharacter[] controllerCharacters =  FindObjectsOfType<ControllerCharacter>();
+        WorldItem[] worldItems =  FindObjectsOfType<WorldItem>();
 
+        foreach (ControllerCharacter character in controllerCharacters)
+        {
+            character.GetComponent<IEntity>().InitEntity();
+        }
+
+        foreach (WorldItem item in worldItems)
+        {
+            item.GetComponent<IEntity>().InitEntity();
+        }
     }
 
     public void UpdateController(WorldState worldState)
@@ -147,6 +158,7 @@ public class EntitiesController : MonoBehaviour, IController
                 controllerCharacter.QueueActionToAdd(new MoveBackRotatingPlayerAction());
                 controllerCharacter.QueueActionToAdd(new MoveLeftRotatingPlayerAction());
                 controllerCharacter.QueueActionToAdd(new MoveRightRotatingPlayerAction());
+                controllerCharacter.QueueActionToAdd(new PauseGameAction());
             }
         }
     }

@@ -2,14 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUi : MonoBehaviour
+public abstract class UiElement : MonoBehaviour
+{
+    public abstract void Show();
+    public abstract void Hide();
+    public abstract void SetParent(Transform parent);
+}
+
+public class InventoryUi : UiElement
 {
     [SerializeField] private RectTransform m_parent;
     [SerializeField] private RectTransform m_content;
 
     [SerializeField] private InventoryItemUi m_inventoryItemUiPrefab;
     private List<InventoryItem> m_inventoryItems;
-    private List<InventoryItemUi> m_inventoryItemsUi;
+    private List<InventoryItemUi> m_inventoryItemsUi = new();
+
+    public override void Show()
+    {
+        m_parent.gameObject.SetActive(true);
+    }
+
+    public override void Hide()
+    {
+        m_parent.gameObject.SetActive(false);
+    }
+
+    public override void SetParent(Transform parent)
+    {
+        transform.SetParent(parent);
+    }
 
     public void Initializeinventory(InventoryComponent inventoryComponent)
     {

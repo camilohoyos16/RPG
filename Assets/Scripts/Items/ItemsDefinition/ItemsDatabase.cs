@@ -6,7 +6,7 @@ using UnityEngine;
 public static class DatabaseDictionary
 {
     public const string ITEM_DATABASE_ID = "item_database";
-    public const string ITEM_VISUALS_DATABASE_ID = "item_visual_database";
+    public const string UI_ELEMENTS_DATABASE_ID = "ui_elements_database";
     public const string DYNAMIC_STATS_DATABASE_ID = "dynamic_stats_database";
     public const string TAGS_DATABASE_ID = "tags_database";
 }
@@ -23,16 +23,12 @@ public enum ItemCategory
 
 public interface IDatabase
 {
-    public string DatabaseId { get; }
-
     public void Initialize();
 }
 
 [CreateAssetMenu(fileName = "ItemsDatabase", menuName = "Items/New ItemsDatabase", order = 1)]
 public class ItemsDatabase : ScriptableObject, IDatabase
 {
-    public string DatabaseId => DatabaseDictionary.ITEM_DATABASE_ID;
-
     #region ItemsId
     public ItemIdScriptableObject world_item_sword_id;
     #endregion

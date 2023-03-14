@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +6,32 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DynamicStatsDatabase", menuName = "Stats/Dynamic/New Database", order = 1)]
 public class DynamicStatsDatabase : ScriptableObject, IDatabase
 {
-    public string DatabaseId => DatabaseDictionary.DYNAMIC_STATS_DATABASE_ID;
-
-    [SerializeField] private StatNameScriptableObject AimStatNameConfig;
-    [SerializeField] private StatNameScriptableObject DamageStatNameConfig;
-    [SerializeField] private StatNameScriptableObject ExperienceStatNameConfig;
-    [SerializeField] private StatNameScriptableObject HealthStatNameConfig;
-    [SerializeField] private StatNameScriptableObject JumpForceStatNameConfig;
-    [SerializeField] private StatNameScriptableObject ManaStatNameConfig;
-    [SerializeField] private StatNameScriptableObject MoralityStatNameConfig;
-    [SerializeField] private StatNameScriptableObject RangeStatNameConfig;
-    [SerializeField] private StatNameScriptableObject ReputationStatNameConfig;
-    [SerializeField] private StatNameScriptableObject StrengthStatNameConfig;
-    [SerializeField] private StatNameScriptableObject SpeedStatNameConfig;
-    [SerializeField] private StatNameScriptableObject WeightStatNameConfig;
+    [SerializeField] private NameScriptableObject AimStatNameConfig;
+    [SerializeField] private NameScriptableObject DamageStatNameConfig;
+    [SerializeField] private NameScriptableObject ExperienceStatNameConfig;
+    [SerializeField] private NameScriptableObject HealthStatNameConfig;
+    [SerializeField] private NameScriptableObject JumpForceStatNameConfig;
+    [SerializeField] private NameScriptableObject ManaStatNameConfig;
+    [SerializeField] private NameScriptableObject MoralityStatNameConfig;
+    [SerializeField] private NameScriptableObject RangeStatNameConfig;
+    [SerializeField] private NameScriptableObject ReputationStatNameConfig;
+    [SerializeField] private NameScriptableObject StrengthStatNameConfig;
+    [SerializeField] private NameScriptableObject SpeedStatNameConfig;
+    [SerializeField] private NameScriptableObject WeightStatNameConfig;
 
     public void Initialize()
     {
-        StatsNameDictionary.AimStatName = AimStatNameConfig.StatName;
-        StatsNameDictionary.DamageStatName = DamageStatNameConfig.StatName;
-        StatsNameDictionary.ExperienceStatName = ExperienceStatNameConfig.StatName;
-        StatsNameDictionary.HealthStatName = HealthStatNameConfig.StatName;
-        StatsNameDictionary.JumpForceStatName = JumpForceStatNameConfig.StatName;
-        StatsNameDictionary.ManaStatName = ManaStatNameConfig.StatName;
-        StatsNameDictionary.MoralityStatName = MoralityStatNameConfig.StatName;
-        StatsNameDictionary.RangeStatName = RangeStatNameConfig.StatName;
-        StatsNameDictionary.ReputationStatName = ReputationStatNameConfig.StatName;
-        StatsNameDictionary.StrengthStatName = StrengthStatNameConfig.StatName;
-        StatsNameDictionary.SpeedStatName = SpeedStatNameConfig.StatName;
-        StatsNameDictionary.WeightStatName = WeightStatNameConfig.StatName;
+        StatsNameDictionary.AimStatName = AimStatNameConfig.Value;
+        StatsNameDictionary.DamageStatName = DamageStatNameConfig.Value;
+        StatsNameDictionary.ExperienceStatName = ExperienceStatNameConfig.Value;
+        StatsNameDictionary.HealthStatName = HealthStatNameConfig.Value;
+        StatsNameDictionary.JumpForceStatName = JumpForceStatNameConfig.Value;
+        StatsNameDictionary.ManaStatName = ManaStatNameConfig.Value;
+        StatsNameDictionary.MoralityStatName = MoralityStatNameConfig.Value;
+        StatsNameDictionary.RangeStatName = RangeStatNameConfig.Value;
+        StatsNameDictionary.ReputationStatName = ReputationStatNameConfig.Value;
+        StatsNameDictionary.StrengthStatName = StrengthStatNameConfig.Value;
+        StatsNameDictionary.SpeedStatName = SpeedStatNameConfig.Value;
+        StatsNameDictionary.WeightStatName = WeightStatNameConfig.Value;
     }
 }

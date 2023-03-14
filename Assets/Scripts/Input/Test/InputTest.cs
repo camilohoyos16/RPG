@@ -63,6 +63,7 @@ public class InputTest : MonoBehaviour
     {
         Dictionary<string, string> inputs = new()
         {
+            { ActionsDictionary.PAUSE_GAME_ACTION_ID, "P" },
             { ActionsDictionary.ATTACK_ACTION_ID, "a" },
             { ActionsDictionary.INTERACT_ACTION_ID, "E" },
             { ActionsDictionary.JUMP_ACTION_ID, "SPACE" },

@@ -11,8 +11,6 @@ public class TagDatabase : ScriptableObject, IDatabase
     [HideInInspector]
     public Tag MoveInputSpeedModifier;
 
-    public string DatabaseId => DatabaseDictionary.TAGS_DATABASE_ID;
-
     public void Initialize()
     {
         TagsDictionary.MoveInputSpeedModifier = new Tag(MoveInputSpeedModifierTagConfig.Tag);

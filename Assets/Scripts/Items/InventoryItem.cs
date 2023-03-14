@@ -10,7 +10,7 @@ public abstract class InventoryItem
 
 
     #region Properties
-    public string Id => Id;
+    public string Id => m_id;
     public string Name => m_name;
     public float BasePrice => m_basePrice;
     public float CurrentPrice => m_currentPrice;

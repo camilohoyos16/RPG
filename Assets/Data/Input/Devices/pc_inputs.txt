@@ -1,4 +1,5 @@
 {
+"pause_game_action":"p",
 "attack_action":"a",
 "interact_action":"e",
 "jump_action":"Space",
