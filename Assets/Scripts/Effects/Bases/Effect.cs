@@ -1,25 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 
 #nullable enable
 public abstract class Effect
 {
-    protected abstract string NameStatToAffect { get; }
+    /// <summary>
+    /// The name of the stat to deal with to be able to modify the result with all the 
+    /// passive effect on the target.
+    /// </summary>
+    protected string NameStatToAffect { get; } = string.Empty;
 
-    protected StatsComponent AttackerStats;
-    protected StatsComponent TargetStats;
-    protected StatsComponent? WeaponStats;
+    /// <summary>
+    /// Effect base value
+    /// </summary>
+    public float ValueToApply { get; } = 0;
 
-    protected Effect() {
+    protected ICharacter Attacker;
+    protected ICharacter Target;
 
+    protected Effect(ICharacter attacker, ICharacter target) {
+        Attacker = attacker;
+        Target = target;
     }
 
-    public abstract float GetValueToAppy();
-
-    public abstract void StartEffect(StatsComponent attackerStats, StatsComponent targetStats, StatsComponent? weaponStats = null);
-}
-
-[Serializable]
-public class EffectConfig
-{
-    public NameScriptableObject StatToUseName;
+    /// <summary>
+    /// This is a method to modify the base value before pass it to <see cref="EffectsResolverComponent"/>.
+    /// Ex: Basic damage will be multiply by the strenght of the character
+    /// </summary>
+    /// <returns>Final value to apply</returns>
+    public abstract float GetValueToApply();
 }

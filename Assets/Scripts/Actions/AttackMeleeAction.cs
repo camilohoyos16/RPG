@@ -13,7 +13,7 @@ public sealed class AttackMeleeAction : Action
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
         //charcter.Attack()
-        MeleeWeapon.Attack(character.EntityPosition, m_ownerStatsComponent, worldState);
+        MeleeWeapon.Attack(character, worldState);
         ActionResult result = new ActionResult(true, "Attacking!");
         return result;
     }

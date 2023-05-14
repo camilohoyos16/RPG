@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DynamicStatsDatabase", menuName = "Stats/Dynamic/New Database", order = 1)]
-public class DynamicStatsDatabase : ScriptableObject, IDatabase
+public class StatsDatabase : ScriptableObject, IDatabase
 {
     [SerializeField] private NameScriptableObject AimStatNameConfig;
     [SerializeField] private NameScriptableObject DamageStatNameConfig;
@@ -18,6 +18,8 @@ public class DynamicStatsDatabase : ScriptableObject, IDatabase
     [SerializeField] private NameScriptableObject StrengthStatNameConfig;
     [SerializeField] private NameScriptableObject SpeedStatNameConfig;
     [SerializeField] private NameScriptableObject WeightStatNameConfig;
+    [SerializeField] private NameScriptableObject TickStatNameConfig;
+    [SerializeField] private NameScriptableObject CadenceStatNameConfig;
 
     public void Initialize()
     {
@@ -33,5 +35,7 @@ public class DynamicStatsDatabase : ScriptableObject, IDatabase
         StatsNameDictionary.StrengthStatName = StrengthStatNameConfig.Value;
         StatsNameDictionary.SpeedStatName = SpeedStatNameConfig.Value;
         StatsNameDictionary.WeightStatName = WeightStatNameConfig.Value;
+        StatsNameDictionary.TicksStatName = TickStatNameConfig.Value;
+        StatsNameDictionary.CadenceStatName = CadenceStatNameConfig.Value;
     }
 }

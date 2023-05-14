@@ -12,4 +12,6 @@
     public static string StrengthStatName;
     public static string SpeedStatName;
     public static string WeightStatName;
+    public static string TicksStatName;
+    public static string CadenceStatName;
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
   Description: Lo mejor que puedes encontrar
   BasePrice: 10
   UiMaxStack: 1
-  ItemSprite: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
-  ItemPrefab: {fileID: 0}
+  ItemSprite: {fileID: 21300000, guid: e8cd73c173ef4234d9beca5e447d0eb5, type: 3}
+  ItemPrefab: {fileID: 3859639717388359900, guid: 0ae1ea5d5066a8444b995467b87398ea, type: 3}
   Damage: 10
   Weight: 2

@@ -5,14 +5,14 @@ public abstract class Weapon : MonoBehaviour
 {
     protected StatsComponent Stats;
     protected StatsComponent OwnerStats;
-    protected EffectsApplierComponent EffectApplier;
+    protected EffectsContainerComponent EffectsContainer;
 
     private void Awake() {
         Stats = GetComponent<StatsComponent>();
-        EffectApplier = GetComponent<EffectsApplierComponent>();
+        EffectsContainer = GetComponent<EffectsContainerComponent>();
     }
 
-    public abstract void Attack(MathUtils.SVector3 position, StatsComponent ownerStats, WorldState worldState);
+    public abstract void Attack(ICharacter owner, WorldState worldState);
 }
 
 public abstract class MeleeWeapon : Weapon

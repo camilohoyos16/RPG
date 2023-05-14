@@ -57,7 +57,7 @@ public class WorldManager : MonoBehaviour
     {
     }
 
-    public DynamicStatsDatabase DynamicStatsDatabaseInstance;
+    public StatsDatabase DynamicStatsDatabaseInstance;
     public ItemsDatabase ItemsDatabase;
 
     public EntitiesController EntitiesController;

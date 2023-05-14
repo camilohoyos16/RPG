@@ -4,59 +4,70 @@ using UnityEngine;
 
 public class StatsComponent : MonoBehaviour, IGameComponent
 {
+    public string GameComponentId { get => GameComponentDictionary.STATS_COMPONENT_ID; }
+
     [SerializeField]
     private List<DynamicStatDefinition> DynamicStatsDefinitions;
-    public List<DynamicStat> DynamicStats;
-
-    private void Awake() {
-        ResolveDynamicStatsDefinition();
-    }
+    public Dictionary<string, Stat> DynamicStats;
 
     private void ResolveDynamicStatsDefinition() {
         DynamicStats = new ();
         foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
-            DynamicStats.Add(new DynamicStat(statDefinition.Name.Value, statDefinition.StatValue));
+            AddStat(new DynamicStat(statDefinition.Name.Value, statDefinition.StatValue));
         }
     }
 
-    public string GameComponentId { get => GameComponentDictionary.STATS_COMPONENT_ID; }
-
     public void InitComponent()
     {
+        ResolveDynamicStatsDefinition();
     }
 
     public void UpdateComponent(WorldState worldState)
     {
     }
 
-    public void AddStat(params DynamicStatDefinition[] statDefinitions) {
-
+    public void AddStat(params DynamicStat[] statDefinitions) {
+        foreach (DynamicStat stat in statDefinitions)
+        {
+            if (!DynamicStats.ContainsKey(stat.Name))
+            {
+                DynamicStats.Add(stat.Name, stat.Stat);
+            }
+        }
     }
 
-    public void RemoveStat(params DynamicStatDefinition[] statDefinitions) {
-
+    public void RemoveStat(params DynamicStat[] statDefinitions) {
+        foreach (DynamicStat stat in statDefinitions)
+        {
+            if (DynamicStats.ContainsKey(stat.Name))
+            {
+                DynamicStats.Remove(stat.Name);
+            }
+        }
     }
 
     public Stat GetDynamicStat(string statName) {
-        foreach (DynamicStat stat in DynamicStats) {
-            if (stat.Name.Equals(statName)) {
-                return stat.Stat;
-            }
+        if (DynamicStats.ContainsKey(statName))
+        {
+            return DynamicStats[statName];
         }
         return null;
     }
 
     public bool HasDynamicStat(string statName) {
-        foreach (DynamicStat stat in DynamicStats) {
-            if (stat.Name.Equals(statName)) {
-                return true;
-            }
+        if (DynamicStats.ContainsKey(statName))
+        {
+            return true;
         }
         return false;
     }
 
     #region Editor
     public void OnValidate() {
+        if(DynamicStatsDefinitions == null){
+            return;
+        }
+
         foreach (DynamicStatDefinition statDefinition in DynamicStatsDefinitions) {
             if(statDefinition is null) {
                 continue;

@@ -1,19 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class Sword : MeleeWeapon
 {
-    public override void Attack(MathUtils.SVector3 position, StatsComponent ownerStats, WorldState worldState) {
-        List<ICharacter> characters = EntitiesController.Instance.GetCharactersInRange(position, Stats.GetDynamicStat(StatsNameDictionary.RangeStatName).Value);
-        foreach (ICharacter character in characters) {
-            EffectsResolverComponent effectsResolverComponent = (EffectsResolverComponent)character.GetGameComponent(GameComponentDictionary.EFFECTS_RESOLVER_COMPONENT_ID);
+    public override void Attack(ICharacter owner, WorldState worldState) {
+        // Need to use a target system to add a different ways to target for each waepon
+        List<ICharacter> targets = EntitiesController.Instance.GetCharactersInRange(owner.EntityPosition, Stats.GetDynamicStat(StatsNameDictionary.RangeStatName).Value);
+        foreach (ICharacter target in targets) {
+            EffectsResolverComponent effectsResolverComponent = (EffectsResolverComponent)target.GetGameComponent(GameComponentDictionary.EFFECTS_RESOLVER_COMPONENT_ID);
             if(effectsResolverComponent != null) {
-                foreach (var item in EffectApplier.GetPassiveEffects()) {
-                    effectsResolverComponent.AddPassiveEffect(item);
+                foreach (PassiveEffectConfig effectConfig in EffectsContainer.GetPassiveEffectsConfig()) {
+                    BasicPassiveEffect newPassiveEffect = EffectGenerator.GeneratePassiveEffect(owner, target, effectConfig);
+                    effectsResolverComponent.AddPassiveEffect(newPassiveEffect);
                 }
 
-                foreach (var item in EffectApplier.GetActiveEffects()) {
-                    effectsResolverComponent.AddActiveEffect(item);
-                    item.StartEffect(ownerStats, (StatsComponent)character.GetGameComponent(GameComponentDictionary.STATS_COMPONENT_ID), Stats);
+                foreach (BasicActiveEffectConfig config in EffectsContainer.GetActiveEffectsConfig()) {
+                    BasicActiveEffect newActiveEffect = EffectGenerator.GenerateActiveEffect(owner, target, config);
+                    effectsResolverComponent.AddActiveEffect(newActiveEffect);
                 }
                 break;
             }
