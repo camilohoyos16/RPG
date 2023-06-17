@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DynamicStatsDatabase
   m_EditorClassIdentifier: 
   AimStatNameConfig: {fileID: 11400000, guid: a2c060258d8a12342aaf24ed5e24b077, type: 2}
+  CadenceStatNameConfig: {fileID: 11400000, guid: 09bc22b4be0a21d45b13cd3f7b47bafe, type: 2}
   DamageStatNameConfig: {fileID: 11400000, guid: c61bc1552a7dac44f9b8423b3de0642c, type: 2}
   ExperienceStatNameConfig: {fileID: 11400000, guid: 0afea92155fda4a4aaf5026975798646, type: 2}
   HealthStatNameConfig: {fileID: 11400000, guid: 78a0c7ed2dc5e204aae923f42837480b, type: 2}
@@ -23,16 +24,5 @@ MonoBehaviour:
   ReputationStatNameConfig: {fileID: 11400000, guid: 45c73f8b9abb6e843907c48e6cf64b18, type: 2}
   StrengthStatNameConfig: {fileID: 11400000, guid: 0f18c2b87161fc840889c6bce4460be7, type: 2}
   SpeedStatNameConfig: {fileID: 11400000, guid: ee2f3691440699642862de2e5bf91fae, type: 2}
+  TickStatNameConfig: {fileID: 11400000, guid: c070d1b1eb1718a45b754c3d30f8b3a0, type: 2}
   WeightStatNameConfig: {fileID: 11400000, guid: 41dafdfc5cb362f4ba538a6e36064188, type: 2}
-  AimStatName: 
-  DamageStatName: 
-  ExperienceStatName: 
-  HealthStatName: 
-  JumpForceStatName: 
-  ManaStatName: 
-  MoralityStatName: 
-  RangeStatName: 
-  ReputationStatName: 
-  StrengthStatName: 
-  SpeedStatName: 
-  WeightStatName: 

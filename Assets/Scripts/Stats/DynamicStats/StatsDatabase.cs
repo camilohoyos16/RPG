@@ -7,6 +7,7 @@ using UnityEngine;
 public class StatsDatabase : ScriptableObject, IDatabase
 {
     [SerializeField] private NameScriptableObject AimStatNameConfig;
+    [SerializeField] private NameScriptableObject CadenceStatNameConfig;
     [SerializeField] private NameScriptableObject DamageStatNameConfig;
     [SerializeField] private NameScriptableObject ExperienceStatNameConfig;
     [SerializeField] private NameScriptableObject HealthStatNameConfig;
@@ -17,13 +18,13 @@ public class StatsDatabase : ScriptableObject, IDatabase
     [SerializeField] private NameScriptableObject ReputationStatNameConfig;
     [SerializeField] private NameScriptableObject StrengthStatNameConfig;
     [SerializeField] private NameScriptableObject SpeedStatNameConfig;
-    [SerializeField] private NameScriptableObject WeightStatNameConfig;
     [SerializeField] private NameScriptableObject TickStatNameConfig;
-    [SerializeField] private NameScriptableObject CadenceStatNameConfig;
+    [SerializeField] private NameScriptableObject WeightStatNameConfig;
 
     public void Initialize()
     {
         StatsNameDictionary.AimStatName = AimStatNameConfig.Value;
+        StatsNameDictionary.CadenceStatName = CadenceStatNameConfig.Value;
         StatsNameDictionary.DamageStatName = DamageStatNameConfig.Value;
         StatsNameDictionary.ExperienceStatName = ExperienceStatNameConfig.Value;
         StatsNameDictionary.HealthStatName = HealthStatNameConfig.Value;
@@ -34,8 +35,7 @@ public class StatsDatabase : ScriptableObject, IDatabase
         StatsNameDictionary.ReputationStatName = ReputationStatNameConfig.Value;
         StatsNameDictionary.StrengthStatName = StrengthStatNameConfig.Value;
         StatsNameDictionary.SpeedStatName = SpeedStatNameConfig.Value;
-        StatsNameDictionary.WeightStatName = WeightStatNameConfig.Value;
         StatsNameDictionary.TicksStatName = TickStatNameConfig.Value;
-        StatsNameDictionary.CadenceStatName = CadenceStatNameConfig.Value;
+        StatsNameDictionary.WeightStatName = WeightStatNameConfig.Value;
     }
 }

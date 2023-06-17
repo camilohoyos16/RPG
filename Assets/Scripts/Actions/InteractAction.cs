@@ -57,7 +57,6 @@ public sealed class InteractAction : Action
 
         IInteractable interactableObject = GetBestObjectToInteractWith();
         interactableObject.Interact(character);
-        EventManager.Instance.TriggerGlobal(new OnDestroyEntityEvent(interactableObject));
 
         if(m_interactObjects.Count == 0)
         {

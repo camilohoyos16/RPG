@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class WorldItem : MonoBehaviour, IEntity, IInteractable
+public abstract class WorldItem : MonoBehaviour, IEntity, IInteractable
 {
     public ItemIdScriptableObject WorldItemId;
     public ItemCategory ItemCategory;
@@ -21,34 +21,14 @@ public class WorldItem : MonoBehaviour, IEntity, IInteractable
     }
 
     #region GenericInteractableEntity implementation
-    public void Interact(ICharacter character) {
-        if(character is Player player) {
-            InventoryComponent inventory = (InventoryComponent)player.GetGameComponent(GameComponentDictionary.INVENTORY_COMPONENT_ID);
-            inventory.AddItem(this);
-        }
-    }
+    public abstract void Interact(ICharacter character);
     #endregion
 
     #region IEntity implementation
-    public void InitEntity()
-    {
-    }
+    public abstract void InitEntity();
 
-    public void UpdateEntity(WorldState worldState) {
-    }
+    public abstract void UpdateEntity(WorldState worldState);
 
     #endregion
 
-    #region IItem implementation
-
-    public void UseItem() {
-        throw new System.NotImplementedException();
-    }
-
-    public void UseItem(ICharacter character) {
-    }
-
-    
-
-    #endregion
 }

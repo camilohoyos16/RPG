@@ -9,20 +9,27 @@ public class WieldItem
     public bool IsBeingUsed;
 }
 
-public class WieldItemsComponent : MonoBehaviour
+public class WieldItemsComponent : MonoBehaviour, IGameComponent
 {
-    public WieldItem RightHand;
-    public WieldItem LeftHand;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public WieldItem Hands;
+
+    public string GameComponentId { get => GameComponentDictionary.WIELD_ITEMS_COMPONENT_ID; }
+
+    public void InitComponent()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateComponent(WorldState worldState)
     {
-        
+        throw new System.NotImplementedException();
     }
+
+    public void WeildItem()
+    {
+
+    }
+
 }

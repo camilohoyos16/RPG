@@ -9,11 +9,6 @@ public class ControllerCharacter : MonoBehaviour, ICharacter
     private List<string> m_actionsToRemove = new List<string>();
     private List<Action> m_actionsToAdd = new List<Action>();
 
-    /// <summary>
-    /// TEST !!!!!!!!!!!!!  
-    /// </summary>
-    public MeleeWeapon Sword;
-
     public float InteractRadius { get => InteractableEntitiesDatabase.CHARACTER_INTERACTABLE_ENTITY_INTERACT_RADIUS; }
 
     public MathUtils.SVector3 EntityPosition { get => transform.position; set => transform.position = value; }
@@ -75,13 +70,6 @@ public class ControllerCharacter : MonoBehaviour, ICharacter
             if (gameComponent == default(IGameComponent))
             {
                 continue;
-            }
-            /// TEST!!!!!! ----------------------------------------------
-            /// This can be set inside interact action when player takes the sword. 
-            /// Check if the interacted object is a weapon and assign the weapon there
-            if (action is AttackMeleeAction meleeAction)
-            {
-                meleeAction.MeleeWeapon = Sword;
             }
             action.AddGameComponents(gameComponent);
         }
@@ -154,5 +142,10 @@ public class ControllerCharacter : MonoBehaviour, ICharacter
     {
         m_components = new();
         m_components.AddRange(GetComponents<IGameComponent>());
+
+        foreach (IGameComponent component in m_components)
+        {
+            component.InitComponent();
+        }
     }
 }

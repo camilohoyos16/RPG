@@ -2,13 +2,18 @@
 
 public sealed class AttackMeleeAction : Action
 {
-    public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
+    public override List<string> RequiredGameComponentsIds { get => 
+            new() { 
+                GameComponentDictionary.STATS_COMPONENT_ID, 
+                GameComponentDictionary.WIELD_ITEMS_COMPONENT_ID 
+            }; }
 
     public override string ActionId { get => ActionsDictionary.ATTACK_MELEE_ACTION_ID; }
 
-    public MeleeWeapon MeleeWeapon;
+    private MeleeWeapon MeleeWeapon;
 
     private StatsComponent m_ownerStatsComponent;
+    private WieldItemsComponent m_wieldItemsComponent;
 
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {
@@ -27,6 +32,10 @@ public sealed class AttackMeleeAction : Action
             switch (gameComponent.GameComponentId) {
                 case GameComponentDictionary.STATS_COMPONENT_ID:
                     m_ownerStatsComponent = (StatsComponent)gameComponent;
+                    break;
+                case GameComponentDictionary.WIELD_ITEMS_COMPONENT_ID:
+                    m_wieldItemsComponent = (WieldItemsComponent)gameComponent;
+                    //MeleeWeapon = m_wieldItemsComponent.Hands;
                     break;
                 default:
                     break;

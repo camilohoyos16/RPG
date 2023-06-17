@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_initialItemsId:
   - {fileID: 11400000, guid: 104b80d062afb3c4299dd4c6118e38a4, type: 2}
---- !u!114 &486066056
+--- !u!114 &486066061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,11 +262,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 486066049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c28079ca9e99742b2ab67da8c36029, type: 3}
+  m_Script: {fileID: 11500000, guid: e8aaa8755a719a8438174c2277d8bc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WorldItemId: {fileID: 0}
-  ItemCategory: 1
+  ItemCategory: 0
 --- !u!1 &600159205
 GameObject:
   m_ObjectHideFlags: 0

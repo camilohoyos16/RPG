@@ -2,7 +2,11 @@
 
 public sealed class WieldMeeleWeaponAction : Action
 {
-    public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
+    public override List<string> RequiredGameComponentsIds { get => 
+            new() { 
+                GameComponentDictionary.STATS_COMPONENT_ID, 
+                GameComponentDictionary.PHYSICS_COMPONENT_ID
+            }; }
 
     public override string ActionId { get => ActionsDictionary.WIELD_MEELE_WEAPON_ACTION_ID; }
 
