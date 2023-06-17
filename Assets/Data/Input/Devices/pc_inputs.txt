@@ -1,11 +1,13 @@
 {
 "hide_ui_element_action":"space",
 "pause_game_action":"p",
-"attack_action":"a",
+"attack_action":"LMB",
 "interact_action":"e",
 "jump_action":"Space",
 "move_forward_action":"w",
 "move_back_action":"s",
 "move_right_action":"d",
-"move_left_action":"a"
+"move_left_action":"a",
+"wield_meele_weapon_action":"f",
+"wield_distance_weapon_action":"q"
 }

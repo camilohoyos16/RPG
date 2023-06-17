@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 4652706091495525638}
   - component: {fileID: 4652706091495525639}
   - component: {fileID: 4652706091495525636}
-  - component: {fileID: 4652706091495525637}
   - component: {fileID: 4652706091495525634}
   - component: {fileID: 4652706091495525635}
-  - component: {fileID: 4652706091495525632}
+  - component: {fileID: 1972118738322820235}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -101,18 +100,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4652706091495525637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4652706091495525633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f5704411a3ed65479cf2f4865af568b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4652706091495525634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +119,6 @@ MonoBehaviour:
   - TitleOnInspector: 'Name: range - Value: 10'
     Name: {fileID: 11400000, guid: eee92345564931640aae3f2ec432699c, type: 2}
     StatValue: 10
-  DynamicStats: []
 --- !u!114 &4652706091495525635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb34273f376bac040a45d3500612f699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4652706091495525632
+  PassiveEffects: []
+  ActiveEffects: []
+--- !u!114 &1972118738322820235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,8 +142,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4652706091495525633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b135f631fd096428d27b9c1b6444f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f5704411a3ed65479cf2f4865af568b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EffectConfig:
-    StatToUseName: {fileID: 11400000, guid: c61bc1552a7dac44f9b8423b3de0642c, type: 2}

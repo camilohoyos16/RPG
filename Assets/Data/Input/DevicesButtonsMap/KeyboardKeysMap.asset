@@ -73,9 +73,9 @@ MonoBehaviour:
   - TitleOnInspector: "\xD1 Key-\xD1"
     Name: "\xD1 Key"
     InputSystemCode: "\xD1"
-  - TitleOnInspector: Z Key-
+  - TitleOnInspector: Z Key-Z
     Name: Z Key
-    InputSystemCode: 
+    InputSystemCode: Z
   - TitleOnInspector: X Key-X
     Name: X Key
     InputSystemCode: X

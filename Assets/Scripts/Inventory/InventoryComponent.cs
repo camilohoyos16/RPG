@@ -8,6 +8,8 @@ public class InventoryComponent : MonoBehaviour, IGameComponent
 
     [SerializeField] private List<ItemIdScriptableObject> m_initialItemsId;
 
+    private WieldItemsComponent m_wieldItems;
+
     public List<InventoryItem> Items { get; } = new List<InventoryItem>();
     private InventoryItem m_currentSelectedItem;
 
@@ -22,10 +24,17 @@ public class InventoryComponent : MonoBehaviour, IGameComponent
             ItemGenericDefinition itemDefinition = ItemDictionary.GetItemDefinitionById(itemId.ItemId);
             AddItem(ItemUtils.CreateNewInventoryItem(itemDefinition));
         }
+
+        m_wieldItems = GetComponent<WieldItemsComponent>();
     }
 
     public void UpdateComponent(WorldState worldState)
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            AttachmentItem item = (AttachmentItem)Items[0];
+            m_wieldItems.PrepareItemInQuickAccess(item);
+        }
     }
 
     public void AddItem(WorldItem worldItem) {

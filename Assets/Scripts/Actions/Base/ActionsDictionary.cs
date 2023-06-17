@@ -10,8 +10,6 @@ public static class ActionsDictionary
     public const string MOVE_RIGHT_ACTION_ID = "move_right_action";
     public const string ROTATE_PLAYER_BY_CAMERA_ACTION_ID = "rotate_player_by_camera_action";
     public const string ATTACK_ACTION_ID = "attack_action";
-    public const string ATTACK_MELEE_ACTION_ID = "attack_melee_action";
-    public const string ATTACK_DISTANCE_ACTION_ID = "attack_distance_action";
     public const string WIELD_MEELE_WEAPON_ACTION_ID = "wield_meele_weapon_action";
     public const string WIELD_DISTANCE_WEAPON_ACTION_ID = "wield_distance_weapon_action";
     public const string WIELD_MAGIC_WEAPON_ACTION_ID = "wield_magic_weapon_action";

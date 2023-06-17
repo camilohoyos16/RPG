@@ -40,12 +40,12 @@ public class WorldManager : MonoBehaviour
 
         InputController.UpdateController(m_worldState);
         m_worldState.UpdateState(InputController, CameraController);
-        if(m_worldState.NextTickCounter >= SecondToUpdateWorld)
+        if(m_worldState.NextTickCounter >= m_worldState.LastTickTime)
         {
             m_worldState.DeltaTime = SecondToUpdateWorld;
             m_worldState.LastTickTime = Time.time;
             m_worldState.TotalTicks++;
-            m_worldState.NextTickCounter -= SecondToUpdateWorld;
+            m_worldState.NextTickCounter = Time.time - SecondToUpdateWorld;
             EntitiesController.UpdateController(m_worldState);
             CameraController.UpdateController(m_worldState);
             UiController.UpdateController(m_worldState);

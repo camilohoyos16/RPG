@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7856814255082012891}
   - component: {fileID: 7856814255082012888}
   - component: {fileID: 7856814255082012889}
-  - component: {fileID: 7856814255082012902}
+  - component: {fileID: 57767275859890347}
   m_Layer: 0
   m_Name: Worlditem
   m_TagString: Untagged
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7856814255082012902
+--- !u!114 &57767275859890347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,10 +107,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7856814255082012903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c28079ca9e99742b2ab67da8c36029, type: 3}
+  m_Script: {fileID: 11500000, guid: 97730bec5f9874b42b18395deaab8840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemConfig:
-    IsStackable: 0
-    MaxStack: 10
-    Quantity: 10
+  WorldItemId: {fileID: 0}
+  ItemCategory: 0

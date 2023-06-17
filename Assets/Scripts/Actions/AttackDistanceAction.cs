@@ -4,7 +4,7 @@ public sealed class AttackDistanceAction : Action
 {
     public override List<string> RequiredGameComponentsIds { get => new() { GameComponentDictionary.STATS_COMPONENT_ID, GameComponentDictionary.PHYSICS_COMPONENT_ID }; }
 
-    public override string ActionId { get => ActionsDictionary.ATTACK_DISTANCE_ACTION_ID; }
+    public override string ActionId { get => ActionsDictionary.ATTACK_ACTION_ID; }
 
     #region Action Implementation
     public override ActionResult ExecuteAction(ICharacter character, WorldState worldState) {

@@ -38,7 +38,9 @@ public class CameraController : MonoBehaviour, IController
     [SerializeField]
     private float m_cameraLookAtPointHeight;
     [SerializeField]
-    private float m_cameraSpeed;
+    private float m_horizontalSpeed;
+    [SerializeField]
+    private float m_verticalSpeed;
 
     private float m_currentAzimuth;
     private float m_currentTetha;
@@ -90,20 +92,20 @@ public class CameraController : MonoBehaviour, IController
     {
         if (pointerMove.x < 0)
         {
-            m_currentAzimuth -= m_cameraSpeed * Time.deltaTime;
+            m_currentAzimuth -= m_horizontalSpeed * Time.deltaTime;
         }
         else if (pointerMove.x > 0)
         {
-            m_currentAzimuth += m_cameraSpeed * Time.deltaTime;
+            m_currentAzimuth += m_horizontalSpeed * Time.deltaTime;
         }
 
         if (pointerMove.y < 0)
         {
-            m_currentTetha -= m_cameraSpeed * Time.deltaTime;
+            m_currentTetha -= m_verticalSpeed * Time.deltaTime;
         }
         else if (pointerMove.y > 0)
         {
-            m_currentTetha += m_cameraSpeed * Time.deltaTime;
+            m_currentTetha += m_verticalSpeed * Time.deltaTime;
         }
 
         m_currentAzimuth = Mathf.Clamp(m_currentAzimuth, m_minAzimuth, m_maxAzimuth);

@@ -8,7 +8,7 @@ public sealed class AttackMeleeAction : Action
                 GameComponentDictionary.WIELD_ITEMS_COMPONENT_ID 
             }; }
 
-    public override string ActionId { get => ActionsDictionary.ATTACK_MELEE_ACTION_ID; }
+    public override string ActionId { get => ActionsDictionary.ATTACK_ACTION_ID; }
 
     private MeleeWeapon MeleeWeapon;
 
