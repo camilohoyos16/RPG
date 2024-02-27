@@ -7,7 +7,17 @@
 ## Game Components ([link](https://github.com/camilohoyos16/RPG/tree/main/Assets/Scripts/GameComponents))
 A lot of info and behavior work by Game Components. Each component has a unique ID and specific unity components and probably other Game Components.
 ## Actions ([link](https://github.com/camilohoyos16/RPG/tree/main/Assets/Scripts/Actions))
-Now you can create an action for everything and attach them to almost any entity in the game. Each action needs to be declared with its own Game Components to define the behavior.
+Action needs to be declared with its own Game Components to define the behavior. Actions are managed by 2 lists, 1 for the adquired actions and 1 for the available actions that is constantly update to allow or restrict player in certain occassions.
+Actions are suposed to be used by any entity not just player. In that order there is an special class called "InputAction" that wraps up, dynamically, when an action is added to the player.
+List of Actions:
+- Attack Distance.
+- Attack Melee.
+- Generic Interaction.
+- Jump.
+- Move
+- Open Inventory.
+- Use Item.
+- Wield Weapons.
 ## Effects ([link](https://github.com/camilohoyos16/RPG/tree/main/Assets/Scripts/Effects))
 This is all you have to interact with the environment in special ways. IDK how to define them, so better give examples: 
 >- Ugly sword which just make damage. Has just 1 effect called "SimpleDamageEffect" (kind of) and just deal damage to the target.
@@ -22,5 +32,5 @@ This has a reference to all the entities in the game, having a player implementa
 The interact action work through this controller checking all the characters and all the entities around, everytime a character goes inside of entity radius, this will add the interact action with the specific entity.
 - **NOTE**: here, we need to implement a quadtree to improve performance, but if there is not a game yet, there is any performance to improve, right?
 ## Stats ([link](https://github.com/camilohoyos16/RPG/tree/main/Assets/Scripts/Stats))
-- Class to replace a lot of variables inside the game, mainly stats (like its own name says) like health, mana, experience, etc.
-- Created a dinamyc stats system to be used mainly on "StatsComponent". There a bunch of scriptable objects to define the name of all the stats you need to use and hold them inside a static dictionary so you just need to defined the id of the stats you need to get from StatsComponent. 
+Stats are being used almost everywhere, in player, in entities, in object, in effects and so on. Stat has a base value, a list of modifiers and a current value, which is calculated by a formula applying modifiers over the base value
+Stats works in paired with StatsComponent which is in charged to hold all the stats of its owner. No matter if it's a chair, if the chair has "health", there sould be a StatsComponent attached to it.
